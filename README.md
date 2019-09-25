@@ -1,2 +1,3 @@
 # ParkingGarageProject
-Parking Garage Project for CS248 due October 7th, 2019
+Parking Garage Project for CSE248 due October 7th, 2019. 
+<br>Group: Michael Campos, Matt Guidi, Chris Demonte
