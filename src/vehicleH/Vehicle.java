@@ -14,19 +14,7 @@ public class Vehicle {
 		return this.licensePlate;
 	}
 	public String getVType() {
-		String vT = "";
-		switch(this.vType) {
-		case TRUCK: 
-			vT = "Truck";
-			break;
-		case MOTORCYCLE: 
-			vT = "Motorcycle";
-			break;
-		case CAR:
-			vT = "Car";
-			break;
-		}
-		return vT;
+		return vType.toString();
 	}
 	public String toString() {
 		String lP = this.getLicensePlate();
