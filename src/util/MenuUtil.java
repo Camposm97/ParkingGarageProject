@@ -1,5 +1,7 @@
 package util;
 
+import static util.Web.*;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,8 +36,11 @@ public class MenuUtil {
 	
 	public static Menu loadMenuHelp() { // Not Finished
 		MenuItem mi1 = new MenuItem("Michael Campos");
+		mi1.setOnAction(e -> { browse(CAMPOS_GITHUB); });
 		MenuItem mi2 = new MenuItem("Matthew Guidi");
+		mi2.setOnAction(e -> { browse(GUIDI_GITHUB); });
 		MenuItem mi3 = new MenuItem("Chris Demonte");
+		mi3.setOnAction(e -> { browse(DEMONTE_GITHUB); });
 		Menu m2 = new Menu("Developer's Github");
 		m2.getItems().addAll(mi1, mi2, mi3);
 		Menu m1 = new Menu("Help");
