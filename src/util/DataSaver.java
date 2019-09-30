@@ -6,15 +6,17 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 public class DataSaver {
-	public static void writeObject(Object o, String src) {
+	public static boolean writeObject(Object o, String src) {
 		try {
 			File file = new File(src);
 			FileOutputStream fos = new FileOutputStream(file);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(o);
 			oos.close();
+			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return false;
 	}
 }
