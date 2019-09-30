@@ -3,6 +3,7 @@ package vehicleH;
 public class Vehicle {
 	private String licensePlate;
 	private VehicleType vType;
+	
 	public Vehicle(String licensePlate, VehicleType vType) {
 		super();
 		// We can pass through the 

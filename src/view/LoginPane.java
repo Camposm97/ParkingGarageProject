@@ -12,7 +12,10 @@ public class LoginPane extends GridPane {
 	public LoginPane() {
 		tfUsername = new TextField();
 		tfPassword = new PasswordField();
-		addRow(0, new Label("Username:"), tfUsername);
-		addRow(1, new Label("Password:"), tfPassword);
+		add(new Label("Please enter your credentials:"), 0, 0, 2, 1);
+		addRow(1, new Label("Username:"), tfUsername);
+		addRow(2, new Label("Password:"), tfPassword);
+		setHgap(10);
+		setVgap(10);
 	}
 }
