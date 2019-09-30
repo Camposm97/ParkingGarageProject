@@ -22,18 +22,24 @@ public class MenuUtil {
 			// Before exiting, save data (not yet implemented)
 			Platform.exit();
 		});
-		Menu menu = new Menu("File");
-		menu.getItems().add(mi);
-		return menu;
+		Menu m = new Menu("File");
+		m.getItems().add(mi);
+		return m;
 	}
 	
 	public static Menu loadMenuEdit() {
-		Menu menu = new Menu("Edit");
-		return menu;
+		Menu m = new Menu("Edit");
+		return m;
 	}
 	
-	public static Menu loadMenuHelp() {
-		Menu menu = new Menu("Help");
-		return menu;
+	public static Menu loadMenuHelp() { // Not Finished
+		MenuItem mi1 = new MenuItem("Michael Campos");
+		MenuItem mi2 = new MenuItem("Matthew Guidi");
+		MenuItem mi3 = new MenuItem("Chris Demonte");
+		Menu m2 = new Menu("Developer's Github");
+		m2.getItems().addAll(mi1, mi2, mi3);
+		Menu m1 = new Menu("Help");
+		m1.getItems().add(m2);
+		return m1;
 	}
 }	
