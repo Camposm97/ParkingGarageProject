@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import util.LightWork;
+import view.GarageMenuBar;
 import view.LoginPane;
 
 public class App extends Application {
@@ -14,7 +14,7 @@ public class App extends Application {
 	@Override
 	public void init() {
 		root = new BorderPane();
-		root.setPadding(LightWork.DEFAULT_INSETS);
+		root.setTop(new GarageMenuBar());
 		root.setCenter(new LoginPane());
 	}
 	
