@@ -14,7 +14,7 @@ public class App extends Application {
 	@Override
 	public void init() {
 		root = new BorderPane();
-		root.setTop(new GarageMenuBar());
+		root.setTop(new GarageMenuBar()); // Temporary (Testing)
 		root.setCenter(new LoginPane());
 	}
 	
