@@ -15,11 +15,11 @@ public class LoginPane extends GridPane {
 	private Button btLogin;
 	
 	public LoginPane() {
-		initCtrls();
-		displayCtrls();
+		initControls();
+		showControls();
 	}
 	
-	private void initCtrls() {
+	private void initControls() {
 		tfUsername = new TextField();
 		tfPassword = new PasswordField();
 		btLogin = new Button("Login");
@@ -28,7 +28,7 @@ public class LoginPane extends GridPane {
 		});
 	}
 	
-	private void displayCtrls() {
+	private void showControls() {
 		setAlignment(Pos.CENTER);
 		setPadding(LightWork.DEFAULT_INSETS);
 		HBox hBox = LightWork.loadHBox(btLogin);
