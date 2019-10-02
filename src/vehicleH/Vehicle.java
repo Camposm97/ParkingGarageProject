@@ -14,12 +14,15 @@ public class Vehicle {
 	public String getLicensePlate() {
 		return this.licensePlate;
 	}
-	public String getVType() {
+	public VehicleType getVType() {
+		return vType;
+	}
+	public String getVTypeS() {
 		return vType.toString();
 	}
 	public String toString() {
 		String lP = this.getLicensePlate();
-		String vT = this.getVType();
+		String vT = this.getVTypeS();
 		return "This is a " + vT + " with the license plate " + lP;
 	}
 	

@@ -22,6 +22,9 @@ public class Space {
 	public void setSpecialRate(double rateValue) {
 		this.specialRate = rateValue;
 	}
+	public double getSpecialRate() {
+		return this.specialRate;
+	}
 	public VehicleType getSpaceType() {
 		return parkingSpaceType;
 	}
@@ -44,9 +47,9 @@ public class Space {
 		if(vehicleParked == null) {
 			return "This parking spot is available for " + this.parkingSpaceType.toString();	
 		}else {
-			return "This parking spot is occupied by a " + this.vehicleParked.getVType() + 
+			return "This parking spot is occupied by a " + this.vehicleParked.getVTypeS() + 
 					" with the license plate " + this.vehicleParked.getLicensePlate() +
-					" in a " + this.parkingSpaceType.toString() + " beginning at "
+					" in a " + this.parkingSpaceType.toString() + " parking space"+ " beginning at "
 					+ this.getTimeParked();
 		}
 	}
