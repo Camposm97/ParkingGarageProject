@@ -1,7 +1,9 @@
 package util;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -20,5 +22,12 @@ public class LightWork { // Originally named CamposFX
 		for (Node n : nodes)
 			hBox.getChildren().add(n);
 		return hBox;
+	}
+	
+	public static void initGridPaneSettings(GridPane gridPane) {
+		gridPane.setHgap(10);
+		gridPane.setVgap(10);
+		gridPane.setPadding(DEFAULT_INSETS);
+		gridPane.setAlignment(Pos.CENTER);
 	}
 }

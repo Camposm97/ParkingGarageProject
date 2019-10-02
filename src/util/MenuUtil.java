@@ -1,7 +1,12 @@
 package util;
 
-import static util.Web.*;
-import static util.ImgUtil.*;
+import static util.ImgUtil.EXIT_ICON;
+import static util.ImgUtil.GITHUB_ICON;
+import static util.ImgUtil.loadImgV;
+import static util.Web.CAMPOS_GITHUB;
+import static util.Web.DEMONTE_GITHUB;
+import static util.Web.GUIDI_GITHUB;
+import static util.Web.browse;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -32,12 +37,13 @@ public class MenuUtil {
 	}
 	
 	public static Menu loadMenuEdit() {
-		MenuItem miUser = new MenuItem("User");
-		MenuItem miCar = new MenuItem("Car");
+		MenuItem miAddUser = new MenuItem("User");
+		MenuItem miAddCar = new MenuItem("Car");
+		MenuItem miDelUser = new MenuItem("User");
 		Menu mInsert = new Menu("Insert");
-		mInsert.getItems().addAll(miUser, miCar);
+		mInsert.getItems().addAll(miAddUser, miAddCar);
 		Menu mDelete = new Menu("Delete");
-		mDelete.getItems().addAll(miUser, miCar);
+		mDelete.getItems().addAll(miDelUser);
 		Menu m = new Menu("Edit");
 		m.getItems().addAll(mInsert, mDelete);
 		return m;

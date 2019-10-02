@@ -1,7 +1,6 @@
 package view;
 
-import static util.LightWork.DEFAULT_INSETS;
-import static util.LightWork.loadHBox;
+import static util.LightWork.*;
 
 import control.LoginButton;
 import javafx.geometry.Pos;
@@ -17,6 +16,7 @@ public class LoginPane extends GridPane {
 	private LoginButton btLogin;
 	
 	public LoginPane() {
+		initGridPaneSettings(this);
 		initControls();
 		showControls();
 	}
@@ -28,15 +28,11 @@ public class LoginPane extends GridPane {
 	}
 	
 	private void showControls() {
-		setAlignment(Pos.CENTER);
-		setPadding(DEFAULT_INSETS);
 		HBox hBox = loadHBox(btLogin);
 		hBox.setAlignment(Pos.CENTER);
 		add(new Label("Please enter your credentials:"), 0, 0, 2, 1);
 		addRow(1, new Label("Username:"), tfUsername);
 		addRow(2, new Label("Password:"), tfPassword);
 		add(hBox, 0, 3, 2, 1);
-		setHgap(10);
-		setVgap(10);
 	}
 }
