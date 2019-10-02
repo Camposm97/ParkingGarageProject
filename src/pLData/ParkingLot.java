@@ -1,11 +1,13 @@
 package pLData;
 
+import java.util.ArrayList;
+
 import vehicleH.Vehicle;
 import vehicleH.VehicleType;
 
 public class ParkingLot implements ParkingSpaceManager{
 	
-	private Space [] parkingLotArray;
+	private ArrayList <Space>parkingLotArray;
 	
 	
 	
@@ -18,23 +20,23 @@ public class ParkingLot implements ParkingSpaceManager{
 	
 	public ParkingLot(int nCarS, int nTruckS, int nMotorcycleS) {
 		int totalSpaces = (nCarS + nTruckS + nMotorcycleS);
-		this.parkingLotArray = new Space[totalSpaces];
+		this.parkingLotArray = new ArrayList<Space>();
 		/*
 		 * 	MATT'S Dynamic Parking Lot Filler
 		 *  Rules = for each "row" if there is overflow the filter rule is 8 cars, 1 motorcycle, 1 truck
 		 * 	As soon as Cars run out then motorcycles begin to fill. Once motorcycles are done trucks fill the rest.
 		 */
-		for(int i = 0; i < this.parkingLotArray.length; i++) {
+		for(int i = 0; i < totalSpaces; i++) {
 			if((nMotorcycleS > 0) && ((i % 10 == 9) || (nCarS == 0))) {
-				this.parkingLotArray[i] = new Space(VehicleType.MOTORCYCLE);
+				this.parkingLotArray.add(new Space(VehicleType.MOTORCYCLE));
 				nMotorcycleS--;
 			}
 			else if((nTruckS > 0) && ((i % 10 == 8) || (nMotorcycleS == 0))) {
-				this.parkingLotArray[i] = new Space(VehicleType.TRUCK);
+				this.parkingLotArray.add(new Space(VehicleType.TRUCK));
 				nTruckS--;
 			}
 			else if((nCarS > 0)) {
-				this.parkingLotArray[i] = new Space(VehicleType.CAR);
+				this.parkingLotArray.add(new Space(VehicleType.CAR));
 				nCarS--;
 			}
 			
@@ -46,17 +48,17 @@ public class ParkingLot implements ParkingSpaceManager{
 	public int spaceFinder(VehicleType vt, boolean skipType) {
 		// Find the first spot based on vehicle type 
 		// May override the type if the boolean is true
-		for(int i = 0; i < parkingLotArray.length; i++) {
-			if(parkingLotArray[i].getVehicleParked() == null) {
-				if((vt == VehicleType.TRUCK) && (parkingLotArray[i].getSpaceType() == VehicleType.TRUCK)) {
+		for(int i = 0; i < parkingLotArray.size(); i++) {
+			if(parkingLotArray.get(i).getVehicleParked() == null) {
+				if((vt == VehicleType.TRUCK) && (parkingLotArray.get(i).getSpaceType() == VehicleType.TRUCK)) {
 					return i;
 				}else if(vt == VehicleType.CAR) {
 					
 					if(skipType == true) {
-						if((parkingLotArray[i].getSpaceType() == VehicleType.TRUCK)) {
+						if((parkingLotArray.get(i).getSpaceType() == VehicleType.TRUCK)) {
 							return i;
 						}
-					}if((parkingLotArray[i].getSpaceType() == VehicleType.CAR)) {
+					}if((parkingLotArray.get(i).getSpaceType() == VehicleType.CAR)) {
 							return i;
 						}
 				}
@@ -64,7 +66,7 @@ public class ParkingLot implements ParkingSpaceManager{
 					if(skipType == true) {
 						return i;
 					}else {
-						if((parkingLotArray[i].getSpaceType() == VehicleType.MOTORCYCLE)){
+						if((parkingLotArray.get(i).getSpaceType() == VehicleType.MOTORCYCLE)){
 							return i;
 						}
 					}
@@ -76,43 +78,43 @@ public class ParkingLot implements ParkingSpaceManager{
 		return -1;
 	}
 	public Vehicle spaceRelease(int spaceID) {
-		if((spaceID > parkingLotArray.length-1) || (spaceID < 0) ) 
+		if((spaceID > parkingLotArray.size()-1) || (spaceID < 0) ) 
 			return null;
-		Vehicle del = this.parkingLotArray[spaceID].getVehicleParked();
-		this.parkingLotArray[spaceID].vehicleDeletion();
+		Vehicle del = this.parkingLotArray.get(spaceID).getVehicleParked();
+		this.parkingLotArray.get(spaceID).vehicleDeletion();
 		return del;
 	}
 	@Override
 	public String toString() {
 		String output = "";
-		for(int i = 0; i < parkingLotArray.length; i++) {
-			output += "Index " + i + " is a type " + parkingLotArray[i].getSpaceType() + '\n';
-			if(parkingLotArray[i].getVehicleParked() != null) {
-				output += parkingLotArray[i].toString() + " \n";
+		for(int i = 0; i < parkingLotArray.size(); i++) {
+			output += "Index " + i + " is a type " + parkingLotArray.get(i).getSpaceType() + '\n';
+			if(parkingLotArray.get(i).getVehicleParked() != null) {
+				output += parkingLotArray.get(i).toString() + " \n";
 			}
 		}
 		return output;
 	}
 	public Space spaceInserter(Vehicle v, int spaceID) {
-		if((spaceID > parkingLotArray.length-1) || (spaceID < 0) ) 
+		if((spaceID > parkingLotArray.size()-1) || (spaceID < 0) ) 
 			return null;
 		if(v == null)
 			return null;
 		//Passes these checks then we can go ahead and insert the space
 		//but we need to check for Vehicle type on the space to apply special rates
-		if(v.getVType() != parkingLotArray[spaceID].getSpaceType()) {
+		if(v.getVType() != parkingLotArray.get(spaceID).getSpaceType()) {
 			//Now that we know we need to add a special rate let's determine which constant
 			//We need to set this space to
 			if(v.getVType() == VehicleType.MOTORCYCLE) {
-				this.parkingLotArray[spaceID].setSpecialRate(MOTORCYCLE_OVERRIDE);
+				this.parkingLotArray.get(spaceID).setSpecialRate(MOTORCYCLE_OVERRIDE);
 			}else{
-				this.parkingLotArray[spaceID].setSpecialRate(CAR_OVERRIDE);
+				this.parkingLotArray.get(spaceID).setSpecialRate(CAR_OVERRIDE);
 			}
 		}
 		// Now we can insert this vehicle into its space. 
 		// The calculation for proximity is done at checkout since it is used only from index
-		this.parkingLotArray[spaceID].vehicleInsertion(v);
-		return this.parkingLotArray[spaceID];
+		this.parkingLotArray.get(spaceID).vehicleInsertion(v);
+		return this.parkingLotArray.get(spaceID);
 	}
 
 }
