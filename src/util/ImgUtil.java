@@ -8,6 +8,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class ImgUtil {
+	public static final String EXIT_ICON = "images/exit.png";
+	public static final String GITHUB_ICON = "images/github.png";
+	
 	public static Image loadImg(String url) {
 		FileInputStream fis = null;
 		try {
