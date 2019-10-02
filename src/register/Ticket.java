@@ -1,21 +1,29 @@
 package register;
 
 import pLData.Space;
+import pLData.ParkingLot;
 
 public class Ticket {
 	
 	private Space space;
 	private int spaceNumber;
 	private int expectedHours;
-	private int ticketNumber;
+	// Let's make this static! That way it's the same across the board
+	private static int ticketNumber = 0;
+	// Is the boolean needed? Let's discuss this.
 	private boolean open;
+	
 	private double payment;
 	
 	public Ticket (Space space, int spaceNumber, int hours, int ticketNumber) {
+		// Produced by?
 		this.space = space;
+		// spaceNumber == spaceID 
 		this.spaceNumber = spaceNumber;
+		// Not needed "expected" hours is the (current local time - arrival time)
 		this.expectedHours = hours;
-		this.ticketNumber = ticketNumber;
+		// Just increase it every time we make a ticket
+		this.ticketNumber++;
 		this.open = true;
 		this.payment = 0;
 	}
