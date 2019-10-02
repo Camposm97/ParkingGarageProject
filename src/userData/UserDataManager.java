@@ -62,6 +62,7 @@ public class UserDataManager implements Serializable{
 		}
 		return index;
 	}
+	
 	public ArrayList<UserData> getUserList() {
 		return userList;
 	}
