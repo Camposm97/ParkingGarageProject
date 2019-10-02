@@ -36,7 +36,7 @@ public class Space {
 	}
 	public void vehicleInsertion(Vehicle newVehicle) {
 		this.vehicleParked = newVehicle;
-		this.arrivalTime.setTime((System.currentTimeMillis() * TIME_MODIFIER));
+		this.arrivalTime = new Date(((System.currentTimeMillis() * TIME_MODIFIER)));
 	}
 	public void vehicleDeletion() {
 		this.arrivalTime = null;

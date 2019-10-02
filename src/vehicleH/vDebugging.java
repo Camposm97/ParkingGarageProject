@@ -15,8 +15,11 @@ public class vDebugging {
 		System.out.println(test.spaceFinder(T1.getVType(), false));
 		test.spaceInserter(T1, test.spaceFinder(T1.getVType(), false));
 		System.out.println(test.toString());
-		
-		
+		test.spaceRelease(9);
+		System.out.println(test.toString());
+		test.spaceInserter(T1, test.spaceFinder(T1.getVType(), true));
+		test.spaceInserter(T1, test.spaceFinder(T1.getVType(), false));
+		System.out.println(test.toString());
 	}
 
 }
