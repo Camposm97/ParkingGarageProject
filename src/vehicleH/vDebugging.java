@@ -1,6 +1,6 @@
 package vehicleH;
 
-import pLData.Space;
+import pLData.*;
 
 public class vDebugging {
 
@@ -12,14 +12,11 @@ public class vDebugging {
 		System.out.println(t1.toString());
 		Space s = new Space(VehicleType.TRUCK);
 		System.out.println(s.toString());
-		s.vehicleInsertion(t1);
-		try {
-			Thread.sleep(100000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(s.toString());
+		
+		
+		ParkingLot test = new ParkingLot(80, 10, 10);
+		System.out.println(test.toString());
+		
 		
 	}
 

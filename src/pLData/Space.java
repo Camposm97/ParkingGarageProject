@@ -12,8 +12,15 @@ public class Space {
 	private VehicleType parkingSpaceType;
 	private Vehicle vehicleParked;
 	private Date arrivalTime = new Date();
+	private Double specialRate;
 	public Space(VehicleType vT) {
 		parkingSpaceType = vT;
+	}
+	public void setSpaceType(VehicleType x) {
+		this.parkingSpaceType = x;
+	}
+	public void setSpecialRate(double rateValue) {
+		this.specialRate = rateValue;
 	}
 	public VehicleType getSpaceType() {
 		return parkingSpaceType;
@@ -31,6 +38,7 @@ public class Space {
 	public void vehicleDeletion() {
 		this.arrivalTime = null;
 		this.vehicleParked = null;
+		this.specialRate = null;
 	}
 	public String toString() {
 		if(vehicleParked == null) {
