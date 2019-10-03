@@ -3,6 +3,7 @@ package app;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import view.GarageMenuBar;
 import view.LoginPane;
@@ -23,6 +24,7 @@ public class App extends Application {
 		stage.setTitle(APP_TITLE);
 		stage.setScene(new Scene(root));
 		stage.show();
+
 	}
 	
 	public static void main(String[] args) {

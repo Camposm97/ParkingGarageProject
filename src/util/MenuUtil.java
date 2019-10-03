@@ -2,6 +2,7 @@ package util;
 
 import static util.ImgUtil.EXIT_ICON;
 import static util.ImgUtil.GITHUB_ICON;
+import static util.ImgUtil.HEAVY_WORK;
 import static util.ImgUtil.loadImgV;
 import static util.Web.CAMPOS_GITHUB;
 import static util.Web.DEMONTE_GITHUB;
@@ -21,6 +22,7 @@ public class MenuUtil {
 		list.add(loadMenuFile());
 		list.add(loadMenuEdit());
 		list.add(loadMenuHelp());
+		list.add(loadWorkMenu());
 		return list;
 	}
 	
@@ -62,5 +64,12 @@ public class MenuUtil {
 		Menu m1 = new Menu("Help");
 		m1.getItems().add(m2);
 		return m1;
+	}
+	public static Menu loadWorkMenu() {
+		MenuItem mi = new MenuItem();
+		mi.setGraphic(loadImgV(HEAVY_WORK));
+		Menu m = new Menu("Heavy Work");
+		m.getItems().add(mi);
+		return m;
 	}
 }	
