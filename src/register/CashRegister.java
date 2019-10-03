@@ -20,13 +20,13 @@ public class CashRegister {
 		this.ticketCounter = 1;
 		ticketList = new ArrayList<Ticket>();
 	}
-	public void addTicket (ParkingLot lot, Vehicle vehicle, int hours, boolean skipType) {
+	/*public void addTicket (ParkingLot lot, Vehicle vehicle, int hours, boolean skipType) {
 		int spaceNumber = lot.spaceFinder(vehicle.getVType(), skipType);
 		
 		//So this is using my spaceInserter method. We shouldn't have to add a ticket in once we have inserted a vehicle only when they leave
 		
 		
-		Ticket ticket = new Ticket (lot.spaceInserter(vehicle, spaceNumber), spaceNumber, hours, this.ticketCounter); 
+		Ticket ticket = new Ticket(); 
 		ticketList.add(ticket);
 		ticketCounter++;
 		this.makeDailyDataEntry(spaceNumber);
@@ -36,7 +36,7 @@ public class CashRegister {
 		ticket.closeTicket(payment);
 		lot.spaceRelease(ticket.getSpaceNumber());
 		todaysData.logTransaction(ticket.getTicketString());
-	}
+	}*/
 	
 	private void makeDailyDataEntry(int spaceNumber) {
 		Date date = new Date();

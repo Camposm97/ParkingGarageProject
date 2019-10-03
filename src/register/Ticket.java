@@ -7,31 +7,33 @@ public class Ticket {
 	
 	private Space space;
 	private int spaceNumber;
-	private int expectedHours;
+	private double expectedHours;
 	// Let's make this static! That way it's the same across the board
-	private static int ticketNumber = 0;
-	// Is the boolean needed? Let's discuss this.
+	private static int ticketNumberC = 0;
+	private int ticketID;
 	private boolean open;
-	
 	private double payment;
 	
-	public Ticket (Space space, int spaceNumber, int hours, int ticketNumber) {
-		// Produced by?
+	
+	// We're going to make a Ticket object the moment they leave. That way it's a one
+	// and done kind of deal. All they need to give us is their spaceNumber and we can find the rest!
+	
+	public Ticket (Space space, int spaceID) {
 		this.space = space;
-		// spaceNumber == spaceID 
-		this.spaceNumber = spaceNumber;
-		// Not needed "expected" hours is the (current local time - arrival time)
-		this.expectedHours = hours;
-		// Just increase it every time we make a ticket
-		this.ticketNumber++;
+		this.spaceNumber = spaceID;
+		this.expectedHours = ((double)(System.currentTimeMillis() * this.space.getTimeModifier())
+								- this.space.getTimeA()) / 3600000;
+		this.payment =  getExpectedCost();
+		System.out.println("The payment I calculated is " + this.payment);
 		this.open = true;
-		this.payment = 0;
+		this.ticketID = ticketNumberC++;
+	
 	}
 	
 	public String getTicketString() {
 		String str = new String();
 		str += "****************************************\n" 
-				+ "Ticket : " + this.ticketNumber + "\n" +
+				+ "Ticket : " + this.ticketID + "\n" +
 				"****************************************\n"
 				+ "Vehicle Type : " + space.getVehicleParked().getVTypeS() + "\n"
 				+ "Plate Number : " + space.getVehicleParked().getLicensePlate() + "\n"
@@ -53,7 +55,9 @@ public class Ticket {
 	}
 	
 	public double getExpectedCost() {
-		return  this.space.getSpecialRate() * (double)this.expectedHours;
+		System.out.println(this.expectedHours);
+		return  (100 / (this.spaceNumber + 1))*
+				(this.space.getSpecialRate() * this.expectedHours);
 	}
 
 	public Space getSpace() {
@@ -72,7 +76,7 @@ public class Ticket {
 		this.spaceNumber = spaceNumber;
 	}
 
-	public int getExpectedHours() {
+	public double getExpectedHours() {
 		return expectedHours;
 	}
 
@@ -80,12 +84,12 @@ public class Ticket {
 		this.expectedHours = expectedHours;
 	}
 
-	public int getTicketNumber() {
-		return ticketNumber;
+	public int getTicketID() {
+		return ticketID;
 	}
 
 	public void setTicketNumber(int ticketNumber) {
-		this.ticketNumber = ticketNumber;
+		this.ticketID = ticketNumber;
 	}
 
 	public boolean isOpen() {

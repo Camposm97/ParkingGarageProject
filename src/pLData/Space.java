@@ -16,6 +16,12 @@ public class Space {
 	public Space(VehicleType vT) {
 		parkingSpaceType = vT;
 	}
+	public Space(Space c) {
+		this.arrivalTime = c.arrivalTime;
+		this.parkingSpaceType = c.parkingSpaceType;
+		this.specialRate = c.specialRate;
+		this.vehicleParked = c.vehicleParked;
+	}
 	public void setSpaceType(VehicleType x) {
 		this.parkingSpaceType = x;
 	}
@@ -33,6 +39,12 @@ public class Space {
 	}
 	public String getTimeParked() {
 		return this.arrivalTime.toString();
+	}
+	public long getTimeA() {
+		return arrivalTime.getTime();
+	}
+	public long getTimeModifier() {
+		return TIME_MODIFIER;
 	}
 	public void vehicleInsertion(Vehicle newVehicle) {
 		this.vehicleParked = newVehicle;

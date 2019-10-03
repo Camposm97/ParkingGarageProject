@@ -43,8 +43,6 @@ public class ParkingLot implements ParkingSpaceManager{
 		}
 		
 	}
-
-
 	public int spaceFinder(VehicleType vt, boolean skipType) {
 		// Find the first spot based on vehicle type 
 		// May override the type if the boolean is true
@@ -77,12 +75,12 @@ public class ParkingLot implements ParkingSpaceManager{
 		// If we return -1 we're all full! 
 		return -1;
 	}
-	public Vehicle spaceRelease(int spaceID) {
+	public Space spaceRelease(int spaceID) {
+		Space copyOfOld = new Space(this.parkingLotArray.get(spaceID));
 		if((spaceID > parkingLotArray.size()-1) || (spaceID < 0) ) 
 			return null;
-		Vehicle del = this.parkingLotArray.get(spaceID).getVehicleParked();
 		this.parkingLotArray.get(spaceID).vehicleDeletion();
-		return del;
+		return copyOfOld;
 	}
 	@Override
 	public String toString() {
