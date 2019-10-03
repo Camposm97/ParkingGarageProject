@@ -1,9 +1,6 @@
 package util;
 
-import static util.ImgUtil.EXIT_ICON;
-import static util.ImgUtil.GITHUB_ICON;
-import static util.ImgUtil.HEAVY_WORK;
-import static util.ImgUtil.loadImgV;
+import static util.ImgUtil.*;
 import static util.Web.CAMPOS_GITHUB;
 import static util.Web.DEMONTE_GITHUB;
 import static util.Web.GUIDI_GITHUB;
@@ -22,7 +19,6 @@ public class MenuUtil {
 		list.add(loadMenuFile());
 		list.add(loadMenuEdit());
 		list.add(loadMenuHelp());
-		list.add(loadWorkMenu());
 		return list;
 	}
 	
@@ -61,15 +57,23 @@ public class MenuUtil {
 		Menu m2 = new Menu("Developer's Github");
 		m2.setGraphic(loadImgV(GITHUB_ICON));
 		m2.getItems().addAll(mi1, mi2, mi3);
+		
 		Menu m1 = new Menu("Help");
-		m1.getItems().add(m2);
+		m1.getItems().addAll(m2, loadWorkMenu());
 		return m1;
 	}
 	public static Menu loadWorkMenu() {
-		MenuItem mi = new MenuItem();
-		mi.setGraphic(loadImgV(HEAVY_WORK));
-		Menu m = new Menu("Heavy Work");
-		m.getItems().add(mi);
+		MenuItem mi1 = new MenuItem();
+		mi1.setGraphic(loadImgV(HEAVY_WORK));
+		MenuItem mi2 = new MenuItem();
+		mi2.setGraphic(loadImgV(LIGHT_WORK));
+		
+		Menu m1 = new Menu("Heavy Work");
+		m1.getItems().add(mi1);
+		Menu m2 = new Menu("Light Work");
+		m2.getItems().add(mi2);
+		Menu m = new Menu("Work");
+		m.getItems().addAll(m1, m2);
 		return m;
 	}
 }	

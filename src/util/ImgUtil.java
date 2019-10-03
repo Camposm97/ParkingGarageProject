@@ -11,6 +11,7 @@ public class ImgUtil {
 	public static final String EXIT_ICON = "images/exit.png";
 	public static final String GITHUB_ICON = "images/github.png";
 	public static final String HEAVY_WORK = "images/heavy_work.gif";
+	public static final String LIGHT_WORK = "images/light_work.gif";
 	public static Image loadImg(String url) {
 		FileInputStream fis = null;
 		try {
