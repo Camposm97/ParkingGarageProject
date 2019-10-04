@@ -20,6 +20,7 @@ public class UserData implements Serializable{
 		this.lastName = lastName;
 		this.generateUserName(listIndex);
 		this.autoSetAdmin(listIndex);
+		
 	}
 
 	private void autoSetAdmin(int listIndex) {
