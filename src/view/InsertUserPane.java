@@ -16,7 +16,7 @@ import userData.UserDataManager;
  */
 public class InsertUserPane extends GridPane {
 	private UserDataManager users;
-	private TextField tfFirstname, tfLastname, tfUsername;
+	private TextField tfFirst, tfLast, tfUsername;
 	private PasswordField tfPassword;
 	private Button btAdd;
 	
@@ -28,11 +28,11 @@ public class InsertUserPane extends GridPane {
 	}
 	
 	private void initControls() {
-		tfFirstname = new TextField();
-		tfLastname = new TextField();
+		tfFirst = new TextField();
+		tfLast = new TextField();
 		tfUsername = new TextField();
 		tfPassword = new PasswordField();
-		btAdd = new Button("User");
+		btAdd = new Button("Add User");
 	}
 	
 	private void showControls() {
@@ -41,5 +41,6 @@ public class InsertUserPane extends GridPane {
 		Label lblUsername = new Label("Username");
 		Label lblPassword = new Label("Password:");
 		addColumn(0, lblFirst, lblLast, lblUsername, lblPassword);
+		addColumn(1, tfFirst, tfLast, tfUsername, lblPassword);
 	}
 }

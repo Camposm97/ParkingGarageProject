@@ -75,7 +75,12 @@ public class GarageMenuBar extends MenuBar {
 		return m;
 	}
 	
-	public Menu loadMenuHelp() { // Not Finished
+	public Menu loadMenuView() {
+		Menu m = new Menu("View");
+		return m;
+	}
+	
+	public Menu loadMenuHelp() { 
 		MenuItem mi1 = new MenuItem("Michael Campos");
 		mi1.setOnAction(e -> { browse(CAMPOS_GITHUB); });
 		MenuItem mi2 = new MenuItem("Matthew Guidi");
