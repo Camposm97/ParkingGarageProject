@@ -5,7 +5,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import pLData.ParkingLot;
 import view.GarageMenuBar;
+import view.GarageTableView;
 import view.LoginPane;
 
 public class App extends Application {
@@ -14,9 +16,11 @@ public class App extends Application {
 	
 	@Override
 	public void init() {
+		
 		root = new BorderPane();
 		root.setTop(new GarageMenuBar()); // Temporary (Testing)
 		root.setCenter(new LoginPane());
+		
 	}
 	
 	@Override
