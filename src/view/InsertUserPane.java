@@ -31,6 +31,7 @@ public class InsertUserPane extends GridPane {
 		tfFirst = new TextField();
 		tfLast = new TextField();
 		tfUsername = new TextField();
+		tfUsername.setEditable(false);
 		tfPassword = new PasswordField();
 		btAdd = new Button("Add User");
 	}
