@@ -41,8 +41,7 @@ public class HistoryPane {
 	}	
 
 	private void loadText(LocalDate date) {
-		SimpleDateFormat form = new SimpleDateFormat("MMdd");
-		String adr = "/resources/daily" + form.format(date) + ".data";
+		String adr = "/resources/daily" + date.getMonthValue() + date.getDayOfMonth() + ".data";
 		File file = new File(adr);
 		boolean exists = file.exists();
 		if (exists) {
