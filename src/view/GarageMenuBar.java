@@ -21,11 +21,12 @@ import javafx.application.Platform;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import util.MenuUtil;
+import userData.UserDataManager;
 
 public class GarageMenuBar extends MenuBar {
+	private UserDataManager users;
 	
-	public GarageMenuBar() {
+	public GarageMenuBar(UserDataManager users) {
 		this.getMenus().addAll(loadMenus());
 	}
 	
@@ -56,6 +57,9 @@ public class GarageMenuBar extends MenuBar {
 	
 	public Menu loadMenuEdit() {
 		MenuItem miAddUser = new MenuItem("User");
+		miAddUser.setOnAction(e -> {
+			
+		});
 		MenuItem miAddCar = new MenuItem("Car");
 		MenuItem miDelUser = new MenuItem("User");
 		Menu menuInsert = new Menu("Insert");
@@ -84,6 +88,7 @@ public class GarageMenuBar extends MenuBar {
 		m1.getItems().addAll(m2, loadWorkMenu());
 		return m1;
 	}
+	
 	public Menu loadWorkMenu() {
 		MenuItem mi1 = new MenuItem();
 		mi1.setGraphic(loadImgV(HEAVY_WORK));
