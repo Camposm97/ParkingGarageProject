@@ -25,7 +25,6 @@ public class CashRegister {
 	public CashRegister () {
 		this.totalSales = 0;
 		this.ticketCounter = 1;
-<<<<<<< HEAD
 	}
 	public void closeTicket(ParkingLot pL, String licensePlate) {
 		int spaceID = pL.vehicleFinder(licensePlate);
@@ -40,7 +39,6 @@ public class CashRegister {
 						+ ticket.getExpectedCost()));
 			}while(payment < eP);
 		}
-=======
 		this.loadData();
 	}
 	/*public void addTicket (ParkingLot lot, Vehicle vehicle, int hours, boolean skipType) {
@@ -68,8 +66,6 @@ public class CashRegister {
 =======
 	}
 	*/
-	
->>>>>>> 4bda4dd4102cdeba01a26606d12f182c2bc78050
 	private void makeDailyDataEntry(int spaceNumber) {
 		Date date = new Date();
 		String entry = new String();
@@ -78,7 +74,7 @@ public class CashRegister {
 				+ "Space Number : " + spaceNumber + "\n"
 				+ "****************************************\n";
 		todaysData.logTransaction(entry);
-	}*/
+	}
 
 	public void loadData() {
 		Date date = new Date();
@@ -110,12 +106,6 @@ public class CashRegister {
 
 	public void setTicketCounter(int ticketCounter) {
 		this.ticketCounter = ticketCounter;
-<<<<<<< HEAD
-	}	
-=======
-	}
 
-	
-	
->>>>>>> 4bda4dd4102cdeba01a26606d12f182c2bc78050
+	}	
 }
