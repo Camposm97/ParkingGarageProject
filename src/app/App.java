@@ -5,7 +5,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import userData.UserDataManager;
-import view.GarageMenuBar;
 import view.LoginPane;
 
 public class App extends Application {
@@ -18,9 +17,7 @@ public class App extends Application {
 	public void init() {
 		users = new UserDataManager(); // Load Data Here: DataLoader.loadObject(src);
 		root = new BorderPane();
-		root.setTop(new GarageMenuBar()); // Temporary (Testing)
-		root.setCenter(new LoginPane(users));
-		
+		root.setCenter(new LoginPane(users));		
 	}
 	
 	@Override
