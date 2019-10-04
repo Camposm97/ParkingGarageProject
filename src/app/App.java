@@ -8,7 +8,8 @@ import userData.UserDataManager;
 import view.LoginPane;
 
 public class App extends Application {
-	private static final String APP_TITLE = "Parking Garage: By The Three Stooges";
+	public static final int WIDTH = 600, HEIGHT = 500;
+	public static final String APP_TITLE = "Parking Garage: By The Three Stooges";
 	private UserDataManager users;
 	private BorderPane root;
 	

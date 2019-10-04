@@ -23,14 +23,18 @@ public class MenuUtil {
 	}
 	
 	public static Menu loadMenuFile() {
-		MenuItem mi = new MenuItem("Exit");
-		mi.setGraphic(loadImgV(EXIT_ICON));
-		mi.setOnAction(e -> {
+		MenuItem mi1 = new MenuItem("Sign Out");
+		mi1.setOnAction(e -> {
+			System.out.println("Not Yet Implemented");
+		});
+		MenuItem mi2 = new MenuItem("Exit");
+		mi2.setGraphic(loadImgV(EXIT_ICON));
+		mi2.setOnAction(e -> {
 			// Before exiting, save data (not yet implemented)
 			Platform.exit();
 		});
 		Menu m = new Menu("File");
-		m.getItems().add(mi);
+		m.getItems().addAll(mi1, mi2);
 		return m;
 	}
 	

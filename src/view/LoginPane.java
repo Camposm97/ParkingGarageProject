@@ -16,6 +16,7 @@ import userData.UserDataManager;
 
 public class LoginPane extends GridPane {
 	private UserDataManager users;
+	private MyLabel lblPrompt;
 	private TextField tfUsername;
 	private PasswordField tfPassword;
 	private LoginButton btLogin;
@@ -40,6 +41,7 @@ public class LoginPane extends GridPane {
 	}
 	
 	private void initControls() {
+		lblPrompt = new MyLabel("Please enter your credentials:", 14);
 		tfUsername = new TextField();
 		tfPassword = new PasswordField();
 		btLogin = new LoginButton(this);
@@ -52,7 +54,7 @@ public class LoginPane extends GridPane {
 	private void showControls() {
 		HBox hBox = loadHBox(btLogin);
 		hBox.setAlignment(Pos.CENTER);
-		add(new MyLabel("Please enter your credentials:", 16), 0, 0, 2, 1);
+		add(lblPrompt, 0, 0, 2, 1);
 		addRow(1, new Label("Username:"), tfUsername);
 		addRow(2, new Label("Password:"), tfPassword);
 		add(hBox, 0, 3, 2, 1);
