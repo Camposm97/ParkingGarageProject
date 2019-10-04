@@ -46,12 +46,16 @@ public class Ticket {
 		}
 		else {
 			str += "Ticket Paid\nTotal : " + this.payment + "\n" 
+				  +"Extra change : " + (this.payment - this.getExpectedCost())
 					+ "****************************************\n"; 
+			
 		}
 		return str;
 	}
 	public void closeTicket(double payment) {
+		
 		this.payment = payment;
+		
 		this.open = false;
 	}
 	
