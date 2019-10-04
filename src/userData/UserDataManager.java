@@ -59,6 +59,10 @@ public class UserDataManager implements Serializable{
 		// I modified the regex because this takes in only digits! that's what we need to find the index!
 		String str = userName.replaceAll("[^0-9]", "");
 		try {
+			// This way they can just type in admin admin
+			if(str.equals("")) {
+				str = "0";
+			}
 			System.out.println(userName);
 			System.out.println(str);
 			index = Integer.parseInt(str);

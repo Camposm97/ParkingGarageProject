@@ -12,6 +12,7 @@ public class UsernameUtil {
 	 */
 	public static String emitUsername(String firstName, String lastName) {
 		String username = "";
+		username += Character.toLowerCase(firstName.charAt(0));
 		if (lastName.length() >= LAST_NAME_LENGTH) {
 			username += lastName.substring(0, LAST_NAME_LENGTH);
 		} else {
@@ -19,7 +20,7 @@ public class UsernameUtil {
 		}
 		// We need to add an index to this as well. Index = the size of the user list so it goes to the end of the array
 		// No deletions allowed!!!
-		username += Character.toLowerCase(firstName.charAt(0));
+		
 		return username;
 	}
 	
