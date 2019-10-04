@@ -1,11 +1,16 @@
 package register;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import history.DailyData;
 import pLData.ParkingLot;
 import pLData.Space;
+import util.DataLoader;
+import util.DataSaver;
 import vehicleH.Vehicle;
 
 public class CashRegister {
@@ -48,6 +53,24 @@ public class CashRegister {
 		todaysData.logTransaction(entry);
 	}
 
+	public void loadData() {
+		Date date = new Date();
+		SimpleDateFormat form = new SimpleDateFormat("MMdd");
+		String adr = "/resources/daily" + form.format(date) + ".data";
+		File file = new File(adr);
+		boolean exists = file.exists();
+		if (exists) {
+			DailyData data = (DailyData)DataLoader.readObject(adr);
+			this.todaysData = data;
+		}
+		else {
+			DailyData data = new DailyData();
+			this.todaysData = data;
+			DataSaver.writeObject(data, adr);
+		}
+		
+		
+	}
 	public int getTotalSales() {
 		return totalSales;
 	}
