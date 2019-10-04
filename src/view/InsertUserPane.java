@@ -1,12 +1,13 @@
 package view;
 
-import static util.LightWork.*;
+import static util.LightWork.initGridPaneSettings;
 
-import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import userData.UserDataManager;
 
 /**
  * For adding users to the Account Data Structure
@@ -14,20 +15,24 @@ import javafx.scene.layout.GridPane;
  * @author Camposm97
  */
 public class InsertUserPane extends GridPane {
-	private TextField tfFirstname, tfLastname, tfUsername;
+	private UserDataManager users;
+	private TextField tfFirst, tfLast, tfUsername;
 	private PasswordField tfPassword;
+	private Button btAdd;
 	
-	public InsertUserPane() {
+	public InsertUserPane(UserDataManager users) {
+		this.users = users;
 		initGridPaneSettings(this);
 		initControls();
 		showControls();
 	}
 	
 	private void initControls() {
-		tfFirstname = new TextField();
-		tfLastname = new TextField();
+		tfFirst = new TextField();
+		tfLast = new TextField();
 		tfUsername = new TextField();
 		tfPassword = new PasswordField();
+		btAdd = new Button("Add User");
 	}
 	
 	private void showControls() {
@@ -36,5 +41,6 @@ public class InsertUserPane extends GridPane {
 		Label lblUsername = new Label("Username");
 		Label lblPassword = new Label("Password:");
 		addColumn(0, lblFirst, lblLast, lblUsername, lblPassword);
+		addColumn(1, tfFirst, tfLast, tfUsername, lblPassword);
 	}
 }

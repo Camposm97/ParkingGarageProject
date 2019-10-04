@@ -21,6 +21,7 @@ import javafx.application.Platform;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.BorderPane;
 import userData.UserDataManager;
 
 public class GarageMenuBar extends MenuBar {
@@ -34,6 +35,7 @@ public class GarageMenuBar extends MenuBar {
 		List<Menu> list = new LinkedList<>();
 		list.add(loadMenuFile());
 		list.add(loadMenuEdit());
+		list.add(loadMenuView());
 		list.add(loadMenuHelp());
 		return list;
 	}
@@ -58,7 +60,8 @@ public class GarageMenuBar extends MenuBar {
 	public Menu loadMenuEdit() {
 		MenuItem miAddUser = new MenuItem("User");
 		miAddUser.setOnAction(e -> {
-			
+			BorderPane root = (BorderPane) super.getParent();
+			root.setCenter(new InsertUserPane(users));
 		});
 		MenuItem miAddCar = new MenuItem("Car");
 		MenuItem miDelUser = new MenuItem("User");
@@ -73,7 +76,19 @@ public class GarageMenuBar extends MenuBar {
 		return m;
 	}
 	
-	public Menu loadMenuHelp() { // Not Finished
+	public Menu loadMenuView() {
+		MenuItem mi1 = new MenuItem("Daily Ticket Log");
+		mi1.setOnAction(e -> {
+			BorderPane root = (BorderPane) super.getParent();
+			HistoryPane historyPane = new HistoryPane();
+			root.setCenter(historyPane.getContainer());
+		});
+		Menu m = new Menu("View");
+		m.getItems().addAll(mi1);
+		return m;
+	}
+	
+	public Menu loadMenuHelp() { 
 		MenuItem mi1 = new MenuItem("Michael Campos");
 		mi1.setOnAction(e -> { browse(CAMPOS_GITHUB); });
 		MenuItem mi2 = new MenuItem("Matthew Guidi");
