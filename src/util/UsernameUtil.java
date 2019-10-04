@@ -17,6 +17,8 @@ public class UsernameUtil {
 		} else {
 			username += lastName;
 		}
+		// We need to add an index to this as well. Index = the size of the user list so it goes to the end of the array
+		// No deletions allowed!!!
 		username += Character.toLowerCase(firstName.charAt(0));
 		return username;
 	}
