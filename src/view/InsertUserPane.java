@@ -1,12 +1,13 @@
 package view;
 
-import static util.LightWork.*;
+import static util.LightWork.initGridPaneSettings;
 
-import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import userData.UserDataManager;
 
 /**
  * For adding users to the Account Data Structure
@@ -14,10 +15,13 @@ import javafx.scene.layout.GridPane;
  * @author Camposm97
  */
 public class InsertUserPane extends GridPane {
+	private UserDataManager users;
 	private TextField tfFirstname, tfLastname, tfUsername;
 	private PasswordField tfPassword;
+	private Button btAdd;
 	
-	public InsertUserPane() {
+	public InsertUserPane(UserDataManager users) {
+		this.users = users;
 		initGridPaneSettings(this);
 		initControls();
 		showControls();
@@ -28,6 +32,7 @@ public class InsertUserPane extends GridPane {
 		tfLastname = new TextField();
 		tfUsername = new TextField();
 		tfPassword = new PasswordField();
+		btAdd = new Button("User");
 	}
 	
 	private void showControls() {

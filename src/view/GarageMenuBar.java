@@ -21,6 +21,7 @@ import javafx.application.Platform;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.BorderPane;
 import userData.UserDataManager;
 
 public class GarageMenuBar extends MenuBar {
@@ -58,7 +59,8 @@ public class GarageMenuBar extends MenuBar {
 	public Menu loadMenuEdit() {
 		MenuItem miAddUser = new MenuItem("User");
 		miAddUser.setOnAction(e -> {
-			
+			BorderPane root = (BorderPane) super.getParent();
+			root.setCenter(new InsertUserPane(users));
 		});
 		MenuItem miAddCar = new MenuItem("Car");
 		MenuItem miDelUser = new MenuItem("User");
