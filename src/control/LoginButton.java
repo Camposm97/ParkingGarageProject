@@ -1,18 +1,17 @@
 package control;
 
-import java.util.ArrayList;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import userData.UserData;
+import userData.UserDataManager;
 
 public class LoginButton extends Button {
-	private ArrayList<UserData> userList;
+	private UserDataManager users;
 	
-	public LoginButton() {
+	public LoginButton(UserDataManager users) {
 		super("Login");
 		super.setOnAction(new LoginHandler());
+		this.users = users;
 	}
 	
 	private class LoginHandler implements EventHandler<ActionEvent> {
