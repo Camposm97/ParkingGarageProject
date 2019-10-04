@@ -75,6 +75,20 @@ public class ParkingLot implements ParkingSpaceManager{
 		// If we return -1 we're all full! 
 		return -1;
 	}
+	public int vehicleFinder(String licensePlate) {
+		int spaceID = -1;
+		for(int i = 0; i < this.parkingLotArray.size(); i++){
+			if(this.parkingLotArray.get(i).getVehicleParked() != null) {
+				if(this.parkingLotArray.get(i).getVehicleParked().getLicensePlate().compareToIgnoreCase(licensePlate) == 1) {
+					spaceID = i;
+					return spaceID;
+				}
+				
+			}
+		}
+		return spaceID;
+	}
+	
 	public Space spaceRelease(int spaceID) {
 		Space copyOfOld = new Space(this.parkingLotArray.get(spaceID));
 		if((spaceID > parkingLotArray.size()-1) || (spaceID < 0) ) 

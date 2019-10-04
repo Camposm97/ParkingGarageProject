@@ -19,6 +19,7 @@ public class Ticket {
 	// and done kind of deal. All they need to give us is their spaceNumber and we can find the rest!
 	
 	public Ticket (Space space, int spaceID) {
+		
 		this.space = space;
 		this.spaceNumber = spaceID;
 		this.expectedHours = ((double)(System.currentTimeMillis() * this.space.getTimeModifier())
@@ -58,6 +59,7 @@ public class Ticket {
 		System.out.println(this.expectedHours);
 		return  (100 / (this.spaceNumber + 1))*
 				(this.space.getSpecialRate() * this.expectedHours);
+		
 	}
 
 	public Space getSpace() {
