@@ -42,12 +42,14 @@ public class MenuUtil {
 		MenuItem miAddUser = new MenuItem("User");
 		MenuItem miAddCar = new MenuItem("Car");
 		MenuItem miDelUser = new MenuItem("User");
-		Menu mInsert = new Menu("Insert");
-		mInsert.getItems().addAll(miAddUser, miAddCar);
-		Menu mDelete = new Menu("Delete");
-		mDelete.getItems().addAll(miDelUser);
+		Menu menuInsert = new Menu("Insert");
+		menuInsert.setGraphic(loadImgV(INSERT_ICON));
+		menuInsert.getItems().addAll(miAddUser, miAddCar);
+		Menu menuDelete = new Menu("Delete");
+		menuDelete.setGraphic(loadImgV(DELETE_ICON));
+		menuDelete.getItems().addAll(miDelUser);
 		Menu m = new Menu("Edit");
-		m.getItems().addAll(mInsert, mDelete);
+		m.getItems().addAll(menuInsert, menuDelete);
 		return m;
 	}
 	
