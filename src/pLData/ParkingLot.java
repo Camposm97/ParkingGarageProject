@@ -128,5 +128,9 @@ public class ParkingLot implements ParkingSpaceManager{
 		this.parkingLotArray.get(spaceID).vehicleInsertion(v);
 		return this.parkingLotArray.get(spaceID);
 	}
+	public ArrayList<Space> getParkingLotArray() {
+		return parkingLotArray;
+	}
+	
 
 }
