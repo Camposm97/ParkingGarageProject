@@ -17,13 +17,13 @@ public class CashRegister {
 
 	private int totalSales;
 	private int ticketCounter;
-	private ArrayList<Ticket> ticketList;
 	private DailyData todaysData;
+	private ParkingLot lot;
 	
 	public CashRegister () {
 		this.totalSales = 0;
 		this.ticketCounter = 1;
-		ticketList = new ArrayList<Ticket>();
+		this.loadData();
 	}
 	/*public void addTicket (ParkingLot lot, Vehicle vehicle, int hours, boolean skipType) {
 		int spaceNumber = lot.spaceFinder(vehicle.getVType(), skipType);
@@ -36,12 +36,14 @@ public class CashRegister {
 		ticketCounter++;
 		this.makeDailyDataEntry(spaceNumber);
 	}
-	public void closeTicket(ParkingLot lot, int ticketNumber, double payment) {
-		Ticket ticket = ticketList.get(ticketNumber - 1);
+	
+	public void checkOut(String plateNo,  double payment) {
+		Ticket ticket = new Ticket(lot.sp);
 		ticket.closeTicket(payment);
 		lot.spaceRelease(ticket.getSpaceNumber());
 		todaysData.logTransaction(ticket.getTicketString());
-	}*/
+	}
+	*/
 	
 	private void makeDailyDataEntry(int spaceNumber) {
 		Date date = new Date();
@@ -67,9 +69,7 @@ public class CashRegister {
 			DailyData data = new DailyData();
 			this.todaysData = data;
 			DataSaver.writeObject(data, adr);
-		}
-		
-		
+		}	
 	}
 	public int getTotalSales() {
 		return totalSales;
@@ -87,13 +87,6 @@ public class CashRegister {
 		this.ticketCounter = ticketCounter;
 	}
 
-	public ArrayList<Ticket> getTicketList() {
-		return ticketList;
-	}
-
-	public void setTicketList(ArrayList<Ticket> ticketList) {
-		this.ticketList = ticketList;
-	}
 	
 	
 }
