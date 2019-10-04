@@ -22,16 +22,17 @@ public class LoginButton extends Button {
 	private class LoginHandler implements EventHandler<ActionEvent> {
 		@Override
 		public void handle(ActionEvent e) {
-			UserDataManager users = login.getUsers();
+			UserDataManager userList = login.getUsers();
 			String username = login.getUsername();
 			String password = login.getPassword();
-			UserData user = users.login(username, password);
+			UserData user = userList.login(username, password);
 			if (user != null) {
+				
 				Stage stage = (Stage) login.getScene().getWindow();
 				stage.setWidth(App.WIDTH);
 				stage.setHeight(App.HEIGHT);
 				stage.centerOnScreen();
-				login.getScene().setRoot(new MainMenu(users, null));
+				login.getScene().setRoot(new MainMenu(userList, user));
 			}
 		}
 	}

@@ -41,7 +41,7 @@ public class LoginPane extends GridPane {
 	}
 	
 	private void initControls() {
-		lblPrompt = new MyLabel("Please enter your credentials:", 16);
+		lblPrompt = new MyLabel("Please enter your credentials:", 14);
 		tfUsername = new TextField();
 		tfPassword = new PasswordField();
 		btLogin = new LoginButton(this);
