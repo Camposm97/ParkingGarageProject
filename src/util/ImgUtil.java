@@ -14,6 +14,8 @@ public class ImgUtil {
 	public static final String LIGHT_WORK = "images/light_work.gif";
 	public static final String INSERT_ICON = "images/insert.png";
 	public static final String DELETE_ICON = "images/delete.png";
+	public static final String USER_ICON = "images/user.png";
+	public static final String WORK_ICON = "images/work.png";
 	
 	public static Image loadImg(String url) {
 		FileInputStream fis = null;

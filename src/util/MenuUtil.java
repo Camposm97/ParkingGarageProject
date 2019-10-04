@@ -24,6 +24,7 @@ public class MenuUtil {
 	
 	public static Menu loadMenuFile() {
 		MenuItem mi1 = new MenuItem("Sign Out");
+		mi1.setGraphic(loadImgV(USER_ICON));
 		mi1.setOnAction(e -> {
 			System.out.println("Not Yet Implemented");
 		});
@@ -79,6 +80,7 @@ public class MenuUtil {
 		Menu m2 = new Menu("Light Work");
 		m2.getItems().add(mi2);
 		Menu m = new Menu("Work");
+		m.setGraphic(loadImgV(WORK_ICON));
 		m.getItems().addAll(m1, m2);
 		return m;
 	}
