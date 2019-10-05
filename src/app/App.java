@@ -21,7 +21,9 @@ public class App extends Application {
 		stage.setTitle(TITLE);
 		stage.setScene(new Scene(new LoginPane(users), LoginPane.WIDTH, LoginPane.HEIGHT));
 		stage.show();
-
+		stage.setOnCloseRequest(e -> {
+			System.out.println("saveObject(src) in " + this.getClass());
+		});
 	}
 	
 	public static void main(String[] args) {

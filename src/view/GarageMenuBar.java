@@ -58,6 +58,7 @@ public class GarageMenuBar extends MenuBar {
 		mi2.setGraphic(loadImgV(EXIT_ICON));
 		mi2.setOnAction(e -> {
 			// Before exiting, save data (not yet implemented)
+			System.out.println("saveObject(src) in " + this.getClass());
 			Platform.exit();
 		});
 		Menu m = new Menu("File");

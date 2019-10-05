@@ -34,6 +34,7 @@ public class LoginButton extends Button {
 				stage.setWidth(App.WIDTH);
 				stage.setHeight(App.HEIGHT);
 				stage.centerOnScreen();
+				stage.setTitle(App.TITLE + ": Logged in as: " + user.getUserName() + "");
 			} else {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle(App.TITLE);

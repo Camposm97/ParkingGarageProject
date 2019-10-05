@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import userData.UserData;
@@ -65,6 +66,8 @@ public class InsertUserPane extends GridPane {
 				alert.setHeaderText("Successfully added user!");
 				alert.setContentText("Username: " + user.getUserName() + "\n" + "Password: " + password);
 				alert.showAndWait();
+				BorderPane root = (BorderPane) super.getParent();
+				root.setCenter(null);
 			} else {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle(App.TITLE);
