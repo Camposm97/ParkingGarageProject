@@ -55,8 +55,10 @@ public class CheckInPane extends GridPane {
 		bt.setOnAction(e -> {
 			String spaceNum = tfSpaceNum.getText();
 			if (spaceNum != null) {
-//				int i = JOptionPane.showConfirmDialog(null, "Are you want to add this vehicle in parking space #" + spaceNum, JOptionPane.YES_NO_OPTION);
-//				System.out.println(i);
+				int i = JOptionPane.showConfirmDialog(null, "Do they want Space # " + spaceNum + "?",
+						"Space Confirmation" , 0, 3);
+				// 0 = Yes 1 = No
+				System.out.println(i);
 			}
 		});
 		return bt;
