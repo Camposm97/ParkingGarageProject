@@ -90,7 +90,7 @@ public class GarageMenuBar extends MenuBar {
 		MenuItem miAddCar = new MenuItem("Car (Check-In)");
 		miAddCar.setOnAction(e -> {
 			BorderPane root = (BorderPane) super.getParent();
-			GarageTableView garageTable = new GarageTableView(spaces);
+			GarageTableView garageTable = new GarageTableView(spaces, new BorderPane());
 			BorderPane borderPane = new BorderPane(new CheckInPane(spaces));
 			borderPane.setRight(garageTable.getContainer());
 			root.setCenter(borderPane);
