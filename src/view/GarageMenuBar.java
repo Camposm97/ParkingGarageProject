@@ -116,7 +116,7 @@ public class GarageMenuBar extends MenuBar {
 			HistoryPane historyPane = new HistoryPane();			
 			root.setCenter(historyPane.getContainer());
 		});
-		MenuItem mi2 = new MenuItem("Garage");
+		MenuItem mi2 = new MenuItem("Parking Spaces");
 		mi2.setGraphic(loadImgV(GARAGE_ICON));
 		mi2.setOnAction(e -> {
 			ViewGarageButton bt = new ViewGarageButton(spaces);

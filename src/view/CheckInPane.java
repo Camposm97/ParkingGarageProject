@@ -12,6 +12,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import pLData.ParkingLot;
@@ -86,6 +87,7 @@ public class CheckInPane extends GridPane {
 					alert.setHeaderText("Succesfully added vehicle to Space #" + spaceNum);
 					alert.setContentText("Parked @ " + space.getTimeParked());
 					alert.showAndWait();
+					((BorderPane) this.getParent()).setCenter(null);
 				}
 			}
 		});
