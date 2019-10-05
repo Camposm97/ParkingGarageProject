@@ -6,13 +6,13 @@ import vehicleH.*;
 
 public class Space {
 	// Currently takes the time as need be
-	private static final long TIME_MODIFIER = 1;
+	private static final long TIME_MODIFIER = 3600000;
 	
 	
 	private VehicleType parkingSpaceType;
 	private Vehicle vehicleParked;
 	private Date arrivalTime = new Date();
-	private Double specialRate;
+	private Double specialRate = 1.0;
 	public Space(VehicleType vT) {
 		parkingSpaceType = vT;
 	}
@@ -53,7 +53,7 @@ public class Space {
 	public void vehicleDeletion() {
 		this.arrivalTime = null;
 		this.vehicleParked = null;
-		this.specialRate = null;
+		this.specialRate = 1.0;
 	}
 	public String toString() {
 		if(vehicleParked == null) {

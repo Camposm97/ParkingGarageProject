@@ -1,14 +1,21 @@
 package register_Tests;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
-class CashRegisterT {
+import pLData.ParkingLot;
+import register.CashRegister;
+import vehicleH.Vehicle;
+import vehicleH.VehicleType;
 
+class CashRegisterT {
+	public ParkingLot pL = new ParkingLot(1, 1, 1);
+	public Vehicle v1 = new Vehicle("123-4567", VehicleType.CAR);
+	public CashRegister cr = new CashRegister();
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testCashRegister() throws InterruptedException {
+		pL.spaceInserter(v1, 0);
+		Thread.sleep(3);
+		cr.closeTicket(pL, v1.getLicensePlate());
 	}
 
 }
