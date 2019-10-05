@@ -8,7 +8,7 @@ import view.LoginPane;
 
 public class App extends Application {
 	public static final int WIDTH = 600, HEIGHT = 500;
-	public static final String APP_TITLE = "Parking Garage: By The Three Stooges";
+	public static final String TITLE = "Parking Garage: By The Three Stooges";
 	private UserDataManager users;	
 	
 	@Override
@@ -18,7 +18,7 @@ public class App extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		stage.setTitle(APP_TITLE);
+		stage.setTitle(TITLE);
 		stage.setScene(new Scene(new LoginPane(users)));
 		stage.show();
 
