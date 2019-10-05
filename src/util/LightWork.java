@@ -1,5 +1,7 @@
 package util;
 
+import java.util.List;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -34,8 +36,15 @@ public class LightWork { // Originally named CamposFX
 	
 	public static <T> ComboBox<T> loadCb(T[] arr) {
 		ComboBox<T> cb = new ComboBox<>();
-		for (T type : arr)
-			cb.getItems().add(type);
+		for (T elem : arr)
+			cb.getItems().add(elem);
+		return cb;
+	}
+	
+	public static <T> ComboBox<T> loadCb(List<T> list) {
+		ComboBox<T> cb = new ComboBox<>();
+		for (T elem : list)
+			cb.getItems().add(elem);
 		return cb;
 	}
 }

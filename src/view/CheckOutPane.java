@@ -2,6 +2,7 @@ package view;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -14,6 +15,7 @@ public class CheckOutPane extends GridPane {
 	private ParkingLot spaces;
 	private CashRegister cr;
 	private TextField tfPlate;
+	private ComboBox<String> cbState;
 	private Button btDelete;
 	
 	public CheckOutPane(ParkingLot spaces) {

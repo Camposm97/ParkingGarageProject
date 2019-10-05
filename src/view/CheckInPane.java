@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import pLData.ParkingLot;
 import pLData.Space;
 import util.LightWork;
+import vehicleH.State;
 import vehicleH.Vehicle;
 import vehicleH.VehicleType;
 
@@ -24,6 +25,7 @@ public class CheckInPane extends GridPane {
 	private TextField tfPlate, tfSpaceNum;
 	private CheckBox cbSkip;
 	private ComboBox<VehicleType> cbVehicleType;
+	private ComboBox<String> cbState;
 	private Button btAddVehicle;
 	
 	public CheckInPane(ParkingLot spaces) {
@@ -38,18 +40,15 @@ public class CheckInPane extends GridPane {
 		tfSpaceNum = new TextField();
 		tfSpaceNum.setEditable(false);
 		cbSkip = new CheckBox("Find a Closer Parking Spot");
-		cbSkip.setOnAction(e -> {
-			computeSpaceNumber();
-		});
+		cbSkip.setOnAction(e -> { computeSpaceNumber(); });
 		cbVehicleType = LightWork.loadCb(VehicleType.values());
-		cbVehicleType.setOnAction(e -> {
-			computeSpaceNumber();
-		});
+		cbVehicleType.setOnAction(e -> { computeSpaceNumber(); });
+		cbState = LightWork.loadCb(State.getAbbreviationList());
 		btAddVehicle = loadBtAddVehicle();
 	}
 	
 	private void computeSpaceNumber() {
-		Vehicle v = new Vehicle(tfPlate.getText(), cbVehicleType.getValue());
+		Vehicle v = new Vehicle(tfPlate.getText(), cbVehicleType.getValue(), cbState.getValue());
 		int i = spaces.spaceFinder(v.getVType(), cbSkip.isSelected());
 		tfSpaceNum.setText(String.valueOf(i));
 	}
@@ -58,11 +57,15 @@ public class CheckInPane extends GridPane {
 		Button bt = new Button("Add Vehicle");
 		bt.setOnAction(e -> {
 			String spaceNum = tfSpaceNum.getText();
-			if (spaceNum != null) {
+			String licensePlate = tfPlate.getText();
+			VehicleType vType = cbVehicleType.getValue();
+			String state = cbState.getValue();
+			if (spaceNum != null && state != null) {
 				int i = JOptionPane.showConfirmDialog(null, "Do they want Space # " + spaceNum + "?",
 						"Space Confirmation" , 0, 3);
 				if (i == 0) { // Yes
-					Space space = spaces.spaceInserter(new Vehicle(tfPlate.getText(), cbVehicleType.getValue()), Integer.valueOf(spaceNum));
+					Vehicle v= new Vehicle(licensePlate, vType, state);
+					Space space = spaces.spaceInserter(v, Integer.valueOf(spaceNum));
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle(App.TITLE);
 					alert.setHeaderText("Succesfully added vehicle to Space #" + spaceNum);
@@ -78,11 +81,12 @@ public class CheckInPane extends GridPane {
 		HBox hBox = LightWork.loadHBox(btAddVehicle);
 		hBox.setAlignment(Pos.CENTER);
 		addRow(0, new Label("License Plate:"), tfPlate);
-		addRow(1, new Label("Vehicle Type:"), cbVehicleType);
-		add(cbSkip, 1, 2);
-		addRow(3, new Label("Space Number:"), tfSpaceNum);
-		add(hBox, 0, 4, 2, 1);
-		cbVehicleType.setPrefWidth(tfPlate.getWidth());
+		addRow(1, new Label("State:"), cbState);
+		addRow(2, new Label("Vehicle Type:"), cbVehicleType);
+		add(cbSkip, 1, 3);
+		addRow(4, new Label("Space Number:"), tfSpaceNum);
+		add(hBox, 0, 5, 2, 1);
+		cbState.prefWidthProperty().bind(tfPlate.widthProperty());
 		cbVehicleType.prefWidthProperty().bind(tfPlate.widthProperty());
 	}
 }
