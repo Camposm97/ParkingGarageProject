@@ -77,7 +77,11 @@ public class UserData implements Serializable{
 		this.lastName = lastName;
 	}
 	public void closeAccount() {
+		if(this.getUserName() == "admin0") {
+			
+		}else {
 		this.isDisabled = true;
+		}
 	}
 	public boolean isDisabled() {
 		return this.isDisabled;
