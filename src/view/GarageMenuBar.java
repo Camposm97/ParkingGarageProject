@@ -91,7 +91,7 @@ public class GarageMenuBar extends MenuBar {
 		menuInsert.getItems().addAll(miAddUser, miAddCar);
 		Menu menuDelete = new Menu("Delete");
 		menuDelete.setGraphic(loadImgV(DELETE_ICON));
-		menuDelete.getItems().addAll(miDelUser);
+		menuDelete.getItems().addAll(miDelUser, miDelCar);
 		Menu m = new Menu("Edit");
 		m.getItems().addAll(menuInsert, menuDelete);
 		return m;
