@@ -1,5 +1,6 @@
 package view;
 
+import control.ViewGarageButton;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -13,13 +14,13 @@ import util.LightWork;
 import vehicleH.State;
 
 public class CheckOutPane extends GridPane {
-	private ParkingLot parkingLot;
+	private ParkingLot spaces;
 	private TextField tfPlate;
 	private ComboBox<String> cbState;
-	private Button btDelete;
+	private Button btDelete, btViewGarage;
 	
-	public CheckOutPane(ParkingLot parkingLot) {
-		this.parkingLot = parkingLot;
+	public CheckOutPane(ParkingLot spaces) {
+		this.spaces = spaces;
 		initControls();
 		showControls();
 	}
@@ -29,10 +30,11 @@ public class CheckOutPane extends GridPane {
 		tfPlate = new TextField();
 		cbState = LightWork.loadCb(State.getAbbreviationList());
 		btDelete = loadBtDelete();
+		btViewGarage = new ViewGarageButton(spaces);
 	}
 	
 	private void showControls() {
-		HBox hBox = LightWork.loadHBox(btDelete);
+		HBox hBox = LightWork.loadHBox(btDelete, btViewGarage);
 		hBox.setAlignment(Pos.CENTER);
 		addRow(0, new Label("License Plate:"), tfPlate);
 		addRow(1, new Label("State: "), cbState);
@@ -49,7 +51,7 @@ public class CheckOutPane extends GridPane {
 			if (!licensePlate.isEmpty() && !stateAbbr.isEmpty()) {
 				State state = State.valueOfAbbreviation(stateAbbr);
 				CashRegister cr = new CashRegister();
-				cr.closeTicket(parkingLot, licensePlate, state);
+				cr.closeTicket(spaces, licensePlate, state);
 			}
 		});
 		return bt;

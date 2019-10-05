@@ -33,7 +33,7 @@ public class Ticket {
 	public String getTicketString() {
 		String str = new String();
 		String eC = String.format("%.2f", this.getExpectedCost());
-		str += "****************************************\n" 
+		str += "\n****************************************\n" 
 				+ "Ticket : " + this.ticketID + "\n" +
 				"****************************************\n"
 				+ "Vehicle Type : " + space.getVehicleParked().getVTypeS() + "\n"
