@@ -13,7 +13,7 @@ public class DeleteUserWindow extends TextInputDialog {
 	
 	public DeleteUserWindow(UserDataManager users) {
 		super.setTitle(App.TITLE);
-		super.setHeaderText("Please enter the name of the user you'd like to delete:");
+		super.setHeaderText("Please enter the name of the \nuser you'd like to delete:");
 		super.setContentText("Username:");
 		Optional<String> result = this.showAndWait();
 		if (result.isPresent()) {

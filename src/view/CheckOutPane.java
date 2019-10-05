@@ -8,7 +8,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import pLData.ParkingLot;
-import pLData.Space;
 import register.CashRegister;
 import util.LightWork;
 import vehicleH.State;

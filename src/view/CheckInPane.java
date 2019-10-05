@@ -3,8 +3,8 @@ package view;
 import javax.swing.JOptionPane;
 
 import app.App;
+import control.ButtonViewGarage;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -12,13 +12,10 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 import pLData.ParkingLot;
 import pLData.Space;
-import util.ImgUtil;
 import util.LightWork;
 import vehicleH.State;
 import vehicleH.Vehicle;
@@ -30,8 +27,7 @@ public class CheckInPane extends GridPane {
 	private CheckBox cbSkip;
 	private ComboBox<VehicleType> cbVehicleType;
 	private ComboBox<String> cbState;
-	private Button btAddVehicle;
-	private Button btViewGarage;
+	private Button btAddVehicle, btViewGarage;
 	
 	public CheckInPane(ParkingLot spaces) {
 		this.spaces = spaces;
@@ -50,7 +46,7 @@ public class CheckInPane extends GridPane {
 		cbVehicleType.setOnAction(e -> { computeSpaceNumber(); });
 		cbState = LightWork.loadCb(State.getAbbreviationList());
 		btAddVehicle = loadBtAddVehicle();
-		btViewGarage = loadBtViewGarage();
+		btViewGarage = new ButtonViewGarage(spaces);
 	}
 	
 	private void showControls() {
@@ -92,21 +88,6 @@ public class CheckInPane extends GridPane {
 					alert.showAndWait();
 				}
 			}
-		});
-		return bt;
-	}
-	
-	private Button loadBtViewGarage() {
-		Button bt = new Button("View Garage");
-		bt.setOnAction(e -> {
-			BorderPane root = new BorderPane();
-			GarageTableView garageView = new GarageTableView(spaces, root);
-			root.setCenter(garageView.getContainer());
-			Stage stage = new Stage();
-			stage.setTitle(App.TITLE);
-			stage.getIcons().add(ImgUtil.loadImg(ImgUtil.GARAGE_ICON));
-			stage.setScene(new Scene(root));
-			stage.showAndWait();
 		});
 		return bt;
 	}
