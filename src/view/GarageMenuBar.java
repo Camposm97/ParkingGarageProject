@@ -58,6 +58,7 @@ public class GarageMenuBar extends MenuBar {
 		mi2.setGraphic(loadImgV(EXIT_ICON));
 		mi2.setOnAction(e -> {
 			// Before exiting, save data (not yet implemented)
+			System.out.println("saveObject(src) in " + this.getClass());
 			Platform.exit();
 		});
 		Menu m = new Menu("File");
@@ -71,14 +72,26 @@ public class GarageMenuBar extends MenuBar {
 			BorderPane root = (BorderPane) super.getParent();
 			root.setCenter(new InsertUserPane(users));
 		});
-		MenuItem miAddCar = new MenuItem("Car");
+		MenuItem miAddCar = new MenuItem("Car (Check-In)");
+		miAddCar.setOnAction(e -> {
+			BorderPane root = (BorderPane) super.getParent();
+			root.setCenter(new CheckInPane());
+		});
 		MenuItem miDelUser = new MenuItem("User");
+		miDelUser.setOnAction(e -> {
+			System.out.println("Show a pop-up window");
+		});
+		MenuItem miDelCar = new MenuItem("Car (Check-Out)");
+		miDelCar.setOnAction(e -> {
+			BorderPane root = (BorderPane) super.getParent();
+			root.setCenter(new CheckOutPane());
+		});
 		Menu menuInsert = new Menu("Insert");
 		menuInsert.setGraphic(loadImgV(INSERT_ICON));
 		menuInsert.getItems().addAll(miAddUser, miAddCar);
 		Menu menuDelete = new Menu("Delete");
 		menuDelete.setGraphic(loadImgV(DELETE_ICON));
-		menuDelete.getItems().addAll(miDelUser);
+		menuDelete.getItems().addAll(miDelUser, miDelCar);
 		Menu m = new Menu("Edit");
 		m.getItems().addAll(menuInsert, menuDelete);
 		return m;

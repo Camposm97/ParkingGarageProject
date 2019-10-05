@@ -12,7 +12,7 @@ public class UserData implements Serializable{
 	private boolean isAdmin;
 	private String firstName;
 	private String lastName;
-	
+	private boolean isDisabled;
 	public UserData(String firstName, String lastName, String password, int listIndex ) {
 		super();
 		this.password = password;
@@ -20,7 +20,7 @@ public class UserData implements Serializable{
 		this.lastName = lastName;
 		this.generateUserName(listIndex);
 		this.autoSetAdmin(listIndex);
-		
+		this.isDisabled = false;
 	}
 
 	private void autoSetAdmin(int listIndex) {
@@ -76,7 +76,16 @@ public class UserData implements Serializable{
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
+	public void closeAccount() {
+		if(this.getUserName() == "admin0") {
+			
+		}else {
+		this.isDisabled = true;
+		}
+	}
+	public boolean isDisabled() {
+		return this.isDisabled;
+	}
 	
 	
 
