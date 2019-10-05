@@ -22,26 +22,48 @@ public class LoginButton extends Button {
 	}
 	
 	private class LoginHandler implements EventHandler<ActionEvent> {
+		private UserDataManager users;
+		private String username, password;
+		private UserData user;
+		
 		@Override
 		public void handle(ActionEvent e) {
-			UserDataManager userList = login.getUsers();
-			String username = login.getUsername();
-			String password = login.getPassword();
-			UserData user = userList.login(username, password);
-			if (user != null) {
-				Stage stage = (Stage) login.getScene().getWindow();
-				login.getScene().setRoot(new MainMenu(userList, user));
-				stage.setWidth(App.WIDTH);
-				stage.setHeight(App.HEIGHT);
-				stage.centerOnScreen();
-				stage.setTitle(App.TITLE + ": Logged in as: " + user.getUserName() + "");
-			} else {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle(App.TITLE);
-				alert.setHeaderText("Invalid Username or Password!");
-				alert.setContentText("Please make sure your username and password is correct.");
-				alert.showAndWait();
-			}
+			this.users = login.getUsers();
+			this.username = login.getUsername();
+			this.password = login.getPassword();
+			this.user = users.login(username, password);
+			
+			if (user != null && !user.isDisabled())
+				validLogin();
+			else if (user.isDisabled())
+				showDisabledUserWindow();
+			else
+				showInvalidWindow();
+		}
+		
+		public void validLogin() {
+			Stage stage = (Stage) login.getScene().getWindow();
+			login.getScene().setRoot(new MainMenu(users, user));
+			stage.setWidth(App.WIDTH);
+			stage.setHeight(App.HEIGHT);
+			stage.centerOnScreen();
+			stage.setTitle(App.TITLE + ": Logged in as: " + user.getUserName() + "");
+		}
+		
+		public void showDisabledUserWindow() {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle(App.TITLE);
+			alert.setHeaderText("The account you tried logging in as is no longer valid.");
+			alert.setContentText("In other words, you have been terminated :D");
+			alert.showAndWait();
+		}
+		
+		public void showInvalidWindow() {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle(App.TITLE);
+			alert.setHeaderText("Invalid Username or Password!");
+			alert.setContentText("Please make sure your username and password is correct.");
+			alert.showAndWait();
 		}
 	}
 }
