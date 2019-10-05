@@ -4,17 +4,17 @@ import static util.LightWork.initGridPaneSettings;
 
 import app.App;
 import javafx.geometry.Pos;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import userData.UserData;
 import userData.UserDataManager;
 import util.LightWork;
-import util.UsernameUtil;
 
 /**
  * For adding users to the User Data Structure
@@ -60,9 +60,10 @@ public class InsertUserPane extends GridPane {
 			if (!firstName.isEmpty() && !lastName.isEmpty()) {
 				String password = tfPassword.getText();
 				users.addUser(firstName, lastName, password);
+				UserData user = users.getUserList().get(users.getUserList().size() - 1);
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setHeaderText("Successfully added user!");
-				alert.setContentText("Username: " + "\n" + "Password: " + password);
+				alert.setContentText("Username: " + user.getUserName() + "\n" + "Password: " + password);
 				alert.showAndWait();
 			} else {
 				Alert alert = new Alert(AlertType.ERROR);
