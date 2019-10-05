@@ -55,7 +55,7 @@ public class GarageTableView {
 			String info = new String ("" + i);
 			Label label = new Label();
 			if (spaces.get(i).getVehicleParked() != null) {
-				info+= "\nCar Parked: " + spaces.get(i).getVehicleParked().getLicensePlate();
+				info+= "\n" + spaces.get(i).getVehicleParked().getVTypeS() + " Parked: " + spaces.get(i).getVehicleParked().getLicensePlate();
 				label.setBackground(new Background(new BackgroundFill(Color.YELLOW,CornerRadii.EMPTY, Insets.EMPTY)));
 				this.giveCloseAction(label, spaces.get(i));
 				this.giveMouseOver(label, spaces.get(i));
