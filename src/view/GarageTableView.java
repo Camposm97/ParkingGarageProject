@@ -79,18 +79,22 @@ public class GarageTableView {
 		Tooltip tooltip = new Tooltip();
 		tooltip.setText(space.toString());
 	}
+	
+	@Deprecated
 	public void giveCloseAction(Label label, Space space) {
 		label.setOnMouseClicked(e->{
-			CheckOutPane checkout = new CheckOutPane(this.lot);
-			checkout.setGarageView(this);
-			this.root.setCenter(checkout);
+//			CheckOutPane checkout = new CheckOutPane(this.lot);
+//			checkout.setGarageView(this);
+//			this.root.setCenter(checkout);
 		});
 	}
+	
+	@Deprecated
 	public void giveOpenAction(Label label, Space space) {
 		label.setOnMouseClicked(e->{
-			CheckInPane checkin = new CheckInPane(this.lot);
-			checkin.setGarageView(this);
-			this.root.setCenter(checkin);
+//			CheckInPane checkin = new CheckInPane(this.lot);
+//			checkin.setGarageView(this);
+//			this.root.setCenter(checkin);
 		});
 	}
 	public void refreshGrid() {

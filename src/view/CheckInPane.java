@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import app.App;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -11,10 +12,13 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import pLData.ParkingLot;
 import pLData.Space;
+import util.ImgUtil;
 import util.LightWork;
 import vehicleH.State;
 import vehicleH.Vehicle;
@@ -27,7 +31,7 @@ public class CheckInPane extends GridPane {
 	private ComboBox<VehicleType> cbVehicleType;
 	private ComboBox<String> cbState;
 	private Button btAddVehicle;
-	private GarageTableView garageView;
+	private Button btViewGarage;
 	
 	public CheckInPane(ParkingLot spaces) {
 		this.spaces = spaces;
@@ -46,6 +50,20 @@ public class CheckInPane extends GridPane {
 		cbVehicleType.setOnAction(e -> { computeSpaceNumber(); });
 		cbState = LightWork.loadCb(State.getAbbreviationList());
 		btAddVehicle = loadBtAddVehicle();
+		btViewGarage = loadBtViewGarage();
+	}
+	
+	private void showControls() {
+		HBox hBox = LightWork.loadHBox(btAddVehicle, btViewGarage);
+		hBox.setAlignment(Pos.CENTER);
+		addRow(0, new Label("License Plate:"), tfPlate);
+		addRow(1, new Label("State:"), cbState);
+		addRow(2, new Label("Vehicle Type:"), cbVehicleType);
+		add(cbSkip, 1, 3);
+		addRow(4, new Label("Space Number:"), tfSpaceNum);
+		add(hBox, 0, 5, 2, 1);
+		cbState.prefWidthProperty().bind(tfPlate.widthProperty());
+		cbVehicleType.prefWidthProperty().bind(tfPlate.widthProperty());
 	}
 	
 	private void computeSpaceNumber() {
@@ -74,30 +92,22 @@ public class CheckInPane extends GridPane {
 					alert.showAndWait();
 				}
 			}
-			this.garageView.refreshGrid();
 		});
 		return bt;
 	}
 	
-	private void showControls() {
-		HBox hBox = LightWork.loadHBox(btAddVehicle);
-		hBox.setAlignment(Pos.CENTER);
-		addRow(0, new Label("License Plate:"), tfPlate);
-		addRow(1, new Label("State:"), cbState);
-		addRow(2, new Label("Vehicle Type:"), cbVehicleType);
-		add(cbSkip, 1, 3);
-		addRow(4, new Label("Space Number:"), tfSpaceNum);
-		add(hBox, 0, 5, 2, 1);
-		cbState.prefWidthProperty().bind(tfPlate.widthProperty());
-		cbVehicleType.prefWidthProperty().bind(tfPlate.widthProperty());
+	private Button loadBtViewGarage() {
+		Button bt = new Button("View Garage");
+		bt.setOnAction(e -> {
+			BorderPane root = new BorderPane();
+			GarageTableView garageView = new GarageTableView(spaces, root);
+			root.setCenter(garageView.getContainer());
+			Stage stage = new Stage();
+			stage.setTitle(App.TITLE);
+			stage.getIcons().add(ImgUtil.loadImg(ImgUtil.GARAGE_ICON));
+			stage.setScene(new Scene(root));
+			stage.showAndWait();
+		});
+		return bt;
 	}
-
-	public GarageTableView getGarageView() {
-		return garageView;
-	}
-
-	public void setGarageView(GarageTableView garageView) {
-		this.garageView = garageView;
-	}
-	
 }
