@@ -1,10 +1,15 @@
 package view;
 
+import javax.swing.JOptionPane;
+
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import pLData.ParkingLot;
 import util.LightWork;
 import vehicleH.Vehicle;
@@ -15,6 +20,7 @@ public class CheckInPane extends GridPane {
 	private TextField tfPlate, tfSpaceNum;
 	private CheckBox cbSkip;
 	private ComboBox<VehicleType> cbVehicleType;
+	private Button btAddVehicle;
 	
 	public CheckInPane(ParkingLot spaces) {
 		this.spaces = spaces;
@@ -26,23 +32,44 @@ public class CheckInPane extends GridPane {
 		LightWork.initGridPaneSettings(this);
 		tfPlate = new TextField();
 		tfSpaceNum = new TextField();
+		tfSpaceNum.setEditable(false);
 		cbSkip = new CheckBox("Find a Closer Parking Spot");
 		cbSkip.setOnAction(e -> {
-			System.out.println("Checked");
+			computeSpaceNumber();
 		});
 		cbVehicleType = LightWork.loadCb(VehicleType.values());
 		cbVehicleType.setOnAction(e -> {
-			Vehicle v = new Vehicle(tfPlate.getText(), cbVehicleType.getValue());
-			int i = spaces.spaceFinder(v.getVType(), false);
-			System.out.println(i);
+			computeSpaceNumber();
 		});
+		btAddVehicle = loadBtAddVehicle();
+	}
+	
+	private void computeSpaceNumber() {
+		Vehicle v = new Vehicle(tfPlate.getText(), cbVehicleType.getValue());
+		int i = spaces.spaceFinder(v.getVType(), cbSkip.isSelected());
+		tfSpaceNum.setText(String.valueOf(i));
+	}
+	
+	private Button loadBtAddVehicle() {
+		Button bt = new Button("Add Vehicle");
+		bt.setOnAction(e -> {
+			String spaceNum = tfSpaceNum.getText();
+			if (spaceNum != null) {
+//				int i = JOptionPane.showConfirmDialog(null, "Are you want to add this vehicle in parking space #" + spaceNum, JOptionPane.YES_NO_OPTION);
+//				System.out.println(i);
+			}
+		});
+		return bt;
 	}
 	
 	private void showControls() {
-		addRow(0, new Label("Vehicle Type:"), cbVehicleType);
-		addRow(1, new Label("License Plate:"), tfPlate);
-		addRow(2, cbSkip);
+		HBox hBox = LightWork.loadHBox(btAddVehicle);
+		hBox.setAlignment(Pos.CENTER);
+		addRow(0, new Label("License Plate:"), tfPlate);
+		addRow(1, new Label("Vehicle Type:"), cbVehicleType);
+		add(cbSkip, 1, 2);
 		addRow(3, new Label("Space Number:"), tfSpaceNum);
+		add(hBox, 0, 4, 2, 1);
 		cbVehicleType.setPrefWidth(tfPlate.getWidth());
 		cbVehicleType.prefWidthProperty().bind(tfPlate.widthProperty());
 	}
