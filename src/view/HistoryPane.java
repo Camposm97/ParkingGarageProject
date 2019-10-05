@@ -1,16 +1,13 @@
 package view;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 
 import history.DailyData;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import util.DataLoader;
-import util.DataSaver;
 
 public class HistoryPane {
 	
