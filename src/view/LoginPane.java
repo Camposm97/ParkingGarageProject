@@ -1,7 +1,6 @@
 package view;
 
-import static util.LightWork.initGridPaneSettings;
-import static util.LightWork.loadHBox;
+import static util.LightWork.*;
 
 import control.LoginButton;
 import control.MyLabel;
@@ -12,9 +11,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import userData.UserDataManager;
 
 public class LoginPane extends GridPane {
+	public static final int WIDTH = 300, HEIGHT = 300;
 	private UserDataManager users;
 	private MyLabel lblPrompt;
 	private TextField tfUsername;
@@ -41,7 +42,7 @@ public class LoginPane extends GridPane {
 	}
 	
 	private void initControls() {
-		lblPrompt = new MyLabel("Please enter your credentials:", 14);
+		lblPrompt = new MyLabel("Please enter your credentials below:", 14);
 		tfUsername = new TextField();
 		tfPassword = new PasswordField();
 		btLogin = new LoginButton(this);
@@ -52,11 +53,14 @@ public class LoginPane extends GridPane {
 	}
 	
 	private void showControls() {
+		VBox vBox = loadVBox(new MyLabel("Parking Garage Project", 24), new MyLabel("By The Three Stooges", 16));
+		vBox.setAlignment(Pos.CENTER);
 		HBox hBox = loadHBox(btLogin);
 		hBox.setAlignment(Pos.CENTER);
-		add(lblPrompt, 0, 0, 2, 1);
-		addRow(1, new Label("Username:"), tfUsername);
-		addRow(2, new Label("Password:"), tfPassword);
-		add(hBox, 0, 3, 2, 1);
+		add(vBox, 0, 0, 2, 1);
+		add(lblPrompt, 0, 1, 2, 1);
+		addRow(2, new Label("Username:"), tfUsername);
+		addRow(3, new Label("Password:"), tfPassword);
+		add(hBox, 0, 4, 2, 1);
 	}
 }

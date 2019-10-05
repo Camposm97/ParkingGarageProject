@@ -3,6 +3,8 @@ package control;
 import app.App;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import userData.UserData;
@@ -32,6 +34,12 @@ public class LoginButton extends Button {
 				stage.setWidth(App.WIDTH);
 				stage.setHeight(App.HEIGHT);
 				stage.centerOnScreen();
+			} else {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle(App.TITLE);
+				alert.setHeaderText("Invalid Username or Password!");
+				alert.setContentText("Please make sure your username and password is correct.");
+				alert.showAndWait();
 			}
 		}
 	}

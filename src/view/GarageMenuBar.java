@@ -18,16 +18,19 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javafx.application.Platform;
+import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import userData.UserDataManager;
 
 public class GarageMenuBar extends MenuBar {
 	private UserDataManager users;
 	
 	public GarageMenuBar(UserDataManager users) {
+		this.users = users;
 		this.getMenus().addAll(loadMenus());
 	}
 	
@@ -44,7 +47,12 @@ public class GarageMenuBar extends MenuBar {
 		MenuItem mi1 = new MenuItem("Sign Out");
 		mi1.setGraphic(loadImgV(USER_ICON));
 		mi1.setOnAction(e -> {
-			System.out.println("Not Yet Implemented");
+			Scene scene = super.getScene();
+			scene.setRoot(new LoginPane(users));
+			Stage stage = (Stage) scene.getWindow();
+			stage.setWidth(LoginPane.WIDTH);
+			stage.setHeight(LoginPane.HEIGHT);
+			stage.centerOnScreen();
 		});
 		MenuItem mi2 = new MenuItem("Exit");
 		mi2.setGraphic(loadImgV(EXIT_ICON));
