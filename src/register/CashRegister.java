@@ -55,6 +55,7 @@ public class CashRegister {
 		System.out.println(ticket.getTicketString());
 		todaysData.logTransaction(ticket.getTicketString());
 		todaysData.logTransaction("Total Sales: " + this.totalSales);
+		this.saveDailyData();
 	}
 	
 	public void makeDailyDataEntry(int spaceNumber) {
