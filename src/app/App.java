@@ -10,7 +10,7 @@ import view.MainStage;
  * This is the main Application page that loads up the MainStage
  * 
  * 
- * @author Chris Demonte -<A HREF=" </A>, Michael Campos <A HREF="https://github.com/Camposm97"> </A>, Matt Guidi
+ * @author Chris Demonte, Michael Campo, Matt Guidi
  * @version 0.8
  * @since  2019-09-25
  * 

@@ -8,7 +8,7 @@ public class Ticket {
 	private int spaceNumber;
 	private double expectedHours;
 	// Let's make this static! That way it's the same across the board
-	private static int ticketNumberC = 0;
+	private static int ticketNumberC = 1;
 	private int ticketID;
 	private boolean open;
 	private double payment;

@@ -6,7 +6,7 @@ import vehicleH.*;
 
 public class Space {
 	// Currently takes the time as need be
-	private static final long TIME_MODIFIER = 3600000;
+	private static final long TIME_MODIFIER = 3600;
 	
 	
 	private VehicleType parkingSpaceType;

@@ -80,8 +80,10 @@ public class ParkingLot implements ParkingSpaceInterface{
 		int spaceID = -1;
 		for(int i = 0; i < this.parkingLotArray.size(); i++){
 			if(this.parkingLotArray.get(i).getVehicleParked() != null) {
-				if(this.parkingLotArray.get(i).getVehicleParked().getLicensePlate().equals(licensePlate) && this.parkingLotArray.get(i).getVehicleParked().getVehicleState().equals(s)) {
+				System.out.println("Checking index " + i + " it has a license plate: " + this.parkingLotArray.get(i).getVehicleParked().getLicensePlate());
+				if(this.parkingLotArray.get(i).getVehicleParked().getLicensePlate().compareTo(licensePlate) >= 0) {
 					spaceID = i;
+					System.out.println("hello");
 					return spaceID;
 				}
 				
