@@ -1,6 +1,15 @@
 package view;
 
-import static util.ImgUtil.*;
+import static util.ImgUtil.DELETE_ICON;
+import static util.ImgUtil.EXIT_ICON;
+import static util.ImgUtil.GITHUB_ICON;
+import static util.ImgUtil.HEAVY_WORK;
+import static util.ImgUtil.HISTORY_ICON;
+import static util.ImgUtil.INSERT_ICON;
+import static util.ImgUtil.LIGHT_WORK;
+import static util.ImgUtil.USER_ICON;
+import static util.ImgUtil.WORK_ICON;
+import static util.ImgUtil.loadImgV;
 import static util.Web.CAMPOS_GITHUB;
 import static util.Web.DEMONTE_GITHUB;
 import static util.Web.GUIDI_GITHUB;
@@ -81,7 +90,10 @@ public class GarageMenuBar extends MenuBar {
 		MenuItem miAddCar = new MenuItem("Car (Check-In)");
 		miAddCar.setOnAction(e -> {
 			BorderPane root = (BorderPane) super.getParent();
-			root.setCenter(new CheckInPane(spaces));
+			GarageTableView garageTable = new GarageTableView(spaces);
+			BorderPane borderPane = new BorderPane(new CheckInPane(spaces));
+			borderPane.setRight(garageTable.getContainer());
+			root.setCenter(borderPane);
 		});
 		Menu m = new Menu("Insert");
 		m.setGraphic(loadImgV(INSERT_ICON));
