@@ -2,7 +2,9 @@ package view;
 
 import javax.swing.JOptionPane;
 
+import app.App;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -62,7 +64,10 @@ public class CheckInPane extends GridPane {
 				if (i == 0) { // Yes
 					Space space = spaces.spaceInserter(new Vehicle(tfPlate.getText(), cbVehicleType.getValue()), Integer.valueOf(spaceNum));
 					Alert alert = new Alert(AlertType.INFORMATION);
-					
+					alert.setTitle(App.TITLE);
+					alert.setHeaderText("Succesfully added vehicle to Space #" + spaceNum);
+					alert.setContentText("Parked @ " + space.getTimeParked());
+					alert.showAndWait();
 				}
 			}
 		});
