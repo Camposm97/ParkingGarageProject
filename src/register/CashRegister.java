@@ -25,13 +25,24 @@ public class CashRegister {
 		int spaceID = pL.vehicleFinder(licensePlate);
 		Space tSpace = pL.spaceRelease(spaceID);
 		Ticket ticket = new Ticket(tSpace, spaceID);
-		double payment = Double.parseDouble(JOptionPane.showInputDialog(
+		double payment;
+		try {
+		   payment = Double.parseDouble(JOptionPane.showInputDialog(
 				"The charge of your ticket " + ticket.getExpectedCost()));
+		}catch(Exception e) {
+			payment = 0;
+			System.out.println("woah");
+		}
 		double eP = ticket.getExpectedCost();
 		if(payment < eP) {
 			do {
-				payment = Double.parseDouble(JOptionPane.showInputDialog("This is not enough to cover the charge pay at least: "
+				try {
+				payment = Double.parseDouble(JOptionPane.showInputDialog("This is not enough to cover the charge pay at least: $"
 						+ ticket.getExpectedCost()));
+				}catch(Exception e) {
+					payment = 0;
+					System.out.println("hey");
+				}
 			}while(payment < eP);
 		}
 		totalSales += payment;
