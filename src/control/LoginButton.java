@@ -31,14 +31,16 @@ public class LoginButton extends Button {
 			this.users = login.getUsers();
 			this.username = login.getUsername();
 			this.password = login.getPassword();
-			this.user = users.login(username, password);
+			if (username.isEmpty() && password.isEmpty()) {
+				this.user = users.login(username, password);
 			
-			if (user != null && !user.isDisabled())
-				validLogin();
-			else if (user.isDisabled())
-				showDisabledUserWindow();
-			else
-				showInvalidWindow();
+				if (user != null && !user.isDisabled())
+					validLogin();
+				else if (user.isDisabled())
+					showDisabledUserWindow();
+				else
+					showInvalidWindow();
+			}
 		}
 		
 		public void validLogin() {
