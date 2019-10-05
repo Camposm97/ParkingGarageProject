@@ -3,6 +3,7 @@ package util;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -29,5 +30,12 @@ public class LightWork { // Originally named CamposFX
 		gridPane.setVgap(10);
 		gridPane.setPadding(DEFAULT_INSETS);
 		gridPane.setAlignment(Pos.CENTER);
+	}
+	
+	public static <T> ComboBox<T> loadCb(T[] arr) {
+		ComboBox<T> cb = new ComboBox<>();
+		for (T type : arr)
+			cb.getItems().add(type);
+		return cb;
 	}
 }

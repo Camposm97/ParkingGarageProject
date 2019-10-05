@@ -24,13 +24,16 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import pLData.ParkingLot;
 import userData.UserDataManager;
 
 public class GarageMenuBar extends MenuBar {
 	private UserDataManager users;
+	private ParkingLot spaces;
 	
 	public GarageMenuBar(UserDataManager users) {
 		this.users = users;
+		this.spaces = new ParkingLot(80, 10, 10); // Have it equal to an argument (Later);
 		this.getMenus().addAll(loadMenus());
 	}
 	
@@ -75,7 +78,7 @@ public class GarageMenuBar extends MenuBar {
 		MenuItem miAddCar = new MenuItem("Car (Check-In)");
 		miAddCar.setOnAction(e -> {
 			BorderPane root = (BorderPane) super.getParent();
-			root.setCenter(new CheckInPane());
+			root.setCenter(new CheckInPane(spaces));
 		});
 		MenuItem miDelUser = new MenuItem("User");
 		miDelUser.setOnAction(e -> {
@@ -84,7 +87,7 @@ public class GarageMenuBar extends MenuBar {
 		MenuItem miDelCar = new MenuItem("Car (Check-Out)");
 		miDelCar.setOnAction(e -> {
 			BorderPane root = (BorderPane) super.getParent();
-			root.setCenter(new CheckOutPane());
+			root.setCenter(new CheckOutPane(spaces));
 		});
 		Menu menuInsert = new Menu("Insert");
 		menuInsert.setGraphic(loadImgV(INSERT_ICON));
