@@ -16,6 +16,15 @@ class CashRegisterT {
 		pL.spaceInserter(v1, 0);
 		Thread.sleep(1);
 		cr.closeTicket(pL, v1.getLicensePlate());
+		pL.spaceInserter(v1, 0);
+		Thread.sleep(1);
+		cr.closeTicket(pL, v1.getLicensePlate());
+		pL.spaceInserter(v1, 0);
+		Thread.sleep(1);
+		cr.closeTicket(pL, v1.getLicensePlate());
+		pL.spaceInserter(v1, 0);
+		Thread.sleep(1);
+		cr.closeTicket(pL, v1.getLicensePlate());
 	}
 
 }

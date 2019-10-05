@@ -26,27 +26,32 @@ public class CashRegister {
 		Space tSpace = pL.spaceRelease(spaceID);
 		Ticket ticket = new Ticket(tSpace, spaceID);
 		double payment;
+		String sP;
 		try {
-		   payment = Double.parseDouble(JOptionPane.showInputDialog(
-				"The charge of your ticket " + ticket.getExpectedCost()));
+				sP = JOptionPane.showInputDialog(
+					"The charge of your ticket is $" + ticket.getExpectedCost());
+				sP = sP.replaceAll("[$]", "");
+		   payment = Double.parseDouble(sP);
 		}catch(Exception e) {
 			payment = 0;
-			System.out.println("woah");
 		}
 		double eP = ticket.getExpectedCost();
 		if(payment < eP) {
 			do {
 				try {
-				payment = Double.parseDouble(JOptionPane.showInputDialog("This is not enough to cover the charge pay at least: $"
-						+ ticket.getExpectedCost()));
+						sP = JOptionPane.showInputDialog("This is not enough to cover the charge pay at least: $"
+							+ ticket.getExpectedCost());
+						sP = sP.replaceAll("[$]", "");
+				payment = Double.parseDouble(sP);
 				}catch(Exception e) {
 					payment = 0;
-					System.out.println("hey");
+					
 				}
 			}while(payment < eP);
 		}
 		totalSales += payment;
 		ticket.closeTicket(payment);
+		System.out.println(ticket.getTicketString());
 		todaysData.logTransaction(ticket.getTicketString());
 		todaysData.logTransaction("Total Sales: " + this.totalSales);
 	}
