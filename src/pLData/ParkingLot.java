@@ -26,12 +26,6 @@ public class ParkingLot implements ParkingSpaceInterface{
 	
 	/**
 	 * Instantiates a Parking Lot 
-	 * @param nCarS The number of car spaces you'd like in the Parking Lot
-	 * @param nTruckS The number of truck spaces you'd like in the Parking Lot
-	 * @param nMotorcycleS The number of motorcycle spaces you'd like in the Parking lot
-	 * 
-	 * 
-	 * 
 	 * 
 	 * Default setup is that for every 10 spaces <br>
 	 * 8 go for cars <br>
@@ -39,6 +33,12 @@ public class ParkingLot implements ParkingSpaceInterface{
 	 * 1 go for trucks <br>
 	 * If the number of mandatory car spaces is satisfied <br>
 	 * we fill in the remainder of motorcycles and then trucks <br>
+	 * @param nCarS The number of car spaces you'd like in the Parking Lot
+	 * @param nTruckS The number of truck spaces you'd like in the Parking Lot
+	 * @param nMotorcycleS The number of motorcycle spaces you'd like in the Parking lot
+	 * 
+	 * 
+	 * 
 	 */
 	public ParkingLot(int nCarS, int nTruckS, int nMotorcycleS) {
 		int totalSpaces = (nCarS + nTruckS + nMotorcycleS);
@@ -66,7 +66,15 @@ public class ParkingLot implements ParkingSpaceInterface{
 		
 	}
 	/**
-	 * 
+	 * Finds the nearest space available based on the conditions<br>
+	 * If the boolean skipType is true VehicleType.CAR can go in a truck space <br>
+	 * Similarly, VehicleType.MOTORCYCLE can go into both truck and car spaces as well<br>
+	 * Once it finds the nearest spot available it returns the index of it<br>
+	 * @param vt - Enter the actual type of this vehicle for correct placement
+	 * @param skipType - If true it allows smaller vehicles to park in bigger spaces, for extra of course
+	 * @return The index of the best spot available given these conditions. If full return -1
+	 *  
+	 *  	 
 	 */
 	public int spaceFinder(VehicleType vt, boolean skipType) {
 		// Find the first spot based on vehicle type 
@@ -100,22 +108,35 @@ public class ParkingLot implements ParkingSpaceInterface{
 		// If we return -1 we're all full! 
 		return -1;
 	}
+	/**
+	 * This method finds which parking spot # a vehicle is in
+	 * @param licensePlate A string of the license plate provided
+	 * @param s The state for the vehicle's license plate for further verification
+	 * @return Returns the index where this vehicle can be located. <br> Returns -1 if not found
+	 * 
+	 */
 	public int vehicleFinder(String licensePlate, State s) {
 		int spaceID = -1;
 		for(int i = 0; i < this.parkingLotArray.size(); i++){
 			if(this.parkingLotArray.get(i).getVehicleParked() != null) {
 				System.out.println("Checking index " + i + " it has a license plate: " + this.parkingLotArray.get(i).getVehicleParked().getLicensePlate());
 				if(this.parkingLotArray.get(i).getVehicleParked().getLicensePlate().compareTo(licensePlate) >= 0) {
+					if(this.parkingLotArray.get(i).getVehicleParked().getVehicleState().compareTo(s) >= 0) {
 					spaceID = i;
 					System.out.println("hello");
 					return spaceID;
+					}
 				}
 				
 			}
 		}
 		return spaceID;
 	}
-	
+	/**
+	 * Releases a vehicle from the space resetting it if given a valid space number
+	 * @param spaceID This is the index of the space we're trying to empty
+	 * @return Returns a clone of the space to be used for ticket printing. Null if incomplete
+	 */
 	public Space spaceRelease(int spaceID) {
 		if((spaceID > parkingLotArray.size()-1) || (spaceID < 0) ) 
 			return null;
@@ -123,6 +144,9 @@ public class ParkingLot implements ParkingSpaceInterface{
 		this.parkingLotArray.get(spaceID).vehicleDeletion();
 		return copyOfOld;
 	}
+	/**
+	 * @return Returns a string of the parking lot array's data including vehicle info if not null
+	 */
 	@Override
 	public String toString() {
 		String output = "";
@@ -134,6 +158,12 @@ public class ParkingLot implements ParkingSpaceInterface{
 		}
 		return output;
 	}
+	/**
+	 * Space inserter inserts a vehicle into the parking lot array
+	 * @param v The vehicle to be inserted into this space
+	 * @param spaceID The index in the parking lot where the vehicle is inserted
+	 * @return Returns the space object that has been modified. Null is returned if Vehicle or ID is wrong
+	 */
 	public Space spaceInserter(Vehicle v, int spaceID) {
 		if((spaceID > parkingLotArray.size()-1) || (spaceID < 0) ) 
 			return null;
@@ -155,6 +185,10 @@ public class ParkingLot implements ParkingSpaceInterface{
 		this.parkingLotArray.get(spaceID).vehicleInsertion(v);
 		return this.parkingLotArray.get(spaceID);
 	}
+	/**
+	 * 
+	 * @return Returns the parking lot's space ArrayList for other classes
+	 */
 	public ArrayList<Space> getParkingLotArray() {
 		return parkingLotArray;
 	}
