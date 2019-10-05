@@ -1,20 +1,14 @@
 package register;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
-
 import javax.swing.JOptionPane;
-
 import history.DailyData;
 import pLData.ParkingLot;
 import pLData.Space;
 import util.DataLoader;
 import util.DataSaver;
-import vehicleH.Vehicle;
 
 public class CashRegister {
 

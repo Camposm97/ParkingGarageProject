@@ -8,7 +8,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import util.DataLoader;
-import util.DataSaver;
 
 public class HistoryPane {
 	

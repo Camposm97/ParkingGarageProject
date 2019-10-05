@@ -1,7 +1,6 @@
 package userData;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import util.DataSaver;
@@ -26,11 +25,11 @@ public class UserDataManager implements Serializable{
 		userList.add(new UserData(firstName, lastName, password, index));
 	}
 	//get user by index
-	private UserData getUser (int index) {
+	public UserData getUser (int index) {
 		return this.userList.get(index);
 	}
 	//get user by username
-	private UserData getUser (String userName) {
+	public UserData getUser (String userName) {
 		int index = this.getIndexFromUserName(userName);
 		
 		return this.userList.get(index);
