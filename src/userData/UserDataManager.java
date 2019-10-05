@@ -118,7 +118,7 @@ public class UserDataManager implements Serializable{
 		return null; 
 	}
 	public void saveUserList() {
-		String adr = "/resources/userdat.data";
+		String adr = "resources/userdat.data";
 		DataSaver.writeObject(this, adr);
 	}
 	public ArrayList<UserData> getUserList() {
