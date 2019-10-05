@@ -22,8 +22,8 @@ public class Ticket {
 		
 		this.space = space;
 		this.spaceNumber = spaceID;
-		this.expectedHours = ((double)(System.currentTimeMillis() * this.space.getTimeModifier())
-								- this.space.getTimeA()) / 3600000;
+		this.expectedHours = (((System.currentTimeMillis() * this.space.getTimeModifier())
+								- this.space.getTimeA()) / 3600000);
 		this.payment =  getExpectedCost();
 		System.out.println("The payment I calculated is " + this.payment);
 		this.open = true;
@@ -61,8 +61,11 @@ public class Ticket {
 	
 	public double getExpectedCost() {
 		System.out.println(this.expectedHours);
-		return  (100 / (this.spaceNumber + 1))*
+		
+		double d = (100 / (this.spaceNumber + 1))*
 				(this.space.getSpecialRate() * this.expectedHours);
+		d = Math.round(d *100.0)/100.0;
+		return d;
 		
 	}
 
