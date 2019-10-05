@@ -9,7 +9,7 @@ import static util.Web.browse;
 import java.util.LinkedList;
 import java.util.List;
 
-import control.ButtonViewGarage;
+import control.ViewGarageButton;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
@@ -119,7 +119,7 @@ public class GarageMenuBar extends MenuBar {
 		MenuItem mi2 = new MenuItem("Garage");
 		mi2.setGraphic(loadImgV(GARAGE_ICON));
 		mi2.setOnAction(e -> {
-			ButtonViewGarage bt = new ButtonViewGarage(spaces);
+			ViewGarageButton bt = new ViewGarageButton(spaces);
 			bt.fire();
 		});
 		Menu m = new Menu("View");

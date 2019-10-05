@@ -14,8 +14,8 @@ import pLData.ParkingLot;
 import util.LightWork;
 import view.GarageTableView;
 
-public class ButtonViewGarage extends Button {	
-	public ButtonViewGarage(ParkingLot spaces) {
+public class ViewGarageButton extends Button {	
+	public ViewGarageButton(ParkingLot spaces) {
 		super("View Garage");
 		this.setOnAction(new ViewGarageHandler(spaces));
 	}

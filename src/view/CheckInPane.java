@@ -3,7 +3,7 @@ package view;
 import javax.swing.JOptionPane;
 
 import app.App;
-import control.ButtonViewGarage;
+import control.ViewGarageButton;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -46,7 +46,7 @@ public class CheckInPane extends GridPane {
 		cbVehicleType.setOnAction(e -> { computeSpaceNumber(); });
 		cbState = LightWork.loadCb(State.getAbbreviationList());
 		btAddVehicle = loadBtAddVehicle();
-		btViewGarage = new ButtonViewGarage(spaces);
+		btViewGarage = new ViewGarageButton(spaces);
 	}
 	
 	private void showControls() {
