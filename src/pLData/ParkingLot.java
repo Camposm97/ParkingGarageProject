@@ -79,7 +79,7 @@ public class ParkingLot implements ParkingSpaceManager{
 		int spaceID = -1;
 		for(int i = 0; i < this.parkingLotArray.size(); i++){
 			if(this.parkingLotArray.get(i).getVehicleParked() != null) {
-				if(this.parkingLotArray.get(i).getVehicleParked().getLicensePlate().compareToIgnoreCase(licensePlate) == 1) {
+				if(this.parkingLotArray.get(i).getVehicleParked().getLicensePlate().equals(licensePlate)) {
 					spaceID = i;
 					return spaceID;
 				}
@@ -92,7 +92,7 @@ public class ParkingLot implements ParkingSpaceManager{
 	public Space spaceRelease(int spaceID) {
 		if((spaceID > parkingLotArray.size()-1) || (spaceID < 0) ) 
 			return null;
-		Space copyOfOld = new Space(this.parkingLotArray.get(spaceID));.
+		Space copyOfOld = new Space(this.parkingLotArray.get(spaceID));
 		this.parkingLotArray.get(spaceID).vehicleDeletion();
 		return copyOfOld;
 	}
