@@ -34,7 +34,7 @@ public class CheckOutPane extends GridPane {
 	}
 	
 	private void showControls() {
-		HBox hBox = LightWork.loadHBox(btDelete);
+		HBox hBox = LightWork.loadHBox(btDelete, btViewGarage);
 		hBox.setAlignment(Pos.CENTER);
 		addRow(0, new Label("License Plate:"), tfPlate);
 		addRow(1, new Label("State: "), cbState);
