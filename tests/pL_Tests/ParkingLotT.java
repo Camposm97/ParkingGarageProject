@@ -48,7 +48,7 @@ class ParkingLotT {
 		tD.spaceInserter(tV, 32);
 		// We'll insert it into slot 32 and see if it returns that value to us 
 		//System.out.println(tV.getLicensePlate().equals(tD.getParkingLotArray().get(32).getVehicleParked().getLicensePlate()));
-		assertEquals(32, tD.vehicleFinder(tV.getLicensePlate()));
+		assertEquals(32, tD.vehicleFinder(tV.getLicensePlate(), tV.getVehicleState()));
 	}
 	
 

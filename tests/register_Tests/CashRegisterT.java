@@ -15,16 +15,7 @@ class CashRegisterT {
 	void testCashRegister() throws InterruptedException {
 		pL.spaceInserter(v1, 0);
 		Thread.sleep(1);
-		cr.closeTicket(pL, v1.getLicensePlate());
-		pL.spaceInserter(v1, 0);
-		Thread.sleep(1);
-		cr.closeTicket(pL, v1.getLicensePlate());
-		pL.spaceInserter(v1, 0);
-		Thread.sleep(1);
-		cr.closeTicket(pL, v1.getLicensePlate());
-		pL.spaceInserter(v1, 0);
-		Thread.sleep(1);
-		cr.closeTicket(pL, v1.getLicensePlate());
+		cr.closeTicket(pL, v1.getLicensePlate(), v1.getVehicleState());
 	}
 
 }

@@ -2,6 +2,7 @@ package pLData;
 
 import java.util.ArrayList;
 
+import vehicleH.State;
 import vehicleH.Vehicle;
 import vehicleH.VehicleType;
 
@@ -75,11 +76,11 @@ public class ParkingLot implements ParkingSpaceInterface{
 		// If we return -1 we're all full! 
 		return -1;
 	}
-	public int vehicleFinder(String licensePlate) {
+	public int vehicleFinder(String licensePlate, State s) {
 		int spaceID = -1;
 		for(int i = 0; i < this.parkingLotArray.size(); i++){
 			if(this.parkingLotArray.get(i).getVehicleParked() != null) {
-				if(this.parkingLotArray.get(i).getVehicleParked().getLicensePlate().equals(licensePlate)) {
+				if(this.parkingLotArray.get(i).getVehicleParked().getLicensePlate().equals(licensePlate) && this.parkingLotArray.get(i).getVehicleParked().getVehicleState().equals(s)) {
 					spaceID = i;
 					return spaceID;
 				}
