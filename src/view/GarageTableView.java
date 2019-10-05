@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -26,15 +28,24 @@ public class GarageTableView {
 	
 	ScrollPane container;
 	GridPane grid;
+	ParkingLot lot;
+	BorderPane root;
 	
 	public GarageTableView(ParkingLot lot) {
-		this.generateLayout(lot);
+		this.lot = lot;
+		this.generateLayout();
+		container = new ScrollPane();
+	}
+	public GarageTableView(ParkingLot lot, BorderPane root) {
+		this.lot = lot;
+		this.root = root;
+		this.generateLayout();
 		container = new ScrollPane();
 	}
 
-	private void generateLayout(ParkingLot lot) {
+	private void generateLayout() {
 		GridPane grid1 = new GridPane();
-		ArrayList<Space> spaces = lot.getParkingLotArray();
+		ArrayList<Space> spaces = this.lot.getParkingLotArray();
 		
 		/*this loop creates a bunch of clickable labels that represent each spot in the garage. 
 		 * If the spot is taken the button is made yellow and the license plate number is shown
@@ -46,10 +57,14 @@ public class GarageTableView {
 			if (spaces.get(i).getVehicleParked() != null) {
 				info+= "\nCar Parked: " + spaces.get(i).getVehicleParked().getLicensePlate();
 				label.setBackground(new Background(new BackgroundFill(Color.YELLOW,CornerRadii.EMPTY, Insets.EMPTY)));
+				this.giveCloseAction(label, spaces.get(i));
+				this.giveMouseOver(label, spaces.get(i));
 			}
 			else {
 				info+= "\nSpace Empty.";
 				label.setBackground(new Background(new BackgroundFill(Color.GREEN,CornerRadii.EMPTY, Insets.EMPTY)));
+				this.giveOpenAction(label, spaces.get(i));
+				this.giveMouseOver(label, spaces.get(i));
 			}
 			label.setText(info);
 			
@@ -61,8 +76,24 @@ public class GarageTableView {
 		this.grid = grid1;
 		container.setContent(grid);
 	}
-	public void refreshGrid(ParkingLot lot) {
-		this.generateLayout(lot);
+	public void giveMouseOver (Label label, Space space) {
+		Tooltip tooltip = new Tooltip();
+		tooltip.setText(space.toString());
+	}
+	public void giveCloseAction(Label label, Space space) {
+		label.setOnMouseClicked(e->{
+			CheckOutPane checkout = new CheckOutPane(this.lot);
+			this.root.setCenter(checkout);
+		});
+	}
+	public void giveOpenAction(Label label, Space space) {
+		label.setOnMouseClicked(e->{
+			CheckInPane checkin = new CheckInPane(this.lot);
+			this.root.setCenter(checkin);
+		});
+	}
+	public void refreshGrid() {
+		this.generateLayout();
 	}
 
 	public ScrollPane getContainer() {
@@ -72,6 +103,23 @@ public class GarageTableView {
 	public void setContainer(ScrollPane container) {
 		this.container = container;
 	}
+
+	public GridPane getGrid() {
+		return grid;
+	}
+
+	public void setGrid(GridPane grid) {
+		this.grid = grid;
+	}
+
+	public BorderPane getRoot() {
+		return root;
+	}
+
+	public void setRoot(BorderPane root) {
+		this.root = root;
+	}
+	
 	
 
 }
