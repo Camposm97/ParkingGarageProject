@@ -1,7 +1,10 @@
 package userData;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
+
+import util.DataSaver;
 
 public class UserDataManager implements Serializable{
 
@@ -115,6 +118,10 @@ public class UserDataManager implements Serializable{
 		}
 		return null; 
 	}
+	public void saveUserList() {
+		String adr = "/resources/userdat.data";
+		DataSaver.writeObject(this, adr);
+	}
 	public ArrayList<UserData> getUserList() {
 		return userList;
 	}
@@ -122,7 +129,4 @@ public class UserDataManager implements Serializable{
 	public void setUserList(ArrayList<UserData> userList) {
 		this.userList = userList;
 	}
-	
-	
-
 }

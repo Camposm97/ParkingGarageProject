@@ -1,9 +1,7 @@
 package view;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 
 import history.DailyData;
 import javafx.scene.control.DatePicker;
