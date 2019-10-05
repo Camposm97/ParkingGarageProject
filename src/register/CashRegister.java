@@ -28,9 +28,10 @@ public class CashRegister {
 		Ticket ticket = new Ticket(tSpace, spaceID);
 		double payment;
 		String sP;
+		String tP = String.format("%.2f", ticket.getExpectedCost());
 		try {
 				sP = JOptionPane.showInputDialog(
-					"The charge of your ticket is $" + ticket.getExpectedCost());
+					"The charge of your ticket is $" + tP);
 				sP = sP.replaceAll("[$]", "");
 		   payment = Double.parseDouble(sP);
 		}catch(Exception e) {
@@ -41,7 +42,7 @@ public class CashRegister {
 			do {
 				try {
 						sP = JOptionPane.showInputDialog("This is not enough to cover the charge pay at least: $"
-							+ ticket.getExpectedCost());
+							+ tP);
 						sP = sP.replaceAll("[$]", "");
 				payment = Double.parseDouble(sP);
 				}catch(Exception e) {

@@ -1,10 +1,19 @@
 package vehicleH;
-
+/**
+ * The Vehicle class provides the makeup of info needed for a vehicle 
+ * @author Matt Guidi
+ *
+ */
 public class Vehicle {
 	private String licensePlate;
 	private VehicleType vType;
 	private State vehicleState;
-	
+	/**
+	 * Standard layout for receiving a new vehicle
+	 * @param licensePlate 
+	 * @param vType
+	 * @param stateAbbr
+	 */
 	public Vehicle(String licensePlate, VehicleType vType, String stateAbbr) {
 		super();
 		// We can pass through the 
