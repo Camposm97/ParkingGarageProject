@@ -55,7 +55,7 @@ public class CashRegister {
 		ticket.closeTicket(payment);
 		System.out.println(ticket.getTicketString());
 		todaysData.logTransaction(ticket.getTicketString());
-		todaysData.logTransaction("Total Sales: " + this.totalSales);
+		todaysData.logTransaction("Total Sales: " + this.totalSales + "\n");
 		this.saveDailyData();
 	}
 	

@@ -47,12 +47,12 @@ public class DailyData implements Serializable{
 		for (int i = 0; i < salesLog.size(); i++) {
 			output += salesLog.get(i);
 		}
-		output += "****************************************\n"
+		output += "\n****************************************\n"
 				+ "\tGarage\n"
 				+ "****************************************\n";
 		for (int i = 0; i < garageLog.size(); i++) {
 			output += garageLog.get(i);
-			output += "****************************************\n";
+			output += "\n****************************************\n";
 		}
 	
 		return output;
