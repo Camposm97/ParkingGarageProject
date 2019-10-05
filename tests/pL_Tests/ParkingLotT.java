@@ -27,9 +27,9 @@ class ParkingLotT {
 	}
 	@Test
 	void testSpaceRelease() {
-		//ParkingLot t = new ParkingLot(0, 0, 1);
+		ParkingLot t = new ParkingLot(0, 0, 1);
 		// Try to delete something out of index to test if the conditional catches it
-		assertNull(tD.spaceRelease(100));
+		assertNull(t.spaceRelease(100));
 		// Then we see if we can delete it now that it's the right index
 		tD.spaceInserter(tV, 0);
 		assertNotNull(tD.spaceRelease(0));
