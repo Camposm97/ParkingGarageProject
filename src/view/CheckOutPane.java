@@ -18,6 +18,7 @@ public class CheckOutPane extends GridPane {
 	private TextField tfPlate;
 	private ComboBox<String> cbState;
 	private Button btDelete;
+	private GarageTableView garageView;
 	
 	public CheckOutPane(ParkingLot parkingLot) {
 		this.parkingLot = parkingLot;
@@ -52,7 +53,17 @@ public class CheckOutPane extends GridPane {
 				CashRegister cr = new CashRegister();
 				cr.closeTicket(parkingLot, licensePlate, state);
 			}
+			this.garageView.refreshGrid();
 		});
 		return bt;
 	}
+
+	public GarageTableView getGarageView() {
+		return garageView;
+	}
+
+	public void setGarageView(GarageTableView garageView) {
+		this.garageView = garageView;
+	}
+	
 }

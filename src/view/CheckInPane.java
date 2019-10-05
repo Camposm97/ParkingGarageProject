@@ -27,6 +27,7 @@ public class CheckInPane extends GridPane {
 	private ComboBox<VehicleType> cbVehicleType;
 	private ComboBox<String> cbState;
 	private Button btAddVehicle;
+	private GarageTableView garageView;
 	
 	public CheckInPane(ParkingLot spaces) {
 		this.spaces = spaces;
@@ -73,6 +74,7 @@ public class CheckInPane extends GridPane {
 					alert.showAndWait();
 				}
 			}
+			this.garageView.refreshGrid();
 		});
 		return bt;
 	}
@@ -89,4 +91,13 @@ public class CheckInPane extends GridPane {
 		cbState.prefWidthProperty().bind(tfPlate.widthProperty());
 		cbVehicleType.prefWidthProperty().bind(tfPlate.widthProperty());
 	}
+
+	public GarageTableView getGarageView() {
+		return garageView;
+	}
+
+	public void setGarageView(GarageTableView garageView) {
+		this.garageView = garageView;
+	}
+	
 }
