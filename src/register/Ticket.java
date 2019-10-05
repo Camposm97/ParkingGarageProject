@@ -1,6 +1,7 @@
 package register;
 
 import pLData.Space;
+import userData.UserData;
 
 public class Ticket {
 	
@@ -12,12 +13,13 @@ public class Ticket {
 	private int ticketID;
 	private boolean open;
 	private double payment;
+	private UserData activeUser;
 	
 	
 	// We're going to make a Ticket object the moment they leave. That way it's a one
 	// and done kind of deal. All they need to give us is their spaceNumber and we can find the rest!
 	
-	public Ticket (Space space, int spaceID) {
+	public Ticket (Space space, int spaceID, UserData activeUser) {
 		
 		this.space = space;
 		this.spaceNumber = spaceID;
@@ -26,6 +28,7 @@ public class Ticket {
 		this.payment =  getExpectedCost();
 		//System.out.println("The payment I calculated is " + this.payment);
 		this.open = true;
+		this.activeUser = activeUser;
 		this.ticketID = ticketNumberC++;
 	
 	}
@@ -35,7 +38,8 @@ public class Ticket {
 		String eC = String.format("%.2f", this.getExpectedCost());
 		str += "\n****************************************\n" 
 				+ "Ticket : " + this.ticketID + "\n" +
-				"****************************************\n"
+				"Attendant : " + this.activeUser.getFirstName() + 
+				"\n****************************************\n"
 				+ "Vehicle Type : " + space.getVehicleParked().getVTypeS() + "\n"
 				+ "State: " + space.getVehicleParked().getVehicleState().toString() + "\n"
 				+ "Plate Number : " + space.getVehicleParked().getLicensePlate() + "\n"
