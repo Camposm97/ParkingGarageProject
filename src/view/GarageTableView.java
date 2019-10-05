@@ -44,7 +44,7 @@ public class GarageTableView {
 	}
 
 	private void generateLayout() {
-		GridPane grid1 = new GridPane();
+		grid = new GridPane();
 		ArrayList<Space> spaces = this.lot.getParkingLotArray();
 		
 		/*this loop creates a bunch of clickable labels that represent each spot in the garage. 
@@ -69,11 +69,10 @@ public class GarageTableView {
 			label.setText(info);
 			
 			//The grid is 10xn 
-			grid1.add(label, i%10, i/10);
+			grid.add(label, i%10, i/10);
 			GridPane.setMargin(label, new Insets(5, 0,0, 5));
 			
 		}
-		this.grid = grid1;
 		container.setContent(grid);
 	}
 	public void giveMouseOver (Label label, Space space) {
