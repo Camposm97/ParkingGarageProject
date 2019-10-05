@@ -9,6 +9,7 @@ import pLData.ParkingLot;
 import pLData.Space;
 import util.DataLoader;
 import util.DataSaver;
+import vehicleH.State;
 
 public class CashRegister {
 
@@ -21,8 +22,8 @@ public class CashRegister {
 		this.ticketCounter = 1;
 		this.loadData();
 	}
-	public void closeTicket(ParkingLot pL, String licensePlate) {
-		int spaceID = pL.vehicleFinder(licensePlate);
+	public void closeTicket(ParkingLot pL, String licensePlate, State s) {
+		int spaceID = pL.vehicleFinder(licensePlate, s);
 		Space tSpace = pL.spaceRelease(spaceID);
 		Ticket ticket = new Ticket(tSpace, spaceID);
 		double payment;
