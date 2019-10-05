@@ -112,7 +112,7 @@ public class GarageMenuBar extends MenuBar {
 		mi1.setGraphic(loadImgV(HISTORY_ICON));
 		mi1.setOnAction(e -> {
 			BorderPane root = (BorderPane) super.getParent();
-			HistoryPane historyPane = new HistoryPane();
+			HistoryPane historyPane = new HistoryPane();			
 			root.setCenter(historyPane.getContainer());
 		});
 		Menu m = new Menu("View");

@@ -49,8 +49,6 @@ public class CheckOutPane extends GridPane {
 			
 			if (!licensePlate.isEmpty() && !stateAbbr.isEmpty()) {
 				State state = State.valueOfAbbreviation(stateAbbr);
-				int index = parkingLot.vehicleFinder(licensePlate, state);
-				Space space = parkingLot.spaceRelease(index);
 				CashRegister cr = new CashRegister();
 				cr.closeTicket(parkingLot, licensePlate, state);
 			}
