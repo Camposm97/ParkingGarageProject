@@ -8,6 +8,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class ImgUtil {
+	/**
+	 * TO DO:
+	 * - Add icons for Menu View -> History, Insert -> User, Insert -> Car, Delete -> User
+	 */
 	public static final String EXIT_ICON = "images/exit.png";
 	public static final String GITHUB_ICON = "images/github.png";
 	public static final String HEAVY_WORK = "images/heavy_work.gif";
