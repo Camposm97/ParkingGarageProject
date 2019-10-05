@@ -3,6 +3,7 @@ package register;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -77,9 +78,8 @@ public class CashRegister {
 	}
 
 	public void loadData() {
-		Date date = new Date();
-		SimpleDateFormat form = new SimpleDateFormat("MMdd");
-		String adr = "/resources/daily" + form.format(date) + ".data";
+		LocalDate date = LocalDate.now();
+		String adr = "/resources/daily" + date.getMonthValue() + date.getDayOfMonth() + ".data";
 		File file = new File(adr);
 		boolean exists = file.exists();
 		if (exists) {
