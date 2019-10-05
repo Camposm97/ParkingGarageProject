@@ -1,29 +1,24 @@
 package app;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import userData.UserDataManager;
-import view.LoginPane;
+import view.MainStage;
 
 public class App extends Application {
-	public static final int WIDTH = 600, HEIGHT = 500;
+	public static final int WIDTH = 700, HEIGHT = 600;
 	public static final String TITLE = "Parking Garage v1.0";
-	private UserDataManager users;	
+	private UserDataManager users;
 	
 	@Override
 	public void init() {
-		users = new UserDataManager(); // Load Data Here: DataLoader.loadObject(src);	
+		users = new UserDataManager(); // Load Data Here: DataLoader.loadObject(src);
 	}
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		stage.setTitle(TITLE);
-		stage.setScene(new Scene(new LoginPane(users), LoginPane.WIDTH, LoginPane.HEIGHT));
+		stage = new MainStage(users);
 		stage.show();
-		stage.setOnCloseRequest(e -> {
-			System.out.println("saveObject(src) in " + this.getClass());
-		});
 	}
 	
 	public static void main(String[] args) {

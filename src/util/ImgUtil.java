@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 public class ImgUtil {
 	/**
 	 * TO DO:
-	 * - Add icons for Menu View -> History, Insert -> User, Insert -> Car, Delete -> User
+	 * - Add icons for Insert -> User, Insert -> Car, Delete -> User
 	 */
 	public static final String EXIT_ICON = "images/exit.png";
 	public static final String GITHUB_ICON = "images/github.png";
@@ -20,6 +20,8 @@ public class ImgUtil {
 	public static final String DELETE_ICON = "images/delete.png";
 	public static final String USER_ICON = "images/user.png";
 	public static final String WORK_ICON = "images/work.png";
+	public static final String HISTORY_ICON = "images/history.png";
+	public static final String GARAGE_ICON = "images/garage.png";
 	
 	public static Image loadImg(String url) {
 		FileInputStream fis = null;
