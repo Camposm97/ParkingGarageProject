@@ -14,14 +14,13 @@ import util.LightWork;
 import vehicleH.State;
 
 public class CheckOutPane extends GridPane {
-	private ParkingLot spaces;
-	private CashRegister cr;
+	private ParkingLot parkingLot;
 	private TextField tfPlate;
 	private ComboBox<String> cbState;
 	private Button btDelete;
 	
-	public CheckOutPane(ParkingLot spaces) {
-		this.spaces = spaces;
+	public CheckOutPane(ParkingLot parkingLot) {
+		this.parkingLot = parkingLot;
 		initControls();
 		showControls();
 	}
@@ -46,9 +45,14 @@ public class CheckOutPane extends GridPane {
 		Button bt = new Button("Check-Out Vehicle");
 		bt.setOnAction(e -> {
 			String licensePlate = tfPlate.getText();
-			if (!licensePlate.isEmpty()) {
-				int index = spaces.vehicleFinder(licensePlate);
-				Space space = spaces.spaceRelease(index);
+			String stateAbbr = cbState.getValue();
+			
+			if (!licensePlate.isEmpty() && !stateAbbr.isEmpty()) {
+				State state = State.valueOfAbbreviation(stateAbbr);
+				int index = parkingLot.vehicleFinder(licensePlate, state);
+				Space space = parkingLot.spaceRelease(index);
+				CashRegister cr = new CashRegister();
+				cr.closeTicket(parkingLot, licensePlate, state);
 			}
 		});
 		return bt;
