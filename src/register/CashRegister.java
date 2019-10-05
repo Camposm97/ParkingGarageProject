@@ -95,6 +95,9 @@ public class CashRegister {
 			DataSaver.writeObject(data, adr);
 		}	
 	}
+	public void saveDailyData() {
+		this.todaysData.saveDailyData();
+	}
 	public int getTotalSales() {
 		return totalSales;
 	}
