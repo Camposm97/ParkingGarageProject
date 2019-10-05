@@ -27,12 +27,11 @@ public class LoginButton extends Button {
 			String password = login.getPassword();
 			UserData user = userList.login(username, password);
 			if (user != null) {
-				
 				Stage stage = (Stage) login.getScene().getWindow();
+				login.getScene().setRoot(new MainMenu(userList, user));
 				stage.setWidth(App.WIDTH);
 				stage.setHeight(App.HEIGHT);
 				stage.centerOnScreen();
-				login.getScene().setRoot(new MainMenu(userList, user));
 			}
 		}
 	}

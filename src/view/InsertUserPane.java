@@ -60,6 +60,10 @@ public class InsertUserPane extends GridPane {
 			if (!firstName.isEmpty() && !lastName.isEmpty()) {
 				String password = tfPassword.getText();
 				users.addUser(firstName, lastName, password);
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setHeaderText("Successfully added user!");
+				alert.setContentText("Username: " + "\n" + "Password: " + password);
+				alert.showAndWait();
 			} else {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle(App.TITLE);
