@@ -54,7 +54,7 @@ public class UserDataManager implements Serializable{
 		}
 	}
 	//used to generate list indexes from usernames. A regex expression removes all letters
-	private int getIndexFromUserName(String userName) {
+	public int getIndexFromUserName(String userName) {
 		int index = 0;
 		// I modified the regex because this takes in only digits! that's what we need to find the index!
 		String str = userName.replaceAll("[^0-9]", "");
