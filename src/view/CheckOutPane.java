@@ -1,6 +1,6 @@
 package view;
 
-import control.ButtonViewGarage;
+import control.ViewGarageButton;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -30,7 +30,7 @@ public class CheckOutPane extends GridPane {
 		tfPlate = new TextField();
 		cbState = LightWork.loadCb(State.getAbbreviationList());
 		btDelete = loadBtDelete();
-		btViewGarage = new ButtonViewGarage(spaces);
+		btViewGarage = new ViewGarageButton(spaces);
 	}
 	
 	private void showControls() {
