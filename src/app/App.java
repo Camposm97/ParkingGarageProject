@@ -10,7 +10,7 @@ import view.MainStage;
  * This is the main Application page that loads up the MainStage
  * 
  * 
- * @author Chris Demonte, Michael Campo, Matt Guidi
+ * @author Chris Demonte, Michael Campos, Matt Guidi
  * @version 0.8
  * @since  2019-09-25
  * 

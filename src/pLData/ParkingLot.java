@@ -5,20 +5,41 @@ import java.util.ArrayList;
 import vehicleH.State;
 import vehicleH.Vehicle;
 import vehicleH.VehicleType;
-
+/**
+ * This is the parking lot "bag" that contains the spaces
+ * @author Matt Guidi
+ *
+ */
 public class ParkingLot implements ParkingSpaceInterface{
 	
 	private ArrayList <Space>parkingLotArray;
 	
 	
-	
+	/**
+	 * @param MOTORCYCLE_OVERRIDE Used for extra charge
+	 * @param CAR_OVERRIDE Used for extra charge
+	 */
 	private static final double MOTORCYCLE_OVERRIDE = 1.25;
 	private static final double CAR_OVERRIDE = 1.50;
 	
 	
 	
-	
-	
+	/**
+	 * Instantiates a Parking Lot 
+	 * @param nCarS The number of car spaces you'd like in the Parking Lot
+	 * @param nTruckS The number of truck spaces you'd like in the Parking Lot
+	 * @param nMotorcycleS The number of motorcycle spaces you'd like in the Parking lot
+	 * 
+	 * 
+	 * 
+	 * 
+	 * Default setup is that for every 10 spaces <br>
+	 * 8 go for cars <br>
+	 * 1 go for motorcycles <br>
+	 * 1 go for trucks <br>
+	 * If the number of mandatory car spaces is satisfied <br>
+	 * we fill in the remainder of motorcycles and then trucks <br>
+	 */
 	public ParkingLot(int nCarS, int nTruckS, int nMotorcycleS) {
 		int totalSpaces = (nCarS + nTruckS + nMotorcycleS);
 		this.parkingLotArray = new ArrayList<Space>();
@@ -44,6 +65,9 @@ public class ParkingLot implements ParkingSpaceInterface{
 		}
 		
 	}
+	/**
+	 * 
+	 */
 	public int spaceFinder(VehicleType vt, boolean skipType) {
 		// Find the first spot based on vehicle type 
 		// May override the type if the boolean is true

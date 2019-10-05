@@ -6,9 +6,9 @@ public class UsernameUtil {
 	/**
 	 * Doesn't include numbers at the end of the user name.  Takes the first four letters
 	 * of the last name (if there is four letters) and takes the first character of the first name.
-	 * @param firstName
-	 * @param lastName
-	 * @return
+	 * @param firstName First name of the user
+	 * @param lastName Last name of the user
+	 * @return returns the username of this new user
 	 */
 	public static String emitUsername(String firstName, String lastName) {
 		String username = "";
