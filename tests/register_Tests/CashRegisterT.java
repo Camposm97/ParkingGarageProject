@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import pLData.ParkingLot;
 import register.CashRegister;
-import register.Ticket;
 import vehicleH.Vehicle;
 import vehicleH.VehicleType;
 
@@ -14,7 +13,9 @@ class CashRegisterT {
 	public CashRegister cr = new CashRegister();
 	@Test
 	void testCashRegister() throws InterruptedException {
-		
+		pL.spaceInserter(v1, 0);
+		Thread.sleep(3);
+		cr.closeTicket(pL, v1.getLicensePlate());
 	}
 
 }

@@ -48,6 +48,7 @@ public class CashRegister {
 				+ "Space Number : " + spaceNumber + "\n"
 				+ "****************************************\n";
 		todaysData.logTransaction(entry);
+		
 	}
 
 	public void loadData() {
