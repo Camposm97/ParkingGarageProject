@@ -44,6 +44,39 @@ public class UserDataManager implements Serializable{
 		
 	}
 	*/ 
+	public boolean validPassword (String password) {
+		if (password.length() < 8 || password.length() > 16) {
+			return false;
+		}
+		boolean valid = false;
+		for (int i = 0; i < password.length(); i++) {
+            if(Character.isUpperCase(password.charAt(i))){
+            	valid = true;
+            }
+		}
+		if (valid == false) {
+			return false;
+		}
+		valid = false;
+		for (int i = 0; i < password.length(); i++) {
+            if(Character.isLowerCase(password.charAt(i))){
+            	valid = true;
+            }
+		}
+		if (valid = false) {
+			return false;
+		}
+		valid = false;
+		for (int i = 0; i < password.length(); i++) {
+            if(Character.isDigit(password.charAt(i))){
+            	valid = true;
+            }
+		}
+		if (valid = false) {
+			return false;
+		}
+		return true;
+	}
 	//checks an entered password
 	public boolean passwordCheck (String userName, String password) {
 		if (userList.get(this.getIndexFromUserName(userName)).getPassword().contentEquals(password)) {
