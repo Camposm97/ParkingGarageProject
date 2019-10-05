@@ -39,8 +39,8 @@ public class GarageTableView {
 	public GarageTableView(ParkingLot lot, BorderPane root) {
 		this.lot = lot;
 		this.root = root;
-		this.generateLayout();
 		container = new ScrollPane();
+		this.generateLayout();
 	}
 
 	private void generateLayout() {
