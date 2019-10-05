@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import vehicleH.Vehicle;
 import vehicleH.VehicleType;
 
-public class ParkingLot implements ParkingSpaceManager{
+public class ParkingLot implements ParkingSpaceInterface{
 	
 	private ArrayList <Space>parkingLotArray;
 	

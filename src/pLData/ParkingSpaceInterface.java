@@ -1,7 +1,7 @@
 package pLData;
 
 import vehicleH.*;
-public interface ParkingSpaceManager {
+public interface ParkingSpaceInterface {
 	
 	
 	int spaceFinder(VehicleType vt, boolean skipType);
