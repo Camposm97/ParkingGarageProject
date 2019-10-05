@@ -76,7 +76,7 @@ public class CashRegister {
 
 	public void loadData() {
 		LocalDate date = LocalDate.now();
-		String adr = "/resources/daily" + date.getMonthValue() + date.getDayOfMonth() + ".data";
+		String adr = "/resources/daily" + date.getMonthValue() + date.getDayOfMonth() ;
 		File file = new File(adr);
 		boolean exists = file.exists();
 		if (exists) {
