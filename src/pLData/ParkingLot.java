@@ -90,9 +90,9 @@ public class ParkingLot implements ParkingSpaceManager{
 	}
 	
 	public Space spaceRelease(int spaceID) {
-		Space copyOfOld = new Space(this.parkingLotArray.get(spaceID));
 		if((spaceID > parkingLotArray.size()-1) || (spaceID < 0) ) 
 			return null;
+		Space copyOfOld = new Space(this.parkingLotArray.get(spaceID));.
 		this.parkingLotArray.get(spaceID).vehicleDeletion();
 		return copyOfOld;
 	}
