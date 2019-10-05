@@ -3,6 +3,7 @@ package view;
 import javax.swing.JOptionPane;
 
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -11,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import pLData.ParkingLot;
+import pLData.Space;
 import util.LightWork;
 import vehicleH.Vehicle;
 import vehicleH.VehicleType;
@@ -57,8 +59,11 @@ public class CheckInPane extends GridPane {
 			if (spaceNum != null) {
 				int i = JOptionPane.showConfirmDialog(null, "Do they want Space # " + spaceNum + "?",
 						"Space Confirmation" , 0, 3);
-				// 0 = Yes 1 = No
-				System.out.println(i);
+				if (i == 0) { // Yes
+					Space space = spaces.spaceInserter(new Vehicle(tfPlate.getText(), cbVehicleType.getValue()), Integer.valueOf(spaceNum));
+					Alert alert = new Alert(AlertType.INFORMATION);
+					
+				}
 			}
 		});
 		return bt;
