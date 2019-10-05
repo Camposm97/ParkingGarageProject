@@ -1,10 +1,12 @@
 package history;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 import pLData.ParkingLot;
+import util.DataSaver;
 
 public class DailyData implements Serializable{
 
@@ -54,6 +56,11 @@ public class DailyData implements Serializable{
 		}
 	
 		return output;
+	}
+	public void saveDailyData() {
+		LocalDate date = LocalDate.now();
+		String adr = "/resources/daily" + date.getMonthValue() + date.getDayOfMonth() + ".data";
+		DataSaver.writeObject(this, adr);
 	}
 	
 
