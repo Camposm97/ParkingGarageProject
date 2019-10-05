@@ -24,7 +24,7 @@ public class Ticket {
 		this.expectedHours = (((System.currentTimeMillis() * this.space.getTimeModifier())
 								- this.space.getTimeA()) / 3600000);
 		this.payment =  getExpectedCost();
-		System.out.println("The payment I calculated is " + this.payment);
+		//System.out.println("The payment I calculated is " + this.payment);
 		this.open = true;
 		this.ticketID = ticketNumberC++;
 	
@@ -32,6 +32,7 @@ public class Ticket {
 	
 	public String getTicketString() {
 		String str = new String();
+		String eC = String.format("%.2f", this.getExpectedCost());
 		str += "****************************************\n" 
 				+ "Ticket : " + this.ticketID + "\n" +
 				"****************************************\n"
@@ -39,14 +40,16 @@ public class Ticket {
 				+ "Plate Number : " + space.getVehicleParked().getLicensePlate() + "\n"
 				+ "Space : " + spaceNumber + "\n"
 				+ "Rate : " + space.getSpecialRate() + "\n"
-				+ "Expected Cost : " + this.getExpectedCost() + "\n";
+				+ "Expected Cost : " + eC + "\n";
 		if (open == true) {
 			str += "Ticket not paid yet\n";
 		}
 		else {
-			str += "Ticket Paid\nTotal : " + this.payment + "\n" 
-				  +"Extra change : " + (this.payment - this.getExpectedCost())
-					+ "****************************************\n"; 
+			String tP = String.format("%.2f", this.payment);
+			String xC = String.format("%.2f", (this.payment - this.getExpectedCost()));
+			str += "Ticket Paid\nTotal : " + tP + "\n" 
+				  +"Extra change : " + xC
+					+ "\n****************************************\n"; 
 			
 		}
 		return str;
@@ -59,8 +62,6 @@ public class Ticket {
 	}
 	
 	public double getExpectedCost() {
-		System.out.println(this.expectedHours);
-		
 		double d = (100 / (this.spaceNumber + 1))*
 				(this.space.getSpecialRate() * this.expectedHours);
 		d = Math.round(d *100.0)/100.0;
