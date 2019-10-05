@@ -1,15 +1,6 @@
 package view;
 
-import static util.ImgUtil.DELETE_ICON;
-import static util.ImgUtil.EXIT_ICON;
-import static util.ImgUtil.GITHUB_ICON;
-import static util.ImgUtil.HEAVY_WORK;
-import static util.ImgUtil.HISTORY_ICON;
-import static util.ImgUtil.INSERT_ICON;
-import static util.ImgUtil.LIGHT_WORK;
-import static util.ImgUtil.USER_ICON;
-import static util.ImgUtil.WORK_ICON;
-import static util.ImgUtil.loadImgV;
+import static util.ImgUtil.*;
 import static util.Web.CAMPOS_GITHUB;
 import static util.Web.DEMONTE_GITHUB;
 import static util.Web.GUIDI_GITHUB;
@@ -18,6 +9,7 @@ import static util.Web.browse;
 import java.util.LinkedList;
 import java.util.List;
 
+import control.ButtonViewGarage;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
@@ -90,12 +82,7 @@ public class GarageMenuBar extends MenuBar {
 		MenuItem miAddCar = new MenuItem("Car (Check-In)");
 		miAddCar.setOnAction(e -> {
 			BorderPane root = (BorderPane) super.getParent();
-			CheckInPane checkIn = new CheckInPane(spaces);
-			BorderPane borderPane = new BorderPane(checkIn);
-			GarageTableView garageTable = new GarageTableView(spaces, borderPane);
-			checkIn.setGarageView(garageTable);
-			borderPane.setRight(garageTable.getContainer());
-			root.setCenter(borderPane);
+			root.setCenter(new CheckInPane(spaces));
 		});
 		Menu m = new Menu("Insert");
 		m.setGraphic(loadImgV(INSERT_ICON));
@@ -111,12 +98,7 @@ public class GarageMenuBar extends MenuBar {
 		MenuItem miDelCar = new MenuItem("Car (Check-Out)");
 		miDelCar.setOnAction(e -> {
 			BorderPane root = (BorderPane) super.getParent();
-			CheckOutPane checkIn = new CheckOutPane(spaces);
-			BorderPane borderPane = new BorderPane(checkIn);
-			GarageTableView garageTable = new GarageTableView(spaces, borderPane);
-			checkIn.setGarageView(garageTable);
-			borderPane.setRight(garageTable.getContainer());
-			root.setCenter(borderPane);
+			root.setCenter(new CheckOutPane(spaces));
 		});
 		Menu m = new Menu("Delete");
 		m.setGraphic(loadImgV(DELETE_ICON));
@@ -134,8 +116,14 @@ public class GarageMenuBar extends MenuBar {
 			HistoryPane historyPane = new HistoryPane();			
 			root.setCenter(historyPane.getContainer());
 		});
+		MenuItem mi2 = new MenuItem("Garage");
+		mi2.setGraphic(loadImgV(GARAGE_ICON));
+		mi2.setOnAction(e -> {
+			ButtonViewGarage bt = new ButtonViewGarage(spaces);
+			bt.fire();
+		});
 		Menu m = new Menu("View");
-		m.getItems().addAll(mi1);
+		m.getItems().addAll(mi1, mi2);
 		return m;
 	}
 

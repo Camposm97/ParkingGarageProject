@@ -3,6 +3,7 @@ package view;
 import javax.swing.JOptionPane;
 
 import app.App;
+import control.ButtonViewGarage;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -26,8 +27,7 @@ public class CheckInPane extends GridPane {
 	private CheckBox cbSkip;
 	private ComboBox<VehicleType> cbVehicleType;
 	private ComboBox<String> cbState;
-	private Button btAddVehicle;
-	private GarageTableView garageView;
+	private Button btAddVehicle, btViewGarage;
 	
 	public CheckInPane(ParkingLot spaces) {
 		this.spaces = spaces;
@@ -46,6 +46,20 @@ public class CheckInPane extends GridPane {
 		cbVehicleType.setOnAction(e -> { computeSpaceNumber(); });
 		cbState = LightWork.loadCb(State.getAbbreviationList());
 		btAddVehicle = loadBtAddVehicle();
+		btViewGarage = new ButtonViewGarage(spaces);
+	}
+	
+	private void showControls() {
+		HBox hBox = LightWork.loadHBox(btAddVehicle, btViewGarage);
+		hBox.setAlignment(Pos.CENTER);
+		addRow(0, new Label("License Plate:"), tfPlate);
+		addRow(1, new Label("State:"), cbState);
+		addRow(2, new Label("Vehicle Type:"), cbVehicleType);
+		add(cbSkip, 1, 3);
+		addRow(4, new Label("Space Number:"), tfSpaceNum);
+		add(hBox, 0, 5, 2, 1);
+		cbState.prefWidthProperty().bind(tfPlate.widthProperty());
+		cbVehicleType.prefWidthProperty().bind(tfPlate.widthProperty());
 	}
 	
 	private void computeSpaceNumber() {
@@ -74,30 +88,7 @@ public class CheckInPane extends GridPane {
 					alert.showAndWait();
 				}
 			}
-			this.garageView.refreshGrid();
 		});
 		return bt;
 	}
-	
-	private void showControls() {
-		HBox hBox = LightWork.loadHBox(btAddVehicle);
-		hBox.setAlignment(Pos.CENTER);
-		addRow(0, new Label("License Plate:"), tfPlate);
-		addRow(1, new Label("State:"), cbState);
-		addRow(2, new Label("Vehicle Type:"), cbVehicleType);
-		add(cbSkip, 1, 3);
-		addRow(4, new Label("Space Number:"), tfSpaceNum);
-		add(hBox, 0, 5, 2, 1);
-		cbState.prefWidthProperty().bind(tfPlate.widthProperty());
-		cbVehicleType.prefWidthProperty().bind(tfPlate.widthProperty());
-	}
-
-	public GarageTableView getGarageView() {
-		return garageView;
-	}
-
-	public void setGarageView(GarageTableView garageView) {
-		this.garageView = garageView;
-	}
-	
 }
