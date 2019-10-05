@@ -14,7 +14,7 @@ class CashRegisterT {
 	@Test
 	void testCashRegister() throws InterruptedException {
 		pL.spaceInserter(v1, 0);
-		Thread.sleep(3);
+		Thread.sleep(1);
 		cr.closeTicket(pL, v1.getLicensePlate());
 	}
 

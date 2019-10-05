@@ -1,8 +1,9 @@
 package userData;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
-
+import util.DataLoader;
 import util.DataSaver;
 
 public class UserDataManager implements Serializable{
@@ -120,6 +121,15 @@ public class UserDataManager implements Serializable{
 	public void saveUserList() {
 		String adr = "resources/userdat.data";
 		DataSaver.writeObject(this, adr);
+	}
+	public void loadUserList() {
+		String adr = "resources/userdat.data";
+		File file = new File(adr);
+		boolean exists = file.exists();
+		if (exists) {
+			UserDataManager temp = (UserDataManager)DataLoader.readObject(adr);
+			this.userList = temp.getUserList();
+		}
 	}
 	public ArrayList<UserData> getUserList() {
 		return userList;
