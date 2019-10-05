@@ -1,5 +1,7 @@
 package view;
 
-public class CheckOutPane {
+import javafx.scene.layout.GridPane;
+
+public class CheckOutPane extends GridPane {
 
 }
