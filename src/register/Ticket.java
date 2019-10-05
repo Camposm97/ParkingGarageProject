@@ -1,7 +1,6 @@
 package register;
 
 import pLData.Space;
-import pLData.ParkingLot;
 
 public class Ticket {
 	

@@ -79,7 +79,7 @@ public class GarageMenuBar extends MenuBar {
 		});
 		MenuItem miDelUser = new MenuItem("User");
 		miDelUser.setOnAction(e -> {
-			System.out.println("Show a pop-up window");
+			new DeleteUserWindow(users);
 		});
 		MenuItem miDelCar = new MenuItem("Car (Check-Out)");
 		miDelCar.setOnAction(e -> {

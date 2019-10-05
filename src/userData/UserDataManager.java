@@ -3,6 +3,8 @@ package userData;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import util.DataSaver;
+
 public class UserDataManager implements Serializable{
 
 	private static final long serialVersionUID = 3880700975400631301L;
@@ -23,11 +25,11 @@ public class UserDataManager implements Serializable{
 		userList.add(new UserData(firstName, lastName, password, index));
 	}
 	//get user by index
-	private UserData getUser (int index) {
+	public UserData getUser (int index) {
 		return this.userList.get(index);
 	}
 	//get user by username
-	private UserData getUser (String userName) {
+	public UserData getUser (String userName) {
 		int index = this.getIndexFromUserName(userName);
 		
 		return this.userList.get(index);
@@ -115,6 +117,10 @@ public class UserDataManager implements Serializable{
 		}
 		return null; 
 	}
+	public void saveUserList() {
+		String adr = "/resources/userdat.data";
+		DataSaver.writeObject(this, adr);
+	}
 	public ArrayList<UserData> getUserList() {
 		return userList;
 	}
@@ -122,7 +128,4 @@ public class UserDataManager implements Serializable{
 	public void setUserList(ArrayList<UserData> userList) {
 		this.userList = userList;
 	}
-	
-	
-
 }
