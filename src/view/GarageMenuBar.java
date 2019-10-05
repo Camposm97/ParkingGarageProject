@@ -1,14 +1,6 @@
 package view;
 
-import static util.ImgUtil.DELETE_ICON;
-import static util.ImgUtil.EXIT_ICON;
-import static util.ImgUtil.GITHUB_ICON;
-import static util.ImgUtil.HEAVY_WORK;
-import static util.ImgUtil.INSERT_ICON;
-import static util.ImgUtil.LIGHT_WORK;
-import static util.ImgUtil.USER_ICON;
-import static util.ImgUtil.WORK_ICON;
-import static util.ImgUtil.loadImgV;
+import static util.ImgUtil.*;
 import static util.Web.CAMPOS_GITHUB;
 import static util.Web.DEMONTE_GITHUB;
 import static util.Web.GUIDI_GITHUB;
@@ -117,6 +109,7 @@ public class GarageMenuBar extends MenuBar {
 
 	private Menu loadMenuView() {
 		MenuItem mi1 = new MenuItem("Daily Ticket Log");
+		mi1.setGraphic(loadImgV(HISTORY_ICON));
 		mi1.setOnAction(e -> {
 			BorderPane root = (BorderPane) super.getParent();
 			HistoryPane historyPane = new HistoryPane();
