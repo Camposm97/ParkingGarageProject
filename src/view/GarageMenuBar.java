@@ -25,19 +25,22 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import pLData.ParkingLot;
+import userData.UserData;
 import userData.UserDataManager;
 
 public class GarageMenuBar extends MenuBar {
 	private UserDataManager users;
+	private UserData user;
 	private ParkingLot spaces;
-	
-	public GarageMenuBar(UserDataManager users) {
+
+	public GarageMenuBar(UserDataManager users, UserData user) {
 		this.users = users;
+		this.user = user;
 		this.spaces = new ParkingLot(80, 10, 10); // Have it equal to an argument (Later);
 		this.getMenus().addAll(loadMenus());
 	}
-	
-	public List<Menu> loadMenus() {
+
+	private List<Menu> loadMenus() {
 		List<Menu> list = new LinkedList<>();
 		list.add(loadMenuFile());
 		list.add(loadMenuEdit());
@@ -45,8 +48,8 @@ public class GarageMenuBar extends MenuBar {
 		list.add(loadMenuHelp());
 		return list;
 	}
-	
-	public Menu loadMenuFile() {
+
+	private Menu loadMenuFile() {
 		MenuItem mi1 = new MenuItem("Sign Out");
 		mi1.setGraphic(loadImgV(USER_ICON));
 		mi1.setOnAction(e -> {
@@ -68,8 +71,16 @@ public class GarageMenuBar extends MenuBar {
 		m.getItems().addAll(mi1, mi2);
 		return m;
 	}
+
+	private Menu loadMenuEdit() {
+		Menu menuInsert = loadMenuInsert();
+		Menu menuDelete = loadMenuDelete();
+		Menu m = new Menu("Edit");
+		m.getItems().addAll(menuInsert, menuDelete);
+		return m;
+	}
 	
-	public Menu loadMenuEdit() {
+	private Menu loadMenuInsert() {
 		MenuItem miAddUser = new MenuItem("User");
 		miAddUser.setOnAction(e -> {
 			BorderPane root = (BorderPane) super.getParent();
@@ -80,6 +91,13 @@ public class GarageMenuBar extends MenuBar {
 			BorderPane root = (BorderPane) super.getParent();
 			root.setCenter(new CheckInPane(spaces));
 		});
+		Menu m = new Menu("Insert");
+		m.setGraphic(loadImgV(INSERT_ICON));
+		m.getItems().addAll(miAddUser, miAddCar);
+		return m;
+	}
+	
+	private Menu loadMenuDelete() {
 		MenuItem miDelUser = new MenuItem("User");
 		miDelUser.setOnAction(e -> {
 			new DeleteUserWindow(users);
@@ -89,18 +107,15 @@ public class GarageMenuBar extends MenuBar {
 			BorderPane root = (BorderPane) super.getParent();
 			root.setCenter(new CheckOutPane(spaces));
 		});
-		Menu menuInsert = new Menu("Insert");
-		menuInsert.setGraphic(loadImgV(INSERT_ICON));
-		menuInsert.getItems().addAll(miAddUser, miAddCar);
-		Menu menuDelete = new Menu("Delete");
-		menuDelete.setGraphic(loadImgV(DELETE_ICON));
-		menuDelete.getItems().addAll(miDelUser, miDelCar);
-		Menu m = new Menu("Edit");
-		m.getItems().addAll(menuInsert, menuDelete);
+		Menu m = new Menu("Delete");
+		m.setGraphic(loadImgV(DELETE_ICON));
+		if (user.isAdmin())
+			m.getItems().add(miDelUser);
+		m.getItems().add(miDelCar);
 		return m;
 	}
-	
-	public Menu loadMenuView() {
+
+	private Menu loadMenuView() {
 		MenuItem mi1 = new MenuItem("Daily Ticket Log");
 		mi1.setOnAction(e -> {
 			BorderPane root = (BorderPane) super.getParent();
@@ -111,29 +126,35 @@ public class GarageMenuBar extends MenuBar {
 		m.getItems().addAll(mi1);
 		return m;
 	}
-	
-	public Menu loadMenuHelp() { 
+
+	private Menu loadMenuHelp() {
 		MenuItem mi1 = new MenuItem("Michael Campos");
-		mi1.setOnAction(e -> { browse(CAMPOS_GITHUB); });
+		mi1.setOnAction(e -> {
+			browse(CAMPOS_GITHUB);
+		});
 		MenuItem mi2 = new MenuItem("Matthew Guidi");
-		mi2.setOnAction(e -> { browse(GUIDI_GITHUB); });
+		mi2.setOnAction(e -> {
+			browse(GUIDI_GITHUB);
+		});
 		MenuItem mi3 = new MenuItem("Chris Demonte");
-		mi3.setOnAction(e -> { browse(DEMONTE_GITHUB); });
+		mi3.setOnAction(e -> {
+			browse(DEMONTE_GITHUB);
+		});
 		Menu m2 = new Menu("Developer's Github");
 		m2.setGraphic(loadImgV(GITHUB_ICON));
 		m2.getItems().addAll(mi1, mi2, mi3);
-		
+
 		Menu m1 = new Menu("Help");
 		m1.getItems().addAll(m2, loadWorkMenu());
 		return m1;
 	}
-	
-	public Menu loadWorkMenu() {
+
+	private Menu loadWorkMenu() {
 		MenuItem mi1 = new MenuItem();
 		mi1.setGraphic(loadImgV(HEAVY_WORK));
 		MenuItem mi2 = new MenuItem();
 		mi2.setGraphic(loadImgV(LIGHT_WORK));
-		
+
 		Menu m1 = new Menu("Heavy Work");
 		m1.getItems().add(mi1);
 		Menu m2 = new Menu("Light Work");
