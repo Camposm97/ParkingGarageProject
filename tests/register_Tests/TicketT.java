@@ -12,7 +12,7 @@ import vehicleH.VehicleType;
 class TicketT {
 	
 	public Space spaceTest = new Space(VehicleType.CAR);
-	public Vehicle v1 = new Vehicle("123-4567",VehicleType.CAR);
+	public Vehicle v1 = new Vehicle("123-4567",VehicleType.CAR, "N/A");
 	@Test
 	void testTicketCreation() throws InterruptedException {
 		spaceTest.vehicleInsertion(v1);

@@ -9,7 +9,7 @@ import vehicleH.VehicleType;
 
 class CashRegisterT {
 	public ParkingLot pL = new ParkingLot(1, 1, 1);
-	public Vehicle v1 = new Vehicle("123-4567", VehicleType.CAR);
+	public Vehicle v1 = new Vehicle("123-4567", VehicleType.CAR, "NY");
 	public CashRegister cr = new CashRegister();
 	@Test
 	void testCashRegister() throws InterruptedException {

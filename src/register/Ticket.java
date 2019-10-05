@@ -37,6 +37,7 @@ public class Ticket {
 				+ "Ticket : " + this.ticketID + "\n" +
 				"****************************************\n"
 				+ "Vehicle Type : " + space.getVehicleParked().getVTypeS() + "\n"
+				+ "State: " + space.getVehicleParked().getVehicleState().toString() + "\n"
 				+ "Plate Number : " + space.getVehicleParked().getLicensePlate() + "\n"
 				+ "Space : " + spaceNumber + "\n"
 				+ "Rate : " + space.getSpecialRate() + "\n"

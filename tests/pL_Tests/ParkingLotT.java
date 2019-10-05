@@ -2,15 +2,16 @@ package pL_Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+
 import org.junit.jupiter.api.Test;
 
 import pLData.*;
-import vehicleH.Vehicle;
-import vehicleH.VehicleType;
+import vehicleH.*;
 
 class ParkingLotT {
 	public ParkingLot tD = new ParkingLot(80, 10, 10);
-	public Vehicle tV = new Vehicle("123-3443", VehicleType.MOTORCYCLE);
+	public Vehicle tV = new Vehicle("123-3443", VehicleType.MOTORCYCLE, "NY");
 	@Test
 	void carParkingTest() {
 		// Test that it can park this car in the one car slot

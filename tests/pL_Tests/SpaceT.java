@@ -8,7 +8,7 @@ import vehicleH.*;
 
 class SpaceT {
 	public Space spaceTruck = new Space(VehicleType.TRUCK);
-	public Vehicle v1 = new Vehicle("123-1234", VehicleType.CAR);
+	public Vehicle v1 = new Vehicle("123-1234", VehicleType.CAR, "NY");
 	@Test
 	void testArrivalTime() {
 		// Makes sure that the time we recorded is in the past compared to the current
