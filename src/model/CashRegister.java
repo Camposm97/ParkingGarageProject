@@ -11,13 +11,11 @@ import util.DataSaver;
 
 public class CashRegister {
 
-	private int totalSales;
 	private int ticketCounter;
 	private DailyData todaysData;
 	private UserData activeUser;
 	
 	public CashRegister (UserData activeUser) {
-		this.totalSales = 0;
 		this.ticketCounter = 1;
 		this.activeUser = activeUser;
 		this.loadData();
@@ -51,11 +49,13 @@ public class CashRegister {
 				}
 			}while(payment < eP);
 		}
-		totalSales += payment;
+		
 		ticket.closeTicket(payment);
 		System.out.println(ticket.getTicketString());
+		todaysData.addToSales(payment);
 		todaysData.logTransaction(ticket.getTicketString());
-		todaysData.logTransaction("Total Sales: " + this.totalSales + "\n");
+		todaysData.logTransaction("Total Sales: " + payment + "\n");
+		
 		this.saveDailyData();
 	}
 	
@@ -88,14 +88,6 @@ public class CashRegister {
 	public void saveDailyData() {
 		this.todaysData.saveDailyData();
 	}
-	public int getTotalSales() {
-		return totalSales;
-	}
-
-	public void setTotalSales(int totalSales) {
-		this.totalSales = totalSales;
-	}
-
 	public int getTicketCounter() {
 		return ticketCounter;
 	}

@@ -21,8 +21,9 @@ public class DailyData implements Serializable{
 	 * @param salesLog is a list of strings representing transactions
 	 * @param garageLog is a record of the garage at certain times of the day
 	 */
-	ArrayList<String> salesLog;
-	ArrayList<String> garageLog;
+	private double totalSales;
+	private ArrayList<String> salesLog;
+	private ArrayList<String> garageLog;
 	
 	public DailyData() {
 		salesLog = new ArrayList<String>();
@@ -35,6 +36,7 @@ public class DailyData implements Serializable{
 	 */
 	private void startLogs() {
 		Date date = new Date();
+		totalSales = 0.0;
 		String openRegister = new String ("Register Opened: " + date.toString());
 		salesLog.add(openRegister);
 		String openParkingLot = new String ("Parking Lot Opened " + date.toString());
@@ -56,6 +58,9 @@ public class DailyData implements Serializable{
 		garageLog.add(date.toString() + "\n" + lotData.toString());
 	}
 
+	public void addToSales(double sale) {
+		this.totalSales += sale;
+	}
 	/**
 	 * Overrides the Object toString method to output the data logs in a readable format
 	 */
@@ -65,8 +70,8 @@ public class DailyData implements Serializable{
 		String output = new String();
 		output += "Garage Log : " + date.toString() + "\n";
 		output += "****************************************\n"
-				+ "\tSales\n"
-				+ "****************************************\n";
+				+ "\tSales\n Total Sales : $" + this.totalSales
+				+ "\n****************************************\n";
 		for (int i = 0; i < salesLog.size(); i++) {
 			output += salesLog.get(i);
 		}
