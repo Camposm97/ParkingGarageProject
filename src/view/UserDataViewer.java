@@ -1,5 +1,9 @@
 package view;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -9,14 +13,34 @@ import model.UserDataManager;
 
 public class UserDataViewer extends BorderPane {
 	private UserDataManager users;
+	private TableView<UserData> tv;
 
 	public UserDataViewer(UserDataManager users) {
 		this.users = users;
-		super.setCenter(loadTvUsers());
+		initTableView();
+		super.setCenter(tv);
 	}
 
-	public TableView<UserData> loadTvUsers() {
-		TableView<UserData> tv = new TableView<>();
+	private void initTableView() {
+		tv = new TableView<>();
+		initTableColumns();
+		tv.setOnContextMenuRequested(e -> {
+			ContextMenu cm = new ContextMenu();
+			MenuItem mi1 = new MenuItem("Enable User");
+			mi1.setOnAction(new ContextMenuHandler(0));
+			MenuItem mi2 = new MenuItem("Disable User");
+			mi2.setOnAction(new ContextMenuHandler(1));
+			MenuItem mi3 = new MenuItem("Enable Admin");
+			mi3.setOnAction(new ContextMenuHandler(2));
+			MenuItem mi4 = new MenuItem("Disable Admin");
+			mi4.setOnAction(new ContextMenuHandler(3));
+			cm.getItems().addAll(mi1, mi2, mi3, mi4);
+			cm.show(this.getScene().getWindow());
+		});
+		tv.getItems().addAll(users.getUserList());
+	}
+	
+	private void initTableColumns() {
 		TableColumn<UserData, String> colUsername = new TableColumn<>("Username");
 		colUsername.setCellValueFactory(new PropertyValueFactory<UserData, String>("userName"));
 		TableColumn<UserData, String> colPassword = new TableColumn<>("Password");
@@ -35,7 +59,39 @@ public class UserDataViewer extends BorderPane {
 		tv.getColumns().add(colLastName);
 		tv.getColumns().add(colDisabled);
 		tv.getColumns().add(colAdmin);
-		tv.getItems().addAll(users.getUserList());
-		return tv;
+		
+	}
+	
+	private class ContextMenuHandler implements EventHandler<ActionEvent> {
+		private int code;
+		
+		public ContextMenuHandler(int code) {
+			this.code = code;
+		}
+		
+		@Override
+		public void handle(ActionEvent event) {
+			UserData user = tv.getSelectionModel().getSelectedItem();
+			if (user != null)
+				computeCode(user);
+		}
+		
+		private void computeCode(UserData user) {
+			switch (code) {
+			case 0: // Enable User
+				
+				break;
+			case 1: // Disable User
+				user.closeAccount();
+				break;
+			case 2: // Enable Admin
+				user.setAdmin(true);
+				break;
+				
+			case 3: // Disable Admin
+				user.setAdmin(false);
+			}
+		}
+		
 	}
 }
