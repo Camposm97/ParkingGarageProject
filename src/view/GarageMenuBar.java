@@ -27,8 +27,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import model.*;
-import view.*;
+import model.Garage;
+import model.UserData;
 
 public class GarageMenuBar extends MenuBar {
 	private Garage garage;
@@ -93,7 +93,9 @@ public class GarageMenuBar extends MenuBar {
 		});
 		Menu m = new Menu("Insert");
 		m.setGraphic(loadImgV(INSERT_ICON));
-		m.getItems().addAll(miAddUser, miAddCar);
+		if (signedInUser.isAdmin())
+			m.getItems().add(miAddUser);
+		m.getItems().add(miAddCar);
 		return m;
 	}
 	
