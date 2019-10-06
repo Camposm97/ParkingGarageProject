@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import history.DailyData;
 import pLData.ParkingLot;
 import pLData.Space;
+import userData.UserData;
 import util.DataLoader;
 import util.DataSaver;
 import vehicleH.State;
@@ -16,16 +17,18 @@ public class CashRegister {
 	private int totalSales;
 	private int ticketCounter;
 	private DailyData todaysData;
+	private UserData activeUser;
 	
-	public CashRegister () {
+	public CashRegister (UserData activeUser) {
 		this.totalSales = 0;
 		this.ticketCounter = 1;
+		this.activeUser = activeUser;
 		this.loadData();
 	}
 	public void closeTicket(ParkingLot pL, String licensePlate, State s) {
 		int spaceID = pL.vehicleFinder(licensePlate, s);
 		Space tSpace = pL.spaceRelease(spaceID);
-		Ticket ticket = new Ticket(tSpace, spaceID);
+		Ticket ticket = new Ticket(tSpace, spaceID, this.activeUser);
 		double payment;
 		String sP;
 		String tP = String.format("%.2f", ticket.getExpectedCost());
