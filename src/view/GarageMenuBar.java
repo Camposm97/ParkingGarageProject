@@ -10,6 +10,7 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
+import app.App;
 import control.ViewGarageButton;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -45,12 +46,13 @@ public class GarageMenuBar extends MenuBar {
 	}
 
 	private Menu loadMenuFile() {
-		MenuItem mi1 = new MenuItem("Sign Out");
+		MenuItem mi1 = new MenuItem("Sign out");
 		mi1.setGraphic(loadImgV(USER_ICON));
 		mi1.setOnAction(e -> {
 			Scene scene = super.getScene();
 			scene.setRoot(new LoginPane(garage));
 			Stage stage = (Stage) scene.getWindow();
+			stage.setTitle(App.TITLE);
 			stage.setWidth(LoginPane.WIDTH);
 			stage.setHeight(LoginPane.HEIGHT);
 			stage.centerOnScreen();
