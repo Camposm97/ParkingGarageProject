@@ -44,8 +44,8 @@ public class ImgUtil {
 	
 	/**
 	 * Uses loadImg(String url) to return an ImageView.  
-	 * @param url
-	 * @return ImageView
+	 * @param url The path to grab the image
+	 * @return ImageView Returns Image in this form for GUI application
 	 */
 	public static ImageView loadImgV(String url) {
 		return new ImageView(loadImg(url));

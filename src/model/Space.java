@@ -18,7 +18,7 @@ public class Space implements Serializable {
 	 * Use 1,000 for 1 millisecond to equal one second <br>
 	 * Use 1 for normal time. <br>
 	 */
-	public static final long TIME_MODIFIER = 1;
+	public static final long TIME_MODIFIER = 60000;
 	
 	private static final long serialVersionUID = 1L;
 	private VehicleType parkingSpaceType;

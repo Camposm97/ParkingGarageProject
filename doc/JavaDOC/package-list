@@ -2,9 +2,5 @@ app
 control
 history
 model
-pL_Tests
-register_Tests
 util
-util_Tests
-vehicle_Tests
 view
