@@ -14,12 +14,19 @@ public class CashRegister {
 	private int ticketCounter;
 	private DailyData todaysData;
 	private UserData activeUser;
+<<<<<<< HEAD
+
+	public CashRegister(UserData activeUser) {
+		this.totalSales = 0;
+=======
 	
 	public CashRegister (UserData activeUser) {
+>>>>>>> 1e359d4029bbd440f50940043c0d4735b8f772fc
 		this.ticketCounter = 1;
 		this.activeUser = activeUser;
 		this.loadData();
 	}
+
 	public void closeTicket(ParkingLot pL, String licensePlate, State s) {
 		int spaceID = pL.vehicleFinder(licensePlate, s);
 		Space tSpace = pL.spaceRelease(spaceID);
@@ -28,26 +35,24 @@ public class CashRegister {
 		String sP;
 		String tP = String.format("%.2f", ticket.getExpectedCost());
 		try {
-				sP = JOptionPane.showInputDialog(
-					"The charge of your ticket is $" + tP);
-				sP = sP.replaceAll("[$]", "");
-		   payment = Double.parseDouble(sP);
-		}catch(Exception e) {
+			sP = JOptionPane.showInputDialog("The charge of your ticket is $" + tP);
+			sP = sP.replaceAll("[$]", "");
+			payment = Double.parseDouble(sP);
+		} catch (Exception e) {
 			payment = 0;
 		}
 		double eP = ticket.getExpectedCost();
-		if(payment < eP) {
+		if (payment < eP) {
 			do {
 				try {
-						sP = JOptionPane.showInputDialog("This is not enough to cover the charge pay at least: $"
-							+ tP);
-						sP = sP.replaceAll("[$]", "");
-				payment = Double.parseDouble(sP);
-				}catch(Exception e) {
+					sP = JOptionPane.showInputDialog("This is not enough to cover the charge pay at least: $" + tP);
+					sP = sP.replaceAll("[$]", "");
+					payment = Double.parseDouble(sP);
+				} catch (Exception e) {
 					payment = 0;
-					
+
 				}
-			}while(payment < eP);
+			} while (payment < eP);
 		}
 		
 		ticket.closeTicket(payment);
@@ -58,36 +63,36 @@ public class CashRegister {
 		
 		this.saveDailyData();
 	}
-	
+
 	public void makeDailyDataEntry(int spaceNumber) {
 		Date date = new Date();
 		String entry = new String();
-		entry += "New Ticket Opened: \n" 
-				+ date.toString() + "\n"
-				+ "Space Number : " + spaceNumber + "\n"
+		entry += "New Ticket Opened: \n" + date.toString() + "\n" + "Space Number : " + spaceNumber + "\n"
 				+ "****************************************\n";
 		todaysData.logTransaction(entry);
-		
+
 	}
 
 	public void loadData() {
 		LocalDate date = LocalDate.now();
-		String adr = "resources/daily" + date.getMonthValue() + date.getDayOfMonth() + ".data";
-		File file = new File(adr);
+		String src = "resources/daily_" + date.getYear() + "_" + date.getMonthValue() + "_" + date.getDayOfMonth()
+				+ ".log";
+		File file = new File(src);
 		boolean exists = file.exists();
 		if (exists) {
-			DailyData data = (DailyData)DataLoader.readObject(adr);
+			DailyData data = (DailyData) DataLoader.readObject(src);
 			this.todaysData = data;
-		}
-		else {
+		} else {
 			DailyData data = new DailyData();
 			this.todaysData = data;
-			DataSaver.writeObject(data, adr);
-		}	
+			DataSaver.writeObject(data, src);
+		}
 	}
+
 	public void saveDailyData() {
 		this.todaysData.saveDailyData();
 	}
+	
 	public int getTicketCounter() {
 		return ticketCounter;
 	}
@@ -96,11 +101,13 @@ public class CashRegister {
 		this.ticketCounter = ticketCounter;
 
 	}
+
 	public DailyData getTodaysData() {
 		return todaysData;
 	}
+
 	public void setTodaysData(DailyData todaysData) {
 		this.todaysData = todaysData;
 	}
-	
+
 }
