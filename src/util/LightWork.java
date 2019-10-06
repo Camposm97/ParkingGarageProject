@@ -1,5 +1,6 @@
 package util;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javafx.geometry.Insets;
@@ -12,6 +13,10 @@ import javafx.scene.layout.VBox;
 
 public class LightWork { // Originally named CamposFX
 	public static final Insets DEFAULT_INSETS = new Insets(10);
+	
+	public static String emitDailyLog(LocalDate date) {
+		return "systemData/daily_" + date.getYear() + "_" + date.getMonthValue() + "_" + date.getDayOfMonth() + ".log";
+	}
 	
 	public static VBox loadVBox(Node...nodes) {
 		VBox vBox = new VBox(10);

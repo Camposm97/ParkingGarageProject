@@ -8,20 +8,15 @@ import javax.swing.JOptionPane;
 import history.DailyData;
 import util.DataLoader;
 import util.DataSaver;
+import util.LightWork;
 
 public class CashRegister {
 
 	private int ticketCounter;
 	private DailyData todaysData;
 	private UserData activeUser;
-<<<<<<< HEAD
-
-	public CashRegister(UserData activeUser) {
-		this.totalSales = 0;
-=======
 	
 	public CashRegister (UserData activeUser) {
->>>>>>> 1e359d4029bbd440f50940043c0d4735b8f772fc
 		this.ticketCounter = 1;
 		this.activeUser = activeUser;
 		this.loadData();
@@ -75,8 +70,7 @@ public class CashRegister {
 
 	public void loadData() {
 		LocalDate date = LocalDate.now();
-		String src = "resources/daily_" + date.getYear() + "_" + date.getMonthValue() + "_" + date.getDayOfMonth()
-				+ ".log";
+		String src = LightWork.emitDailyLog(date);
 		File file = new File(src);
 		boolean exists = file.exists();
 		if (exists) {
