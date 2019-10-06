@@ -5,8 +5,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
-import model.*;
-import util.*;
+import pLData.ParkingLot;
+import util.DataSaver;
+
 public class DailyData implements Serializable{
 
 	private static final long serialVersionUID = -2995963835008199289L;

@@ -1,13 +1,9 @@
-package model;
+package vehicleH;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * This holds the enum State since there is a limited amount of state's to register in
- * @author Matt Guidi
- *
- */
+
 public enum State {
 
     ALABAMA("Alabama", "AL"), ALASKA("Alaska", "AK"), ARIZONA("Arizona", "AZ"), ARKANSAS(

@@ -2,7 +2,7 @@ package view;
 
 import javafx.scene.layout.BorderPane;
 import model.Garage;
-import model.UserData;
+import userData.UserData;
 
 public class MainMenu extends BorderPane {
 	

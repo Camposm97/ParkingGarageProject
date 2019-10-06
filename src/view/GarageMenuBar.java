@@ -27,8 +27,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import model.*;
-import view.*;
+import model.Garage;
+import userData.UserData;
 
 public class GarageMenuBar extends MenuBar {
 	private Garage garage;

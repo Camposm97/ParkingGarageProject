@@ -3,11 +3,8 @@ package pL_Tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
-import model.Space;
-import model.Vehicle;
-import model.VehicleType;
-import model.*;
+import pLData.*;
+import vehicleH.*;
 
 class SpaceT {
 	public Space spaceTruck = new Space(VehicleType.TRUCK);

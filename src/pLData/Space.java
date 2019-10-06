@@ -1,7 +1,8 @@
-package model;
+package pLData;
 
 import java.util.Date;
 
+import vehicleH.*;
 /**
  * Space's whole purpose is store a lot of the data on the car as well as the values 
  * that have been selected at the time of check in. Most of this gets reset with each car removal.

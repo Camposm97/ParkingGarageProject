@@ -5,9 +5,9 @@ import java.util.Optional;
 import app.App;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import model.UserData;
-import model.UserDataManager;
 import javafx.scene.control.TextInputDialog;
+import userData.UserData;
+import userData.UserDataManager;
 
 public class DeleteUserWindow extends TextInputDialog {
 	

@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import model.*;
+import pLData.ParkingLot;
 import util.LightWork;
 import view.GarageTableView;
 

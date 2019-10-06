@@ -15,8 +15,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import model.*;
+import pLData.ParkingLot;
+import pLData.Space;
 import util.LightWork;
+import vehicleH.State;
+import vehicleH.Vehicle;
+import vehicleH.VehicleType;
 
 public class CheckInPane extends GridPane {
 	private ParkingLot spaces;

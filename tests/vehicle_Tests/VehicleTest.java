@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import model.Vehicle;
-import model.VehicleType;
+import vehicleH.Vehicle;
+import vehicleH.VehicleType;
 
 class VehicleTest {
 

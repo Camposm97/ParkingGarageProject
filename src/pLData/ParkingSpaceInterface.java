@@ -1,5 +1,6 @@
-package model;
+package pLData;
 
+import vehicleH.*;
 /**
  * This is the interface that ParkingLot implements
  * Honestly don't think this was necessary, but oh well
