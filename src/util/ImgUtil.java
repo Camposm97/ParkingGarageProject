@@ -7,6 +7,11 @@ import java.io.FileNotFoundException;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * Purpose of this class is to store the paths of the images in the "images" folder
+ * and to provide methods to load them in using JavaFX.
+ * @author Camposm97
+ */
 public class ImgUtil {
 	public static final String EXIT_ICON = "images/exit.png";
 	public static final String GITHUB_ICON = "images/github.png";
@@ -18,17 +23,30 @@ public class ImgUtil {
 	public static final String WORK_ICON = "images/work.png";
 	public static final String HISTORY_ICON = "images/history.png";
 	public static final String GARAGE_ICON = "images/garage.png";
+	public static final String JAVADOC_ICON = "images/javadoc.png";
 	
+	/**
+	 * Returns an Image using the parameter (url) as a File. If the path to the file does not exist
+	 * then the method will return null.
+	 * @param url
+	 * @return Image
+	 */
 	public static Image loadImg(String url) {
 		FileInputStream fis = null;
 		try {
 			fis = new FileInputStream(new File(url));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+			return null;
 		}
 		return new Image(fis);
 	}
-
+	
+	/**
+	 * Uses loadImg(String url) to return an ImageView.  
+	 * @param url
+	 * @return ImageView
+	 */
 	public static ImageView loadImgV(String url) {
 		return new ImageView(loadImg(url));
 	}

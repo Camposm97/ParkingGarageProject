@@ -1,15 +1,6 @@
 package view;
 
-import static util.ImgUtil.DELETE_ICON;
-import static util.ImgUtil.EXIT_ICON;
-import static util.ImgUtil.GARAGE_ICON;
-import static util.ImgUtil.HEAVY_WORK;
-import static util.ImgUtil.HISTORY_ICON;
-import static util.ImgUtil.INSERT_ICON;
-import static util.ImgUtil.LIGHT_WORK;
-import static util.ImgUtil.USER_ICON;
-import static util.ImgUtil.WORK_ICON;
-import static util.ImgUtil.loadImgV;
+import static util.ImgUtil.*;
 import static util.Web.CAMPOS_GITHUB;
 import static util.Web.DEMONTE_GITHUB;
 import static util.Web.GUIDI_GITHUB;
@@ -170,12 +161,14 @@ public class GarageMenuBar extends MenuBar {
 			browse(DEMONTE_GITHUB);
 		});
 		Menu m = new Menu("Developer's Github");
+		m.setGraphic(loadImgV(GITHUB_ICON));
 		m.getItems().addAll(mi1, mi2, mi3);
 		return m;
 	}
 
  	private MenuItem loadJavaDoc() {
- 		MenuItem mi = new Menu("Javadoc");
+ 		MenuItem mi = new MenuItem("Javadoc");
+ 		mi.setGraphic(loadImgV(JAVADOC_ICON));
  		mi.setOnAction(e -> {
  			File file = new File("doc/JavaDOC/index.html");
  			WebView wv = new WebView();
