@@ -45,7 +45,7 @@ public class GarageMenuBar extends MenuBar {
 	}
 
 	private Menu loadMenuFile() {
-		MenuItem mi1 = new MenuItem("Sign Out");
+		MenuItem mi1 = new MenuItem("Sign out");
 		mi1.setGraphic(loadImgV(USER_ICON));
 		mi1.setOnAction(e -> {
 			Scene scene = super.getScene();
