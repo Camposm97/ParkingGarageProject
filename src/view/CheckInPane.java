@@ -63,6 +63,9 @@ public class CheckInPane extends GridPane {
 		Vehicle v = new Vehicle(tfPlate.getText(), cbVehicleType.getValue(), cbState.getValue());
 		int i = spaces.spaceFinder(v.getVType(), cbSkip.isSelected());
 		tfSpaceNum.setText(String.valueOf(i));
+		if(i == -1) {
+			tfSpaceNum.setText("Please fill all fields!");
+		}
 	}
 	
 	private Button loadBtAddVehicle() {
@@ -72,7 +75,7 @@ public class CheckInPane extends GridPane {
 			String licensePlate = tfPlate.getText();
 			VehicleType vType = cbVehicleType.getValue();
 			String state = cbState.getValue();
-			if (spaceNum != null && state != null) {
+			if (spaceNum != null && state != null && !licensePlate.equals("")) {
 				int i = JOptionPane.showConfirmDialog(null, "Confirm selection for space # " + spaceNum + "?",
 						"Space Confirmation" , 0, 3);
 				if (i == 0) { // Yes
@@ -85,6 +88,8 @@ public class CheckInPane extends GridPane {
 					alert.showAndWait();
 					((BorderPane) this.getParent()).setCenter(null);
 				}
+			}else{
+				tfSpaceNum.setText("Please fill all fields!");
 			}
 		});
 		return bt;
