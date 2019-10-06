@@ -176,10 +176,6 @@ public class GarageMenuBar extends MenuBar {
  			we.load(file.toURI().toString());
  			BorderPane root = (BorderPane) getParent();
  			root.setCenter(wv);
-// 			Stage stage = new Stage();
-// 			stage.setTitle(App.TITLE);
-// 			stage.setScene(new Scene(new StackPane(wv)));
-// 			stage.show();
  		});
  		return mi;
  	}

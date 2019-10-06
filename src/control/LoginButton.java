@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import model.UserData;
 import model.UserDataManager;
 import view.LoginPane;
-import view.MainMenu;
+import view.MainMenuPane;
 
 public class LoginButton extends Button {
 	private LoginPane login;
@@ -46,7 +46,7 @@ public class LoginButton extends Button {
 		
 		public void validLogin() {
 			Stage stage = (Stage) login.getScene().getWindow();
-			login.getScene().setRoot(new MainMenu(login.getGarage(), user));
+			login.getScene().setRoot(new MainMenuPane(login.getGarage(), user));
 			stage.setWidth(App.WIDTH);
 			stage.setHeight(App.HEIGHT);
 			stage.centerOnScreen();

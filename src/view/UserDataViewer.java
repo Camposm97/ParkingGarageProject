@@ -11,16 +11,22 @@ import javafx.scene.layout.BorderPane;
 import model.UserData;
 import model.UserDataManager;
 
+/**
+ * Purpose of this class is to take a collection of users and display them
+ * on a table giving admins the ability to disable or give the selected
+ * user admin permissions.
+ * @author Michael Campos
+ */
 public class UserDataViewer extends BorderPane {
 	private UserDataManager users;
 	private TableView<UserData> tv;
-
+	
 	public UserDataViewer(UserDataManager users) {
 		this.users = users;
 		initTableView();
 		super.setCenter(tv);
 	}
-
+	
 	private void initTableView() {
 		tv = new TableView<>();
 		initTableColumns();
