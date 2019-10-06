@@ -104,8 +104,13 @@ public class GarageTableView {
 			label.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent mouseEvent) {
+					if(spaces.get(j).getVehicleParked()!= null) {
 					String message = spaces.get(j).getVehicleParked().toString();
 					JOptionPane.showMessageDialog(null, message);
+					}else {
+						String message = spaces.get(j).toString();
+						JOptionPane.showMessageDialog(null, message);
+					}
 				}
 			});
 			
