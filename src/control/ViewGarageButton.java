@@ -14,6 +14,11 @@ import model.*;
 import util.LightWork;
 import view.GarageTableView;
 
+/**
+ * Purpose of this class is when pressed, it opens a window
+ * display all the statuses of the Parking Garage.
+ * @author Michael Campos
+ */
 public class ViewGarageButton extends Button {	
 	
 	public ViewGarageButton(ParkingLot spaces) {
@@ -22,6 +27,10 @@ public class ViewGarageButton extends Button {
 	}
 	
 	
+	/**
+	 * EventHandler for the ViewGarageButton. 
+	 * @author Michael Campos
+	 */
 	public class ViewGarageHandler implements EventHandler<ActionEvent> {
 		private ParkingLot spaces;
 		
