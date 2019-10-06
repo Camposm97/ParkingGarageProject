@@ -133,8 +133,16 @@ public class GarageMenuBar extends MenuBar {
 			ViewGarageButton bt = new ViewGarageButton(garage.getParkingLot());
 			bt.fire();
 		});
+		MenuItem mi3 = new MenuItem("Users");
+		mi3.setGraphic(loadImgV(USER_ICON));
+		mi3.setOnAction(e -> {
+			BorderPane root = (BorderPane) super.getParent();
+			root.setCenter(new UserDataViewer(garage.getUsers()));
+		});
 		Menu m = new Menu("View");
 		m.getItems().addAll(mi1, mi2);
+		if (signedInUser.isAdmin())
+			m.getItems().add(mi3);
 		return m;
 	}
 
