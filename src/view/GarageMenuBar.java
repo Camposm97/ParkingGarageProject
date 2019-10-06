@@ -10,7 +10,6 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
-import app.App;
 import control.ViewGarageButton;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -18,7 +17,6 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -97,7 +95,7 @@ public class GarageMenuBar extends MenuBar {
 	}
 	
 	private Menu loadMenuDelete() {
-		MenuItem miDelUser = new MenuItem("User");
+		MenuItem miDelUser = new MenuItem("User (Disable)");
 		miDelUser.setOnAction(e -> {
 			new DeleteUserWindow(garage.getUsers());
 		});
@@ -174,10 +172,12 @@ public class GarageMenuBar extends MenuBar {
  			WebView wv = new WebView();
  			WebEngine we = wv.getEngine();
  			we.load(file.toURI().toString());
- 			Stage stage = new Stage();
- 			stage.setTitle(App.TITLE);
- 			stage.setScene(new Scene(new StackPane(wv)));
- 			stage.show();
+ 			BorderPane root = (BorderPane) getParent();
+ 			root.setCenter(wv);
+// 			Stage stage = new Stage();
+// 			stage.setTitle(App.TITLE);
+// 			stage.setScene(new Scene(new StackPane(wv)));
+// 			stage.show();
  		});
  		return mi;
  	}
