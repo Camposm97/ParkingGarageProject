@@ -119,7 +119,9 @@ public class UserDataManager implements Serializable{
 	 * @return true if the password matches the records, else returns false
 	 */
 	public boolean passwordCheck (String userName, String password) {
-		if (userList.get(this.getIndexFromUserName(userName)).getPassword().contentEquals(password)) {
+		int i = this.getIndexFromUserName(userName);
+		if (userList.get(i).getPassword().contentEquals(password) && userList.get(i).getUserName().contentEquals(userName)) {
+			System.out.println("Sup");
 			return true;
 		}
 		else {
@@ -159,9 +161,8 @@ public class UserDataManager implements Serializable{
 		if(index < 0 || index >= userList.size()) {
 			return null;
 		}
-		if(userName.equalsIgnoreCase(userName) && userList.get(index).getPassword().equals(password)) {
-			
-			return userList.get(index);
+		if(passwordCheck(userName, password)) {
+			return this.getUser(index);
 		}
 		return null; 
 	}

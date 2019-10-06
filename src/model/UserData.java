@@ -132,9 +132,16 @@ public class UserData implements Serializable{
 		return true;
 		}
 	}
+	/**
+	 * Enables the account again
+	 */
 	public void enableAccount() {
 		this.isDisabled = false;
 	}
+	/**
+	 * 
+	 * @return Returns whether or not the account is disabled
+	 */
 	public boolean isDisabled() {
 		return this.isDisabled;
 	}
