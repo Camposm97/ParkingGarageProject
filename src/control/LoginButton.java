@@ -12,6 +12,11 @@ import model.UserDataManager;
 import view.LoginPane;
 import view.MainMenuPane;
 
+/**
+ * Critical to the LoginPane.  Checks if the credentials
+ * the user entered is valid or not.
+ * @author Michael Campos
+ */
 public class LoginButton extends Button {
 	private LoginPane login;
 	
