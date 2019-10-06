@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Garage;
 import util.DataSaver;
+import util.LightWork;
 
 public class MainStage extends Stage {
 	
@@ -16,7 +17,7 @@ public class MainStage extends Stage {
 		getIcons().add(loadImg(GARAGE_ICON));
 		setScene(new Scene(new LoginPane(garage), LoginPane.WIDTH, LoginPane.HEIGHT));
 		setOnCloseRequest(e -> {
-			DataSaver.writeObject(garage, "");
+			DataSaver.writeObject(garage, LightWork.GARAGE_SRC);
 		});
 	}
 }

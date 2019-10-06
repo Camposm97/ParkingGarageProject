@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class LightWork { // Originally named CamposFX
+	public static final String GARAGE_SRC = "systemData/garage.dat";
 	public static final Insets DEFAULT_INSETS = new Insets(10);
 	
 	public static String emitDailyLog(LocalDate date) {

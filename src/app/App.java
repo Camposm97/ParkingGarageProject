@@ -1,10 +1,14 @@
 package app;
 
+import java.io.File;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import model.Garage;
 import model.ParkingLot;
 import model.UserDataManager;
+import util.DataLoader;
+import util.LightWork;
 import view.MainStage;
 /**
  * <h1> Parking Garage Application </h1>
@@ -22,11 +26,16 @@ import view.MainStage;
 public class App extends Application {
 	public static final int WIDTH = 500, HEIGHT = 400;
 	public static final String TITLE = "Parking Garage v1.0";
+	private static final int CAR_SIZE = 80, TRUCK_SIZE = 10, MOTORCYCLE_SIZE = 10;
 	private Garage garage;
 	
 	@Override
 	public void init() {
-		garage = new Garage(new UserDataManager(), new ParkingLot(80, 10, 10));
+		File file = new File(LightWork.GARAGE_SRC);
+		if (file.exists())
+			garage = (Garage) DataLoader.readObject(LightWork.GARAGE_SRC);
+		else
+			garage = new Garage(new UserDataManager(), new ParkingLot(CAR_SIZE, TRUCK_SIZE, MOTORCYCLE_SIZE));
 	}
 	
 	@Override
