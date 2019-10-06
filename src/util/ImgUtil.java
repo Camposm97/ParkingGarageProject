@@ -28,8 +28,8 @@ public class ImgUtil {
 	/**
 	 * Returns an Image using the parameter (url) as a File. If the path to the file does not exist
 	 * then the method will return null.
-	 * @param url
-	 * @return Image
+	 * @param url The path to grab the image
+	 * @return Image Returns the image found at the path
 	 */
 	public static Image loadImg(String url) {
 		FileInputStream fis = null;
