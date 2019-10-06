@@ -41,11 +41,20 @@ public class GarageTableView {
 	private ParkingLot lot;
 	private BorderPane root;
 	private Timeline timeline;
+	/**
+	 * A constructor used in testing
+	 * @param lot is the runtime instance of the parking lot used by the program
+	 */
 	public GarageTableView(ParkingLot lot) {
 		this.lot = lot;
 		this.generateLayout();
 		container = new ScrollPane();
 	}
+	/**
+	 * The constructor used by the program
+	 * @param lot is the runtime instance of the parking lot used by the program
+	 * @param root is the parent border pane
+	 */
 	public GarageTableView(ParkingLot lot, BorderPane root) {
 		this.lot = lot;
 		this.root = root;
@@ -94,6 +103,10 @@ public class GarageTableView {
 		}
 		container.setContent(grid);
 	}
+	/**
+	 * start timer starts a timer that refreshes the grid every second
+	 * @param view is this GarageView, the view passes itself into this function in the constructor
+	 */
 	private void startTimer(GarageTableView view) {
 		timeline = new Timeline();
 		timeline.setCycleCount(Timeline.INDEFINITE);
@@ -118,8 +131,8 @@ public class GarageTableView {
 	}
 	/**
 	 * can turn the yellow boxes into buttons that close and order
-	 * @param label
-	 * @param space
+	 * @param label represents the space in the grid view
+	 * @param space the actual space 
 	 */
 	@Deprecated
 	public void giveCloseAction(Label label, Space space) {
@@ -131,8 +144,8 @@ public class GarageTableView {
 	}
 	/**
 	 * can turn the green boxes into buttons that start an order
-	 * @param label
-	 * @param space
+	 * @param label represents the space in the grid view
+	 * @param space the actual space 
 	 */
 	@Deprecated
 	public void giveOpenAction(Label label, Space space) {
