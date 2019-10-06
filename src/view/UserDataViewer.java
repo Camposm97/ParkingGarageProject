@@ -37,7 +37,7 @@ public class UserDataViewer extends BorderPane {
 			cm.getItems().addAll(mi1, mi2, mi3, mi4);
 			cm.show(this.getScene().getWindow());
 		});
-		tv.getItems().addAll(users.getUserList());
+		tv.getItems().setAll(users.getUserList());
 	}
 	
 	private void initTableColumns() {
@@ -79,7 +79,7 @@ public class UserDataViewer extends BorderPane {
 		private void computeCode(UserData user) {
 			switch (code) {
 			case 0: // Enable User
-				
+				user.enableAccount();
 				break;
 			case 1: // Disable User
 				user.closeAccount();
@@ -91,6 +91,7 @@ public class UserDataViewer extends BorderPane {
 			case 3: // Disable Admin
 				user.setAdmin(false);
 			}
+			tv.getItems().setAll(users.getUserList());
 		}
 		
 	}
