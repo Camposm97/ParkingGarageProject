@@ -12,25 +12,26 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import model.Garage;
 import userData.UserDataManager;
 
 public class LoginPane extends GridPane {
 	public static final int WIDTH = 300, HEIGHT = 300;
-	private UserDataManager users;
+	private Garage garage;
 	private MyLabel lblPrompt;
 	private TextField tfUsername;
 	private PasswordField tfPassword;
 	private LoginButton btLogin;
 	
-	public LoginPane(UserDataManager users) {
-		this.users = users;
+	public LoginPane(Garage garage) {
+		this.garage = garage;
 		initGridPaneSettings(this);
 		initControls();
 		showControls();
 	}
 	
-	public UserDataManager getUsers() {
-		return users;
+	public Garage getGarage() {
+		return garage;
 	}
 	
 	public String getUsername() {

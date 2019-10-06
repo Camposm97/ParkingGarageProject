@@ -6,15 +6,14 @@ import static util.ImgUtil.loadImg;
 import app.App;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import userData.UserDataManager;
-import util.DataSaver;
+import model.Garage;
 
 public class MainStage extends Stage {
 	
-	public MainStage(UserDataManager users) {
+	public MainStage(Garage garage) {
 		setTitle(App.TITLE);
 		getIcons().add(loadImg(GARAGE_ICON));
-		setScene(new Scene(new LoginPane(users), LoginPane.WIDTH, LoginPane.HEIGHT));
+		setScene(new Scene(new LoginPane(garage), LoginPane.WIDTH, LoginPane.HEIGHT));
 		setOnCloseRequest(e -> {
 //			DataSaver.writeObject(o, "");
 			System.out.println("saveObject(src) in " + this.getClass());

@@ -28,7 +28,7 @@ public class LoginButton extends Button {
 		
 		@Override
 		public void handle(ActionEvent e) {
-			this.users = login.getUsers();
+			this.users = login.getGarage().getUsers();
 			this.username = login.getUsername();
 			this.password = login.getPassword();
 			if (!username.isEmpty() && !password.isEmpty()) {
@@ -45,7 +45,7 @@ public class LoginButton extends Button {
 		
 		public void validLogin() {
 			Stage stage = (Stage) login.getScene().getWindow();
-			login.getScene().setRoot(new MainMenu(users, user));
+			login.getScene().setRoot(new MainMenu(login.getGarage(), user));
 			stage.setWidth(App.WIDTH);
 			stage.setHeight(App.HEIGHT);
 			stage.centerOnScreen();

@@ -1,6 +1,16 @@
 package view;
 
-import static util.ImgUtil.*;
+import static util.ImgUtil.DELETE_ICON;
+import static util.ImgUtil.EXIT_ICON;
+import static util.ImgUtil.GARAGE_ICON;
+import static util.ImgUtil.GITHUB_ICON;
+import static util.ImgUtil.HEAVY_WORK;
+import static util.ImgUtil.HISTORY_ICON;
+import static util.ImgUtil.INSERT_ICON;
+import static util.ImgUtil.LIGHT_WORK;
+import static util.ImgUtil.USER_ICON;
+import static util.ImgUtil.WORK_ICON;
+import static util.ImgUtil.loadImgV;
 import static util.Web.CAMPOS_GITHUB;
 import static util.Web.DEMONTE_GITHUB;
 import static util.Web.GUIDI_GITHUB;
@@ -17,19 +27,16 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import pLData.ParkingLot;
+import model.Garage;
 import userData.UserData;
-import userData.UserDataManager;
 
 public class GarageMenuBar extends MenuBar {
-	private UserDataManager users;
-	private UserData user;
-	private ParkingLot spaces;
+	private Garage garage;
+	private UserData signedInUser;
 
-	public GarageMenuBar(UserDataManager users, UserData user) {
-		this.users = users;
-		this.user = user;
-		this.spaces = new ParkingLot(80, 10, 10); // Have it equal to an argument (Later);
+	public GarageMenuBar(Garage garage, UserData signedInUser) {
+		this.garage = garage;
+		this.signedInUser = signedInUser;
 		this.getMenus().addAll(loadMenus());
 	}
 
@@ -47,7 +54,7 @@ public class GarageMenuBar extends MenuBar {
 		mi1.setGraphic(loadImgV(USER_ICON));
 		mi1.setOnAction(e -> {
 			Scene scene = super.getScene();
-			scene.setRoot(new LoginPane(users));
+			scene.setRoot(new LoginPane(garage));
 			Stage stage = (Stage) scene.getWindow();
 			stage.setWidth(LoginPane.WIDTH);
 			stage.setHeight(LoginPane.HEIGHT);
@@ -77,12 +84,12 @@ public class GarageMenuBar extends MenuBar {
 		MenuItem miAddUser = new MenuItem("User");
 		miAddUser.setOnAction(e -> {
 			BorderPane root = (BorderPane) super.getParent();
-			root.setCenter(new InsertUserPane(users));
+			root.setCenter(new InsertUserPane(garage.getUsers()));
 		});
 		MenuItem miAddCar = new MenuItem("Car (Check-In)");
 		miAddCar.setOnAction(e -> {
 			BorderPane root = (BorderPane) super.getParent();
-			root.setCenter(new CheckInPane(spaces));
+			root.setCenter(new CheckInPane(garage.getParkingLot()));
 		});
 		Menu m = new Menu("Insert");
 		m.setGraphic(loadImgV(INSERT_ICON));
@@ -93,16 +100,16 @@ public class GarageMenuBar extends MenuBar {
 	private Menu loadMenuDelete() {
 		MenuItem miDelUser = new MenuItem("User");
 		miDelUser.setOnAction(e -> {
-			new DeleteUserWindow(users);
+			new DeleteUserWindow(garage.getUsers());
 		});
 		MenuItem miDelCar = new MenuItem("Car (Check-Out)");
 		miDelCar.setOnAction(e -> {
 			BorderPane root = (BorderPane) super.getParent();
-			root.setCenter(new CheckOutPane(spaces, user));
+			root.setCenter(new CheckOutPane(garage.getParkingLot(), signedInUser));
 		});
 		Menu m = new Menu("Delete");
 		m.setGraphic(loadImgV(DELETE_ICON));
-		if (user.isAdmin())
+		if (signedInUser.isAdmin())
 			m.getItems().add(miDelUser);
 		m.getItems().add(miDelCar);
 		return m;
@@ -119,7 +126,7 @@ public class GarageMenuBar extends MenuBar {
 		MenuItem mi2 = new MenuItem("Parking Spaces");
 		mi2.setGraphic(loadImgV(GARAGE_ICON));
 		mi2.setOnAction(e -> {
-			ViewGarageButton bt = new ViewGarageButton(spaces);
+			ViewGarageButton bt = new ViewGarageButton(garage.getParkingLot());
 			bt.fire();
 		});
 		Menu m = new Menu("View");
