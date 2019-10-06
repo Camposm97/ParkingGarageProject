@@ -83,18 +83,17 @@ public class GarageTableView {
 				label.setBackground(new Background(new BackgroundFill(Color.YELLOW,CornerRadii.EMPTY, Insets.EMPTY)));
 				label.setMinHeight(50);
 				label.setMinWidth(100);
-				this.giveCloseAction(label, spaces.get(i));
-				this.giveMouseOver(label, spaces.get(i));
+			//	this.giveMouseOver(label, spaces.get(i));
 			}
 			else {
 				info+= "\nSpace Empty";
 				label.setBackground(new Background(new BackgroundFill(Color.GREEN,CornerRadii.EMPTY, Insets.EMPTY)));
 				label.setMinHeight(50);
 				label.setMinWidth(100);
-				this.giveOpenAction(label, spaces.get(i));
-				this.giveMouseOver(label, spaces.get(i));
+			//	this.giveMouseOver(label, spaces.get(i));
 			}
 			label.setText(info);
+			label.setTooltip(new Tooltip(spaces.get(i).toString()));
 			
 			//The grid is 10xn 
 			grid.add(label, i%10, i/10);
@@ -127,6 +126,7 @@ public class GarageTableView {
 	 */
 	public void giveMouseOver (Label label, Space space) {
 		Tooltip tooltip = new Tooltip();
+		label.setTooltip(tooltip);
 		tooltip.setText(space.toString());
 	}
 	/**

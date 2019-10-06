@@ -1,10 +1,17 @@
 package model;
+
+import java.io.Serializable;
+
 /**
  * The Vehicle class provides the makeup of info needed for a vehicle 
  * @author Matt Guidi
  *
  */
-public class Vehicle {
+public class Vehicle implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5688433837131065378L;
 	private String licensePlate;
 	private VehicleType vType;
 	private State vehicleState;
