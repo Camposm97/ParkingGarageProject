@@ -55,7 +55,9 @@ public class CheckOutPane extends GridPane {
 				CashRegister cr = new CashRegister(user);
 				cr.closeTicket(spaces, licensePlate, state);
 				((BorderPane) this.getParent()).setCenter(null);
+				
 			}
+			
 		});
 		return bt;
 	}

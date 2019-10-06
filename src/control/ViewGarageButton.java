@@ -15,10 +15,12 @@ import util.LightWork;
 import view.GarageTableView;
 
 public class ViewGarageButton extends Button {	
+	
 	public ViewGarageButton(ParkingLot spaces) {
 		super("View Garage");
 		this.setOnAction(new ViewGarageHandler(spaces));
 	}
+	
 	
 	public class ViewGarageHandler implements EventHandler<ActionEvent> {
 		private ParkingLot spaces;
@@ -38,7 +40,9 @@ public class ViewGarageButton extends Button {
 			stage.getIcons().add(loadImg(GARAGE_ICON));
 			stage.setScene(new Scene(root));
 			stage.showAndWait();
+			
 		}
+		
 		
 	}
 }

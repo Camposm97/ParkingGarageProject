@@ -1,5 +1,10 @@
 package model;
-
+/**
+ * The ticket class is used to close and format a nice string that'll be used
+ * to help inform the driver of their charge and be logged in the data to be viewed
+ * @author Matt Guidi, Chris Demonte
+ *
+ */
 public class Ticket {
 	
 	private Space space;
@@ -12,10 +17,12 @@ public class Ticket {
 	private double payment;
 	private UserData activeUser;
 	
-	
-	// We're going to make a Ticket object the moment they leave. That way it's a one
-	// and done kind of deal. All they need to give us is their spaceNumber and we can find the rest!
-	
+	/**
+	 * 
+	 * @param space Holds a lot of the data calculated for payment. Copy of actual space
+	 * @param spaceID Used for logging where they were parked (for proximity charge)
+	 * @param activeUser Used for logging who helped check this user out
+	 */
 	public Ticket (Space space, int spaceID, UserData activeUser) {
 		
 		this.space = space;
@@ -29,7 +36,10 @@ public class Ticket {
 		this.ticketID = ticketNumberC++;
 	
 	}
-	
+	/**
+	 * 
+	 * @return Returns a nice receipt of their transaction and details about their stay
+	 */
 	public String getTicketString() {
 		String str = new String();
 		String eC = String.format("%.2f", this.getExpectedCost());
@@ -56,13 +66,20 @@ public class Ticket {
 		}
 		return str;
 	}
+	/**
+	 * Closes the ticket and logs the amount of money the driver paid
+	 * @param payment Money the driver paid NOT the cost!
+	 */
 	public void closeTicket(double payment) {
 		
 		this.payment = payment;
 		
 		this.open = false;
 	}
-	
+	/**
+	 * Calculates an expected cost based on the special rate and proximity from the entrance
+	 * @return returns the cost to charge the customer in the form of a double
+	 */
 	public double getExpectedCost() {
 		double d = (100 / (this.spaceNumber + 1))*
 				(this.space.getSpecialRate() * this.expectedHours);
@@ -70,54 +87,70 @@ public class Ticket {
 		return d;
 		
 	}
-
+	/**
+	 * 
+	 * @return Gives the space being used to calculate data
+	 */
 	public Space getSpace() {
 		return space;
 	}
-
+	/**
+	 * 
+	 * @param space sets the space being used for the ticket
+	 */
 	public void setSpace(Space space) {
 		this.space = space;
 	}
-
+	/**
+	 * 
+	 * @return returns the parking space's number in the parking lot array
+	 */
 	public int getSpaceNumber() {
 		return spaceNumber;
 	}
-
+	/**
+	 * 
+	 * @param spaceNumber Modifies the space number passed in
+	 */
 	public void setSpaceNumber(int spaceNumber) {
 		this.spaceNumber = spaceNumber;
 	}
-
+	/**
+	 * 
+	 * @return Gives the expected hours calculated in the form of a double
+	 */
 	public double getExpectedHours() {
 		return expectedHours;
 	}
-
+	/**
+	 * 
+	 * @param expectedHours Set the expected hours to this integer 
+	 */
 	public void setExpectedHours(int expectedHours) {
-		this.expectedHours = expectedHours;
+		this.expectedHours = (double)expectedHours;
 	}
-
+	/**
+	 * 
+	 * @return Get the ID of the ticket in the form of an integer
+	 */
 	public int getTicketID() {
 		return ticketID;
 	}
-
+	/**
+	 * 
+	 * @param ticketNumber This integer will be set to the new ticket number for this ticket
+	 */
 	public void setTicketNumber(int ticketNumber) {
 		this.ticketID = ticketNumber;
 	}
-
+	/**
+	 * 
+	 * @return Returns true if the ticket is open (Driver hasn't paid yet)
+	 */
 	public boolean isOpen() {
-		return open;
+		return this.isOpen();
 	}
-
-	public void setOpen(boolean open) {
-		this.open = open;
-	}
-
-	public double getPayment() {
-		return payment;
-	}
-
-	public void setPayment(double payment) {
-		this.payment = payment;
-	}
+	
 	
 
 }
