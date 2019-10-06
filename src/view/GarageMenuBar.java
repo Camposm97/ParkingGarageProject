@@ -29,6 +29,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.Garage;
 import model.UserData;
+import util.DataSaver;
+import util.LightWork;
 
 public class GarageMenuBar extends MenuBar {
 	private Garage garage;
@@ -63,8 +65,7 @@ public class GarageMenuBar extends MenuBar {
 		MenuItem mi2 = new MenuItem("Exit");
 		mi2.setGraphic(loadImgV(EXIT_ICON));
 		mi2.setOnAction(e -> {
-			// Before exiting, save data (not yet implemented)
-			System.out.println("saveObject(src) in " + this.getClass());
+			DataSaver.writeObject(garage, LightWork.GARAGE_SRC);
 			Platform.exit();
 		});
 		Menu m = new Menu("File");
