@@ -35,7 +35,7 @@ public class Ticket {
 		String eC = String.format("%.2f", this.getExpectedCost());
 		str += "\n****************************************\n" 
 				+ "Ticket : " + this.ticketID + "\n" +
-				"Attendant : " + this.activeUser.getFirstName() + 
+				"Attendant : " + this.activeUser.getFirstName() + this.activeUser.getLastName().charAt(0) + 
 				"\n****************************************\n"
 				+ "Vehicle Type : " + space.getVehicleParked().getVTypeS() + "\n"
 				+ "State: " + space.getVehicleParked().getVehicleState().toString() + "\n"

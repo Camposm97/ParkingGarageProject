@@ -25,7 +25,7 @@ public class Space {
 	private Date arrivalTime = new Date();
 	private Double specialRate = 1.0;
 	/**
-	 * Creates a new parking space inteded for VehicleType vT
+	 * Creates a new parking space intended for VehicleType vT
 	 * @param vT The type of vehicle you want parking in this space
 	 */
 	public Space(VehicleType vT) {
