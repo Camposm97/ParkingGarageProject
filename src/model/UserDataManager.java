@@ -5,31 +5,58 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import util.DataLoader;
 import util.DataSaver;
-
+/**
+ * User Data manager is a container for the employee data, including first and last name, usernames, passwords
+ * User data is stored in an array list with index 0 being an admin by default
+ * @author Chris DeMonte, Matt Guidi
+ *
+ */
 public class UserDataManager implements Serializable{
 
 	private static final long serialVersionUID = 3880700975400631301L;
+	/**
+	 * userList is an arrayList of Userdata
+	 */
 	private ArrayList<UserData> userList;
 	
+	/**
+	 * This no parameter constructor creates a new user list
+	 */
 	public UserDataManager(){
 		this.createNewUserList();
 	}
 
-	//this constructor is to be used on startup if there is no DataManager saved in files
+	/**
+	 * 	this constructor is to be used on startup if there is no DataManager saved in files
+	 */
 	private void createNewUserList() {
 		this.userList = new ArrayList<UserData>();
 		userList.add(new UserData("a", "dmin", "admin", 0));	
 	}
 
+	/**
+	 * Adds a user with a given firstname, lastname and password
+	 * @param firstName is the first name of the employee
+	 * @param lastName is the last name
+	 * @param password password is a password with 8-16 characters, at least one number, at least one lowercase letter, at least one uppercase
+	 */
 	public void addUser(String firstName, String lastName, String password) {
 		int index = this.userList.size();
 		userList.add(new UserData(firstName, lastName, password, index));
 	}
-	//get user by index
+	/**
+	 * Gets the user using an index
+	 * @param index is the user's index in the array
+	 * @return a userData object
+	 */
 	public UserData getUser (int index) {
 		return this.userList.get(index);
 	}
-	//get user by username
+	/**
+	 * Gets the user using a String for username
+	 * @param userName is a String using the first letter of the first name, last name, and index number
+	 * @return returns the userData object
+	 */
 	public UserData getUser (String userName) {
 		int index = this.getIndexFromUserName(userName);
 		
@@ -47,6 +74,11 @@ public class UserDataManager implements Serializable{
 		
 	}
 	*/ 
+	/**
+	 * Checks if a password is valid (8-16 characters, at least one uppercase letter, at least one lowercase, at least one number)
+	 * @param password is the string representing a possible password
+	 * @return true if the password is good, and false if it fails to comply to the requirements
+	 */
 	public boolean validPassword (String password) {
 		if (password.length() < 8 || password.length() > 16) {
 			return false;
@@ -80,7 +112,12 @@ public class UserDataManager implements Serializable{
 		}
 		return true;
 	}
-	//checks an entered password
+	/**
+	 * Checks a username-password pair, by comparing the two inputs to the data saved in the usermanager
+	 * @param userName is the input username
+	 * @param password is the input password
+	 * @return true if the password matches the records, else returns false
+	 */
 	public boolean passwordCheck (String userName, String password) {
 		if (userList.get(this.getIndexFromUserName(userName)).getPassword().contentEquals(password)) {
 			return true;
@@ -89,7 +126,11 @@ public class UserDataManager implements Serializable{
 			return false;
 		}
 	}
-	//used to generate list indexes from usernames. A regex expression removes all letters
+	/**
+	 * This takes in a username and filters out any non numeric characters to give a number representing the user's index in the user array
+	 * @param userName is the user's username
+	 * @return the numerics in the username that are utilized by the userManager as array indexes
+	 */
 	public int getIndexFromUserName(String userName) {
 		int index = 0;
 		// I modified the regex because this takes in only digits! that's what we need to find the index!
@@ -107,6 +148,12 @@ public class UserDataManager implements Serializable{
 		}
 		return index;
 	}
+	/**
+	 * Logs a user in by taking in their credentials and returning the user data object
+	 * @param userName is the user's username
+	 * @param password is the user's password
+	 * @return the user's userData if credentials are good, else returns null
+	 */
 	public UserData login(String userName, String password) {
 		int index = getIndexFromUserName(userName);
 		if(index < 0 || index >= userList.size()) {
@@ -118,10 +165,16 @@ public class UserDataManager implements Serializable{
 		}
 		return null; 
 	}
+	/**
+	 * Saves the user data list to the file directory
+	 */
 	public void saveUserList() {
 		String adr = "resources/userdat.data";
 		DataSaver.writeObject(this, adr);
 	}
+	/**
+	 * loads the user data list from the file directory
+	 */
 	public void loadUserList() {
 		String adr = "resources/userdat.data";
 		File file = new File(adr);
