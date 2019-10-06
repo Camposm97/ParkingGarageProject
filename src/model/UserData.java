@@ -122,11 +122,12 @@ public class UserData implements Serializable{
 	/**
 	 * 
 	 */
-	public void closeAccount() {
-		if(this.getUserName() == "admin0") {
-			
+	public boolean closeAccount() {
+		if(this.getUserName().compareTo("admin0") >= 0) {
+			return false;
 		}else {
 		this.isDisabled = true;
+		return true;
 		}
 	}
 	public boolean isDisabled() {

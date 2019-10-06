@@ -1,7 +1,6 @@
 package view;
 
 import java.util.Optional;
-
 import app.App;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -19,8 +18,11 @@ public class DeleteUserWindow extends TextInputDialog {
 		if (result.isPresent()) {
 			int index = users.getIndexFromUserName(result.get());
 			UserData user = users.getUserList().get(index);
-			user.closeAccount();
+			if(user.closeAccount() == true) {
 			showDisabledAccount(user);
+			}else {
+				cannotDisableAccount(user);
+			}
 		}
 	}
 	
@@ -29,6 +31,13 @@ public class DeleteUserWindow extends TextInputDialog {
 		alert.setTitle(App.TITLE);
 		alert.setHeaderText("Successfully removed: " + user.getUserName());
 		alert.setContentText("This account is now closed.");
+		alert.showAndWait();
+	}
+	private void cannotDisableAccount(UserData user) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle(App.TITLE);
+		alert.setHeaderText("You cannot remove " + user.getUserName());
+		alert.setContentText("This is the root admin!");
 		alert.showAndWait();
 	}
 }
