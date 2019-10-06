@@ -7,7 +7,12 @@ import java.util.Date;
 
 import pLData.ParkingLot;
 import util.DataSaver;
-
+/**
+ * DailyData contains two string array lists. The first list is a log of every transaction, and the
+ * second list holds a log of the garage. 
+ * @author chris demonte
+ *
+ */
 public class DailyData implements Serializable{
 
 	private static final long serialVersionUID = -2995963835008199289L;
@@ -20,6 +25,9 @@ public class DailyData implements Serializable{
 		this.startLogs();
 	}
 
+	/**
+	 * This method is called once when initializing the DailyData class 
+	 */
 	private void startLogs() {
 		Date date = new Date();
 		String openRegister = new String ("Register Opened: " + date.toString());

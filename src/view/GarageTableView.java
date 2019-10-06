@@ -25,11 +25,16 @@ import pLData.Space;
  */
 
 public class GarageTableView {
-	
-	ScrollPane container;
-	GridPane grid;
-	ParkingLot lot;
-	BorderPane root;
+	/**
+	 * @param container is the ScrollPane that holds the grid of spaces
+	 * @param grid is a GridPane that will hold a 10xn array of Labels
+	 * @param lot is a reference to the active parking lot
+	 * @param root is a reference to the parent borderpane
+	 */
+	private ScrollPane container;
+	private GridPane grid;
+	private ParkingLot lot;
+	private BorderPane root;
 	
 	public GarageTableView(ParkingLot lot) {
 		this.lot = lot;
@@ -43,6 +48,10 @@ public class GarageTableView {
 		this.generateLayout();
 	}
 
+	/**
+	 * Generates a 10xn grid pane that represents the parking lot. 
+	 * Occupied spaces are represented by yellow boxes and free spaces are represented by green boxes.
+	 */
 	private void generateLayout() {
 		grid = new GridPane();
 		ArrayList<Space> spaces = this.lot.getParkingLotArray();
@@ -57,6 +66,7 @@ public class GarageTableView {
 			if (spaces.get(i).getVehicleParked() != null) {
 				info+= "\n" + spaces.get(i).getVehicleParked().getVTypeS() + " Parked: " + spaces.get(i).getVehicleParked().getLicensePlate();
 				label.setBackground(new Background(new BackgroundFill(Color.YELLOW,CornerRadii.EMPTY, Insets.EMPTY)));
+				
 				this.giveCloseAction(label, spaces.get(i));
 				this.giveMouseOver(label, spaces.get(i));
 			}
