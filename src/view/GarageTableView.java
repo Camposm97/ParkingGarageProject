@@ -84,11 +84,19 @@ public class GarageTableView {
 		}
 		container.setContent(grid);
 	}
+	/**
+	 * @param label is taken in and given a tooltip derived from the space object
+	 * @param space is taken in from the lot
+	 */
 	public void giveMouseOver (Label label, Space space) {
 		Tooltip tooltip = new Tooltip();
 		tooltip.setText(space.toString());
 	}
-	
+	/**
+	 * can turn the yellow boxes into buttons that close and order
+	 * @param label
+	 * @param space
+	 */
 	@Deprecated
 	public void giveCloseAction(Label label, Space space) {
 		label.setOnMouseClicked(e->{
@@ -97,7 +105,11 @@ public class GarageTableView {
 //			this.root.setCenter(checkout);
 		});
 	}
-	
+	/**
+	 * can turn the green boxes into buttons that start an order
+	 * @param label
+	 * @param space
+	 */
 	@Deprecated
 	public void giveOpenAction(Label label, Space space) {
 		label.setOnMouseClicked(e->{
@@ -106,6 +118,9 @@ public class GarageTableView {
 //			this.root.setCenter(checkin);
 		});
 	}
+	/**
+	 * Refreshed the layout
+	 */
 	public void refreshGrid() {
 		this.generateLayout();
 	}
