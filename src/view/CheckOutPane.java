@@ -15,6 +15,10 @@ import javafx.scene.layout.HBox;
 import model.*;
 import util.LightWork;
 
+/**
+ * 
+ * @author Michael Campos
+ */
 public class CheckOutPane extends GridPane {
 	private ParkingLot spaces;
 	private UserData user;

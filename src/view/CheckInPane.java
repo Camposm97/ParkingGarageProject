@@ -18,6 +18,10 @@ import javafx.scene.layout.HBox;
 import model.*;
 import util.LightWork;
 
+/**
+ * 
+ * @author Michael Campos
+ */
 public class CheckInPane extends GridPane {
 	private ParkingLot spaces;
 	private TextField tfPlate, tfSpaceNum;
