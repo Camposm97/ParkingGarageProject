@@ -11,7 +11,7 @@ import util.DataSaver;
 import util.LightWork;
 
 /**
- * Contains the LoginPane
+ * Contains the LoginPane where the user is allowed to enter in his/her credentials.  
  * @author Michael Campos
  */
 public class MainStage extends Stage {

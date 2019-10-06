@@ -15,6 +15,10 @@ import javafx.scene.layout.VBox;
 import model.Garage;
 import model.UserDataManager;
 
+/**
+ * 
+ * @author Michael Campos
+ */
 public class LoginPane extends GridPane {
 	public static final int WIDTH = 300, HEIGHT = 300;
 	private Garage garage;

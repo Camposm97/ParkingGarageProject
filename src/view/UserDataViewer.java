@@ -1,12 +1,16 @@
 package view;
 
+import java.awt.MouseInfo;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Side;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import model.UserData;
 import model.UserDataManager;
@@ -41,7 +45,9 @@ public class UserDataViewer extends BorderPane {
 			MenuItem mi4 = new MenuItem("Disable Admin");
 			mi4.setOnAction(new ContextMenuHandler(3));
 			cm.getItems().addAll(mi1, mi2, mi3, mi4);
-			cm.show(this.getScene().getWindow());
+			double x = MouseInfo.getPointerInfo().getLocation().getX();
+			double y = MouseInfo.getPointerInfo().getLocation().getY();
+			cm.show(getScene().getWindow(), x, y);
 		});
 		tv.getItems().setAll(users.getUserList());
 	}
