@@ -14,7 +14,9 @@ import model.UserData;
 import model.UserDataManager;
 
 /**
- * 
+ * Purpose of this class is to display a field to allow the user
+ * who is an admin to enter the username to "delete" from the 
+ * user data structure.  
  * @author Michael Campos
  */
 public class DeleteUserWindow extends TextInputDialog {
