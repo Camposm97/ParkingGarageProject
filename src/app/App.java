@@ -1,3 +1,6 @@
+/**
+ * App package contains solely the App class to run the entire program
+ */
 package app;
 
 import java.io.File;
