@@ -2,6 +2,11 @@ package view;
 
 
 import java.util.ArrayList;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -12,6 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import model.*;
 
 /**
@@ -34,7 +40,7 @@ public class GarageTableView {
 	private GridPane grid;
 	private ParkingLot lot;
 	private BorderPane root;
-	
+	private Timeline timeline;
 	public GarageTableView(ParkingLot lot) {
 		this.lot = lot;
 		this.generateLayout();
@@ -45,6 +51,7 @@ public class GarageTableView {
 		this.root = root;
 		container = new ScrollPane();
 		this.generateLayout();
+		this.startTimer(this);
 	}
 
 	/**
@@ -86,6 +93,20 @@ public class GarageTableView {
 			
 		}
 		container.setContent(grid);
+	}
+	private void startTimer(GarageTableView view) {
+		timeline = new Timeline();
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		EventHandler<ActionEvent> handler = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				view.refreshGrid();
+			}	
+		};
+		timeline.getKeyFrames().addAll(
+				new KeyFrame(Duration.ZERO),
+				new KeyFrame(Duration.seconds(1.0), handler));
+		timeline.play();
 	}
 	/**
 	 * @param label is taken in and given a tooltip derived from the space object
