@@ -63,15 +63,18 @@ public class GarageTableView {
 			String info = new String ("" + i);
 			Label label = new Label();
 			if (spaces.get(i).getVehicleParked() != null) {
-				info+= "\n" + spaces.get(i).getVehicleParked().getVTypeS() + " Parked: " + spaces.get(i).getVehicleParked().getLicensePlate();
+				info+= "\nSpace Occupied";
 				label.setBackground(new Background(new BackgroundFill(Color.YELLOW,CornerRadii.EMPTY, Insets.EMPTY)));
-				
+				label.setMinHeight(50);
+				label.setMinWidth(100);
 				this.giveCloseAction(label, spaces.get(i));
 				this.giveMouseOver(label, spaces.get(i));
 			}
 			else {
-				info+= "\nSpace Empty.";
+				info+= "\nSpace Empty";
 				label.setBackground(new Background(new BackgroundFill(Color.GREEN,CornerRadii.EMPTY, Insets.EMPTY)));
+				label.setMinHeight(50);
+				label.setMinWidth(100);
 				this.giveOpenAction(label, spaces.get(i));
 				this.giveMouseOver(label, spaces.get(i));
 			}
