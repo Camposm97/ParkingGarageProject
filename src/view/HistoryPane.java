@@ -27,14 +27,17 @@ public class HistoryPane {
 	private TextArea taLog;
 	private DailyData dailyData;
 
+	/**
+	 * Constructor takes in no parameters and uses the current time to upload the most recent daily data, then generates the layout
+	 */
 	public HistoryPane() {
 		this.generateLayout();
 		this.loadText(LocalDate.now());
 	}
 
 	/**
-	 * Uses dailydata to fill the text area
-	 * @param data
+	 * This constructor uses a pre-made instance of daily data to auto generate the history pane instead of fetching it from the file directory
+	 * @param data is usually going to be the runtime instance held by the cash register
 	 */
 	public HistoryPane(DailyData data) {
 		this.generateLayout();
@@ -59,7 +62,7 @@ public class HistoryPane {
 
 	/**
 	 * Loads the date file using the file loader util
-	 * @param date
+	 * @param date either the current date, or a date picked from the date picker
 	 */
 	private void loadText(LocalDate date) {
 		String src = LightWork.emitDailyLog(date);
