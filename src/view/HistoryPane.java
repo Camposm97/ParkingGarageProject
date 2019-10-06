@@ -41,8 +41,7 @@ public class HistoryPane {
 	}
 
 	private void loadText(LocalDate date) {
-		String src = "resources/daily_" + date.getYear() + "_" + date.getMonthValue() + "_" + date.getDayOfMonth()
-				+ ".log";
+		String src = LightWork.emitDailyLog(date);
 		File file = new File(src);
 		if (file.exists()) {
 			DailyData data = (DailyData) DataLoader.readObject(src);

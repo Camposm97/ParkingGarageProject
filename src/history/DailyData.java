@@ -4,15 +4,14 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
-import util.DataSaver;
+
+import model.*;
 /**
  * DailyData contains two string array lists. The first list is a log of every transaction, and the
  * second list holds a log of the garage. 
  * @author chris demonte
  *
  */
-
-import model.*;
 import util.*;
 public class DailyData implements Serializable{
 
@@ -90,8 +89,7 @@ public class DailyData implements Serializable{
 	 */
 	public void saveDailyData() {
 		LocalDate date = LocalDate.now();
-		String src = "resources/daily_" + date.getYear() + "_" + date.getMonthValue() + "_" + date.getDayOfMonth()
-				+ ".log";
+		String src = LightWork.emitDailyLog(date);
 		DataSaver.writeObject(this, src);
 	}
 }
