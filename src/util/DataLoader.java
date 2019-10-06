@@ -4,8 +4,17 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-
+/**
+ * Load Binary data back into the objects
+ * @author Michael Campos
+ *
+ */
 public class DataLoader {
+	/**
+	 * Read binary data file back into an object
+	 * @param src Filepath to read the object from FileInputStream
+	 * @return Object read by ObjectInputStream
+	 */
 	public static Object readObject(String src) {
 		Object o = null;
 		try {
