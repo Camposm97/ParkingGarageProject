@@ -15,9 +15,11 @@ import static util.Web.DEMONTE_GITHUB;
 import static util.Web.GUIDI_GITHUB;
 import static util.Web.browse;
 
+import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
+import app.App;
 import control.ViewGarageButton;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -25,6 +27,9 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import model.Garage;
 import model.UserData;
@@ -169,13 +174,19 @@ public class GarageMenuBar extends MenuBar {
 		return m;
 	}
 
- 	private Menu loadJavaDoc() {
- 		Menu m = new Menu("Javadoc");
- 		m.setOnAction(e -> {
- 			BorderPane root = (BorderPane) getParent();
- 			root.getCenter();
+ 	private MenuItem loadJavaDoc() {
+ 		MenuItem mi = new Menu("Javadoc");
+ 		mi.setOnAction(e -> {
+ 			File file = new File("doc/JavaDOC/index.html");
+ 			WebView wv = new WebView();
+ 			WebEngine we = wv.getEngine();
+ 			we.load(file.toURI().toString());
+ 			Stage stage = new Stage();
+ 			stage.setTitle(App.TITLE);
+ 			stage.setScene(new Scene(new StackPane(wv)));
+ 			stage.show();
  		});
- 		return m;
+ 		return mi;
  	}
  	
 	private Menu loadWorkMenu() {
