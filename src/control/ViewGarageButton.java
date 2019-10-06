@@ -39,7 +39,7 @@ public class ViewGarageButton extends Button {
 			stage.setTitle(App.TITLE);
 			stage.getIcons().add(loadImg(GARAGE_ICON));
 			stage.setScene(new Scene(root));
-			stage.showAndWait();
+			stage.show();
 			
 		}
 		
