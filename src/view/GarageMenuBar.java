@@ -3,7 +3,6 @@ package view;
 import static util.ImgUtil.DELETE_ICON;
 import static util.ImgUtil.EXIT_ICON;
 import static util.ImgUtil.GARAGE_ICON;
-import static util.ImgUtil.GITHUB_ICON;
 import static util.ImgUtil.HEAVY_WORK;
 import static util.ImgUtil.HISTORY_ICON;
 import static util.ImgUtil.INSERT_ICON;
@@ -147,6 +146,12 @@ public class GarageMenuBar extends MenuBar {
 	}
 
 	private Menu loadMenuHelp() {
+		Menu m = new Menu("Help");
+		m.getItems().addAll(loadGithubMenu(), loadJavaDoc(), loadWorkMenu());
+		return m;
+	}
+	
+ 	private Menu loadGithubMenu() {
 		MenuItem mi1 = new MenuItem("Michael Campos");
 		mi1.setOnAction(e -> {
 			browse(CAMPOS_GITHUB);
@@ -159,15 +164,20 @@ public class GarageMenuBar extends MenuBar {
 		mi3.setOnAction(e -> {
 			browse(DEMONTE_GITHUB);
 		});
-		Menu m2 = new Menu("Developer's Github");
-		m2.setGraphic(loadImgV(GITHUB_ICON));
-		m2.getItems().addAll(mi1, mi2, mi3);
-
-		Menu m1 = new Menu("Help");
-		m1.getItems().addAll(m2, loadWorkMenu());
-		return m1;
+		Menu m = new Menu("Developer's Github");
+		m.getItems().addAll(mi1, mi2, mi3);
+		return m;
 	}
 
+ 	private Menu loadJavaDoc() {
+ 		Menu m = new Menu("Javadoc");
+ 		m.setOnAction(e -> {
+ 			BorderPane root = (BorderPane) getParent();
+ 			root.getCenter();
+ 		});
+ 		return m;
+ 	}
+ 	
 	private Menu loadWorkMenu() {
 		MenuItem mi1 = new MenuItem();
 		mi1.setGraphic(loadImgV(HEAVY_WORK));
