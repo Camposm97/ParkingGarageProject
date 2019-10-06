@@ -27,13 +27,13 @@ public class UserDataViewer extends BorderPane {
 		tv.setOnContextMenuRequested(e -> {
 			ContextMenu cm = new ContextMenu();
 			MenuItem mi1 = new MenuItem("Enable User");
-			mi1.setOnAction(new ContextMenuHandler());
+			mi1.setOnAction(new ContextMenuHandler(0));
 			MenuItem mi2 = new MenuItem("Disable User");
-			mi2.setOnAction(new ContextMenuHandler());
-			MenuItem mi3 = new MenuItem("Enable Admin Powers");
-			mi3.setOnAction(new ContextMenuHandler());
-			MenuItem mi4 = new MenuItem("Disable Admin Powers");
-			mi4.setOnAction(new ContextMenuHandler());
+			mi2.setOnAction(new ContextMenuHandler(1));
+			MenuItem mi3 = new MenuItem("Enable Admin");
+			mi3.setOnAction(new ContextMenuHandler(2));
+			MenuItem mi4 = new MenuItem("Disable Admin");
+			mi4.setOnAction(new ContextMenuHandler(3));
 			cm.getItems().addAll(mi1, mi2, mi3, mi4);
 			cm.show(this.getScene().getWindow());
 		});
@@ -63,11 +63,33 @@ public class UserDataViewer extends BorderPane {
 	}
 	
 	private class ContextMenuHandler implements EventHandler<ActionEvent> {
+		private int code;
+		
+		public ContextMenuHandler(int code) {
+			this.code = code;
+		}
+		
 		@Override
 		public void handle(ActionEvent event) {
 			UserData user = tv.getSelectionModel().getSelectedItem();
-			if (user != null) {
+			if (user != null)
+				computeCode(user);
+		}
+		
+		private void computeCode(UserData user) {
+			switch (code) {
+			case 0: // Enable User
 				
+				break;
+			case 1: // Disable User
+				user.closeAccount();
+				break;
+			case 2: // Enable Admin
+				user.setAdmin(true);
+				break;
+				
+			case 3: // Disable Admin
+				user.setAdmin(false);
 			}
 		}
 		
