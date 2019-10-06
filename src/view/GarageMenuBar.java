@@ -98,7 +98,7 @@ public class GarageMenuBar extends MenuBar {
 		MenuItem miDelCar = new MenuItem("Car (Check-Out)");
 		miDelCar.setOnAction(e -> {
 			BorderPane root = (BorderPane) super.getParent();
-			root.setCenter(new CheckOutPane(spaces));
+			root.setCenter(new CheckOutPane(spaces, user));
 		});
 		Menu m = new Menu("Delete");
 		m.setGraphic(loadImgV(DELETE_ICON));

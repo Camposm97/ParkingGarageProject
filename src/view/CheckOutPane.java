@@ -11,17 +11,20 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import pLData.ParkingLot;
 import register.CashRegister;
+import userData.UserData;
 import util.LightWork;
 import vehicleH.State;
 
 public class CheckOutPane extends GridPane {
 	private ParkingLot spaces;
+	private UserData user;
 	private TextField tfPlate;
 	private ComboBox<String> cbState;
 	private Button btDelete, btViewGarage;
 	
-	public CheckOutPane(ParkingLot spaces) {
+	public CheckOutPane(ParkingLot spaces, UserData user) {
 		this.spaces = spaces;
+		this.user = user;
 		initControls();
 		showControls();
 	}
@@ -51,7 +54,7 @@ public class CheckOutPane extends GridPane {
 			
 			if (!licensePlate.isEmpty() && !stateAbbr.isEmpty()) {
 				State state = State.valueOfAbbreviation(stateAbbr);
-				CashRegister cr = new CashRegister();
+				CashRegister cr = new CashRegister(user);
 				cr.closeTicket(spaces, licensePlate, state);
 				((BorderPane) this.getParent()).setCenter(null);
 			}
