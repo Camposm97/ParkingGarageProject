@@ -16,7 +16,7 @@ public class LightWork { // Originally named CamposFX
 	public static final Insets DEFAULT_INSETS = new Insets(10);
 	
 	public static String emitDailyLog(LocalDate date) {
-		return "systemData/daily_" + date.getYear() + "_" + date.getMonthValue() + "_" + date.getDayOfMonth() + ".log";
+		return "systemData/log/daily_" + date.getYear() + "_" + date.getMonthValue() + "_" + date.getDayOfMonth() + ".log";
 	}
 	
 	public static VBox loadVBox(Node...nodes) {
