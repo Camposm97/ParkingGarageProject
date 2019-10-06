@@ -9,11 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import pLData.ParkingLot;
-import register.CashRegister;
-import userData.UserData;
+import model.*;
+import view.*;
 import util.LightWork;
-import vehicleH.State;
 
 public class CheckOutPane extends GridPane {
 	private ParkingLot spaces;

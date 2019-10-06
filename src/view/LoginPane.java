@@ -13,7 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Garage;
-import userData.UserDataManager;
+import model.UserDataManager;
 
 public class LoginPane extends GridPane {
 	public static final int WIDTH = 300, HEIGHT = 300;

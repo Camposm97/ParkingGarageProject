@@ -6,8 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import pLData.*;
-import vehicleH.*;
+import model.*;
 
 class ParkingLotT {
 	public ParkingLot tD = new ParkingLot(80, 10, 10);
