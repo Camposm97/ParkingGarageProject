@@ -26,6 +26,11 @@ import model.UserData;
 import util.DataSaver;
 import util.LightWork;
 
+/**
+ * Critical component to the Parking Garage.  This class holds all the Menus to allow to user
+ * to interact with the parking garage and users.
+ * @author Michael Campos
+ */
 public class GarageMenuBar extends MenuBar {
 	private Garage garage;
 	private UserData signedInUser;
@@ -176,10 +181,6 @@ public class GarageMenuBar extends MenuBar {
  			we.load(file.toURI().toString());
  			BorderPane root = (BorderPane) getParent();
  			root.setCenter(wv);
-// 			Stage stage = new Stage();
-// 			stage.setTitle(App.TITLE);
-// 			stage.setScene(new Scene(new StackPane(wv)));
-// 			stage.show();
  		});
  		return mi;
  	}

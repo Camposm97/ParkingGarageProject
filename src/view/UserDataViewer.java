@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.MouseInfo;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ContextMenu;
@@ -11,16 +13,22 @@ import javafx.scene.layout.BorderPane;
 import model.UserData;
 import model.UserDataManager;
 
+/**
+ * Purpose of this class is to take a collection of users and display them
+ * on a table giving admins the ability to disable or give the selected
+ * user admin permissions.
+ * @author Michael Campos
+ */
 public class UserDataViewer extends BorderPane {
 	private UserDataManager users;
 	private TableView<UserData> tv;
-
+	
 	public UserDataViewer(UserDataManager users) {
 		this.users = users;
 		initTableView();
 		super.setCenter(tv);
 	}
-
+	
 	private void initTableView() {
 		tv = new TableView<>();
 		initTableColumns();
@@ -35,7 +43,9 @@ public class UserDataViewer extends BorderPane {
 			MenuItem mi4 = new MenuItem("Disable Admin");
 			mi4.setOnAction(new ContextMenuHandler(3));
 			cm.getItems().addAll(mi1, mi2, mi3, mi4);
-			cm.show(this.getScene().getWindow());
+			double x = MouseInfo.getPointerInfo().getLocation().getX();
+			double y = MouseInfo.getPointerInfo().getLocation().getY();
+			cm.show(getScene().getWindow(), x, y);
 		});
 		tv.getItems().setAll(users.getUserList());
 	}
