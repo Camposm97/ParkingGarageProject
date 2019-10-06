@@ -32,6 +32,7 @@ public class Space implements Serializable {
 	public Space(VehicleType vT) {
 		parkingSpaceType = vT;
 		arrivalTime  = new Date();
+		System.out.println(arrivalTime.toString());
 	}
 	/**
 	 * Used to duplicate a space primarily for vehicle deletion and ticket printing
