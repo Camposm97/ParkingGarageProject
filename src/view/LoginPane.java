@@ -1,6 +1,8 @@
 package view;
 
-import static util.LightWork.*;
+import static util.LightWork.initGridPaneSettings;
+import static util.LightWork.loadHBox;
+import static util.LightWork.loadVBox;
 
 import control.LoginButton;
 import control.MyLabel;
@@ -13,7 +15,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Garage;
-import userData.UserDataManager;
 
 public class LoginPane extends GridPane {
 	public static final int WIDTH = 300, HEIGHT = 300;
