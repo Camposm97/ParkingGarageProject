@@ -13,6 +13,10 @@ import javafx.stage.Stage;
 import model.UserData;
 import model.UserDataManager;
 
+/**
+ * 
+ * @author Michael Campos
+ */
 public class DeleteUserWindow extends TextInputDialog {
 
 	public DeleteUserWindow(UserDataManager users) {

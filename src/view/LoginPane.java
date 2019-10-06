@@ -1,6 +1,8 @@
 package view;
 
-import static util.LightWork.*;
+import static util.LightWork.initGridPaneSettings;
+import static util.LightWork.loadHBox;
+import static util.LightWork.loadVBox;
 
 import control.LoginButton;
 import control.MyLabel;
@@ -13,10 +15,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Garage;
-import model.UserDataManager;
 
 /**
- * 
+ * Purpose of this class to display the graphical components to allow the user to 
+ * enter his/her credentials to login to the parking garage program.  
  * @author Michael Campos
  */
 public class LoginPane extends GridPane {
