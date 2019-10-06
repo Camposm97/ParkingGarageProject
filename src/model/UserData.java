@@ -125,7 +125,7 @@ public class UserData implements Serializable{
 	 * @return true if the user account is not admin, and sets isDisabled to true
 	 */
 	public boolean closeAccount() {
-		if(this.getUserName().compareTo("admin0") >= 0) {
+		if(this.getUserName().equalsIgnoreCase("admin0")) {
 			return false;
 		}else {
 		this.isDisabled = true;
