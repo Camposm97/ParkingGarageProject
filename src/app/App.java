@@ -17,8 +17,6 @@ import view.MainStage;
  *
  */
 
-
-
 public class App extends Application {
 	public static final int WIDTH = 500, HEIGHT = 400;
 	public static final String TITLE = "Parking Garage v1.0";
