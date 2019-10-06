@@ -17,8 +17,8 @@ import view.MainStage;
  * 
  * 
  * @author Chris Demonte, Michael Campos, Matt Guidi
- * @version 0.8
- * @since  2019-09-25
+ * @version 1.0
+ * @since  2019-10-7
  * 
  *
  */

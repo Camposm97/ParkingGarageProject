@@ -18,7 +18,7 @@ public class Space implements Serializable {
 	 * Use 1,000 for 1 millisecond to equal one second <br>
 	 * Use 1 for normal time. <br>
 	 */
-	public static final long TIME_MODIFIER = 60000;
+	public static final long TIME_MODIFIER = 1;
 	
 	private static final long serialVersionUID = 1L;
 	private VehicleType parkingSpaceType;
@@ -82,7 +82,9 @@ public class Space implements Serializable {
 	 * @return Returns the string version of the local time the space was occupied by its current vehicle
 	 */
 	public String getTimeParked() {
-		return this.arrivalTime.toString();
+		@SuppressWarnings("deprecation")
+		String fullST = this.arrivalTime.toLocaleString();
+		return fullST;
 	}
 	/**
 	 * 
@@ -123,7 +125,7 @@ public class Space implements Serializable {
 	 */
 	public String toString() {
 		if(vehicleParked == null) {
-			return "This parking spot is available for " + this.parkingSpaceType.toString();	
+			return "This parking spot is available for a " + this.parkingSpaceType.toString();	
 		}else {
 			return "This parking spot is occupied by a " + this.vehicleParked.getVTypeS() + 
 					" with the license plate " + this.vehicleParked.getLicensePlate() +

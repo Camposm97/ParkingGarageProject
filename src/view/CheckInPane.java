@@ -73,7 +73,7 @@ public class CheckInPane extends GridPane {
 			VehicleType vType = cbVehicleType.getValue();
 			String state = cbState.getValue();
 			if (spaceNum != null && state != null) {
-				int i = JOptionPane.showConfirmDialog(null, "Do they want Space # " + spaceNum + "?",
+				int i = JOptionPane.showConfirmDialog(null, "Confirm selection for space # " + spaceNum + "?",
 						"Space Confirmation" , 0, 3);
 				if (i == 0) { // Yes
 					Vehicle v= new Vehicle(licensePlate, vType, state);
