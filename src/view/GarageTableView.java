@@ -49,6 +49,7 @@ public class GarageTableView {
 		this.lot = lot;
 		this.generateLayout();
 		container = new ScrollPane();
+		
 	}
 	/**
 	 * The constructor used by the program
@@ -78,11 +79,16 @@ public class GarageTableView {
 		for (int i = 0; i < spaces.size(); i++) {
 			String info = new String ("" + i);
 			Label label = new Label();
+			Button b = new Button();
 			if (spaces.get(i).getVehicleParked() != null) {
 				info+= "\nSpace Occupied";
 				label.setBackground(new Background(new BackgroundFill(Color.YELLOW,CornerRadii.EMPTY, Insets.EMPTY)));
 				label.setMinHeight(50);
 				label.setMinWidth(100);
+				b.setBackground(new Background(new BackgroundFill(Color.YELLOW,CornerRadii.EMPTY, Insets.EMPTY)));
+				b.setMinHeight(50);
+				b.setMinWidth(100);
+				
 			//	this.giveMouseOver(label, spaces.get(i));
 			}
 			else {
@@ -92,6 +98,7 @@ public class GarageTableView {
 				label.setMinWidth(100);
 			//	this.giveMouseOver(label, spaces.get(i));
 			}
+			// 
 			label.setText(info);
 			label.setTooltip(new Tooltip(spaces.get(i).toString()));
 			

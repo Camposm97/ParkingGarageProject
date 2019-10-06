@@ -132,6 +132,9 @@ public class UserData implements Serializable{
 		return true;
 		}
 	}
+	public void enableAccount() {
+		this.isDisabled = false;
+	}
 	public boolean isDisabled() {
 		return this.isDisabled;
 	}
