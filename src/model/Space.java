@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Date;
  * @author Matt Guidi
  * 
  */
-public class Space {
+public class Space implements Serializable {
 	/**
 	 * This time modifier helps us modify the "real-time" used to calculate our close time. <br>
 	 * It helps make cost approximation and testing a lot easier <br>
@@ -19,7 +20,7 @@ public class Space {
 	 */
 	public static final long TIME_MODIFIER = 60000;
 	
-	
+	private static final long serialVersionUID = 1L;
 	private VehicleType parkingSpaceType;
 	private Vehicle vehicleParked;
 	private Date arrivalTime = new Date();

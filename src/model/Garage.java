@@ -1,7 +1,9 @@
 package model;
 
+import java.io.Serializable;
 
-public class Garage {
+public class Garage implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private UserDataManager users;
 	private ParkingLot parkingLot;
 	

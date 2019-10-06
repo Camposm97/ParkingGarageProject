@@ -1,13 +1,14 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * This is the parking lot "bag" that contains the spaces
  * @author Matt Guidi
  *
  */
-public class ParkingLot implements ParkingSpaceInterface{
-	
+public class ParkingLot implements ParkingSpaceInterface, Serializable {
+	private static final long serialVersionUID = 1L;
 	private ArrayList <Space>parkingLotArray;
 	
 	
