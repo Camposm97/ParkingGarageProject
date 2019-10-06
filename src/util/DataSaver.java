@@ -23,7 +23,7 @@ public class DataSaver {
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(o);
 			oos.close();
-			System.out.println("Successfully saved Object to: " + file);
+			//System.out.println("Successfully saved Object to: " + file);
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();

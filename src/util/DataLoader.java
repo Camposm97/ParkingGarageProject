@@ -23,7 +23,7 @@ public class DataLoader {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			o = ois.readObject();
 			ois.close();
-			System.out.println("Successfully loaded Object from: " + file);
+			//System.out.println("Successfully loaded Object from: " + file);
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}

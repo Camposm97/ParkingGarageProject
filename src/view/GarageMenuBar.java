@@ -94,7 +94,6 @@ public class GarageMenuBar extends MenuBar {
 		});
 		Menu m = new Menu("Insert");
 		m.setGraphic(loadImgV(INSERT_ICON));
-		System.out.println(signedInUser.isAdmin());
 		if (signedInUser.isAdmin())
 			m.getItems().add(miAddUser);
 		m.getItems().add(miAddCar);
