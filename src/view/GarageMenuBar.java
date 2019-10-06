@@ -10,6 +10,7 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
+import app.App;
 import control.ViewGarageButton;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -51,6 +52,7 @@ public class GarageMenuBar extends MenuBar {
 			Scene scene = super.getScene();
 			scene.setRoot(new LoginPane(garage));
 			Stage stage = (Stage) scene.getWindow();
+			stage.setTitle(App.TITLE);
 			stage.setWidth(LoginPane.WIDTH);
 			stage.setHeight(LoginPane.HEIGHT);
 			stage.centerOnScreen();
