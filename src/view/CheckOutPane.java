@@ -1,16 +1,18 @@
 package view;
 
+import app.App;
 import control.ViewGarageButton;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import model.*;
-import view.*;
 import util.LightWork;
 
 public class CheckOutPane extends GridPane {
@@ -50,12 +52,27 @@ public class CheckOutPane extends GridPane {
 			String licensePlate = tfPlate.getText();
 			String stateAbbr = cbState.getValue();
 			
-			if (!licensePlate.isEmpty() && !stateAbbr.isEmpty()) {
+			if (!licensePlate.isEmpty() && !(stateAbbr == null)) {
+				if(spaces.vehicleFinder(licensePlate, State.valueOfAbbreviation(stateAbbr)) == -1) {
+					Alert alert = new Alert(AlertType.ERROR);
+					alert.setTitle(App.TITLE);
+					alert.setHeaderText("Error in input!");
+					alert.setContentText("The information you have given is false!\n" +
+					"Please check for errors in State or License Plate!");
+					alert.showAndWait();
+				}else {
 				State state = State.valueOfAbbreviation(stateAbbr);
 				CashRegister cr = new CashRegister(user);
 				cr.closeTicket(spaces, licensePlate, state);
 				((BorderPane) this.getParent()).setCenter(null);
+				}
 				
+			}else {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle(App.TITLE);
+				alert.setHeaderText("Error in input!");
+				alert.setContentText("Please enter all information to remove a vehicle!");
+				alert.showAndWait();
 			}
 			
 		});
