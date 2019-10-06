@@ -3,8 +3,8 @@ package app;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import model.Garage;
-import pLData.ParkingLot;
-import userData.UserDataManager;
+import model.ParkingLot;
+import model.UserDataManager;
 import view.MainStage;
 /**
  * <h1> Parking Garage Application </h1>

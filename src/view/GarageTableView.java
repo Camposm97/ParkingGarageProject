@@ -12,8 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import pLData.ParkingLot;
-import pLData.Space;
+import model.*;
 
 /**
  * GarageTableView is not a table view. It is a GridPane inside a ScrollPane. 

@@ -1,7 +1,5 @@
 package model;
 
-import pLData.ParkingLot;
-import userData.UserDataManager;
 
 public class Garage {
 	private UserDataManager users;

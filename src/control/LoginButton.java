@@ -7,8 +7,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import userData.UserData;
-import userData.UserDataManager;
+import model.UserData;
+import model.UserDataManager;
 import view.LoginPane;
 import view.MainMenu;
 
