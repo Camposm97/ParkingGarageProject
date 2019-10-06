@@ -52,6 +52,7 @@ public class Ticket {
 				+ "Plate Number : " + space.getVehicleParked().getLicensePlate() + "\n"
 				+ "Space : " + spaceNumber + "\n"
 				+ "Rate : " + space.getSpecialRate() + "\n"
+				+ "Hours Parked : " + this.expectedHours + "\n"
 				+ "Expected Cost : " + eC + "\n";
 		if (open == true) {
 			str += "Ticket not paid yet\n";

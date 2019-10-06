@@ -18,12 +18,12 @@ public class Space implements Serializable {
 	 * Use 1,000 for 1 millisecond to equal one second <br>
 	 * Use 1 for normal time. <br>
 	 */
-	public static final long TIME_MODIFIER = 60000;
+	public static final long TIME_MODIFIER = 1000;
 	
 	private static final long serialVersionUID = 1L;
 	private VehicleType parkingSpaceType;
 	private Vehicle vehicleParked;
-	private Date arrivalTime = new Date();
+	private Date arrivalTime;
 	private Double specialRate = 1.0;
 	/**
 	 * Creates a new parking space intended for VehicleType vT
@@ -31,6 +31,7 @@ public class Space implements Serializable {
 	 */
 	public Space(VehicleType vT) {
 		parkingSpaceType = vT;
+		arrivalTime  = new Date();
 	}
 	/**
 	 * Used to duplicate a space primarily for vehicle deletion and ticket printing
@@ -83,7 +84,7 @@ public class Space implements Serializable {
 	 */
 	public String getTimeParked() {
 		@SuppressWarnings("deprecation")
-		String fullST = this.arrivalTime.toLocaleString();
+		String fullST = this.arrivalTime.toString();
 		return fullST;
 	}
 	/**
