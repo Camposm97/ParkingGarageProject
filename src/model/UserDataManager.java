@@ -109,7 +109,7 @@ public class UserDataManager implements Serializable{
 	}
 	public UserData login(String userName, String password) {
 		int index = getIndexFromUserName(userName);
-		if(index < 0 || index > userList.size()) {
+		if(index < 0 || index >= userList.size()) {
 			return null;
 		}
 		if(userName.equalsIgnoreCase(userName) && userList.get(index).getPassword().equals(password)) {

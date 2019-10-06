@@ -31,6 +31,7 @@ public class LoginButton extends Button {
 			this.users = login.getGarage().getUsers();
 			this.username = login.getUsername();
 			this.password = login.getPassword();
+			
 			if (!username.isEmpty() && !password.isEmpty()) {
 				this.user = users.login(username, password);
 			
