@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 /**
  * Purpose of this class is to store the paths of the images in the "images" folder
  * and to provide methods to load them in using JavaFX.
- * @author Camposm97
+ * @author Michael Campos
  */
 public class ImgUtil {
 	public static final String EXIT_ICON = "images/exit.png";

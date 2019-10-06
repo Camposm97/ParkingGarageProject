@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 /**
- * Writes the given object to a file
+ * Writes the given object to a given path.
  * @author Michael Campos
  *
  */
