@@ -128,6 +128,7 @@ public class GarageTableView {
 	public void giveMouseOver (Label label, Space space) {
 		Tooltip tooltip = new Tooltip();
 		tooltip.setText(space.toString());
+		label.setTooltip(tooltip);
 	}
 	/**
 	 * can turn the yellow boxes into buttons that close and order
