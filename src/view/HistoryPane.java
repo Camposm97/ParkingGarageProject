@@ -10,8 +10,18 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import util.DataLoader;
 import util.LightWork;
-
+/**
+ * This GUI element displays text that is stored in the project directory, using a date picker to select data created on certain days
+ * @author chris demonte
+ *
+ */
 public class HistoryPane {
+	/**
+	 * @param container is the parent container of the gui elements
+	 * @param datePicker lets you pick the date
+	 * @param taLog is the text area display for the data
+	 * @param DailyData is the object container for the data that will be displayed
+	 */
 	private VBox container;
 	private DatePicker datePicker;
 	private TextArea taLog;
@@ -22,12 +32,19 @@ public class HistoryPane {
 		this.loadText(LocalDate.now());
 	}
 
+	/**
+	 * Uses dailydata to fill the text area
+	 * @param data
+	 */
 	public HistoryPane(DailyData data) {
 		this.generateLayout();
 		this.dailyData = data;
 		this.taLog.setText(dailyData.toString());
 	}
 
+	/**
+	 * generates the layer with the date picker on top and the text area on the bottom
+	 */
 	private void generateLayout() {
 		taLog = new TextArea();
 		taLog.setEditable(false);
@@ -40,6 +57,10 @@ public class HistoryPane {
 		container.setAlignment(Pos.CENTER);
 	}
 
+	/**
+	 * Loads the date file using the file loader util
+	 * @param date
+	 */
 	private void loadText(LocalDate date) {
 		String src = LightWork.emitDailyLog(date);
 		File file = new File(src);
