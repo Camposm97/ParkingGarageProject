@@ -1,4 +1,4 @@
-package vehicleH;
+package model;
 /**
  * The Vehicle class provides the makeup of info needed for a vehicle 
  * @author Matt Guidi
@@ -37,7 +37,7 @@ public class Vehicle {
 	}
 	/**
 	 * 
-	 * @return Returns the state of the vehicleadmi
+	 * @return Returns the state the vehicle is registered in
 	 */
 	public State getVehicleState() {
 		return vehicleState;
@@ -49,6 +49,9 @@ public class Vehicle {
 	public String getVTypeS() {
 		return vType.toString();
 	}
+	/**
+	 * @return Returns a string of all the Vehicle's data
+	 */
 	public String toString() {
 		String lP = this.getLicensePlate();
 		String vT = this.getVTypeS();
