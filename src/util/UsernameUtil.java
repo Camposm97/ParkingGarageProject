@@ -3,7 +3,7 @@ package util;
 /**
  * Purpose of this class is to auto-generate a user name using the first and last name of a person.
  * @version v1.0
- * @author Camposm97
+ * @author Michael Campos
  */
 public class UsernameUtil {
 	private static final int LAST_NAME_LENGTH = 4;
@@ -14,7 +14,7 @@ public class UsernameUtil {
 	 * @param firstName First name of the user
 	 * @param lastName Last name of the user
 	 * @return returns the username of this new user
-	 * @author Camposm97	
+	 * @author Michael Campos	
 	 */
 	public static String emitUsername(String firstName, String lastName) {
 		String username = "";
