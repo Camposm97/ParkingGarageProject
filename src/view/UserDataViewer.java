@@ -1,5 +1,7 @@
 package view;
 
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -36,6 +38,15 @@ public class UserDataViewer extends BorderPane {
 		tv.getColumns().add(colDisabled);
 		tv.getColumns().add(colAdmin);
 		tv.getItems().addAll(users.getUserList());
+		tv.setOnContextMenuRequested(e -> {
+			ContextMenu cm = new ContextMenu();
+			MenuItem mi1 = new MenuItem("Enable User");
+			MenuItem mi2 = new MenuItem("Disable User");
+			MenuItem mi3 = new MenuItem("Enable Admin Powers");
+			MenuItem mi4 = new MenuItem("Disable Admin Powers");
+			cm.getItems().addAll(mi1, mi2, mi3, mi4);
+			cm.show(this.getScene().getWindow());
+		});
 		return tv;
 	}
 }
