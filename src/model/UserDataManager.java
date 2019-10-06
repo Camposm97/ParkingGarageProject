@@ -121,7 +121,6 @@ public class UserDataManager implements Serializable{
 	public boolean passwordCheck (String userName, String password) {
 		int i = this.getIndexFromUserName(userName);
 		if (userList.get(i).getPassword().contentEquals(password) && userList.get(i).getUserName().contentEquals(userName)) {
-			System.out.println("Sup");
 			return true;
 		}
 		else {

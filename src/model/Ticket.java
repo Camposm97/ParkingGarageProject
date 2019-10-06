@@ -9,7 +9,7 @@ public class Ticket {
 	
 	private Space space;
 	private int spaceNumber;
-	private double expectedHours;
+	private double expectedMinutes;
 	// Let's make this static! That way it's the same across the board
 	private static int ticketNumberC = 1;
 	private int ticketID;
@@ -27,8 +27,8 @@ public class Ticket {
 		
 		this.space = space;
 		this.spaceNumber = spaceID;
-		this.expectedHours = (((System.currentTimeMillis() * this.space.getTimeModifier())
-								- this.space.getTimeA()) / 3600000);
+		this.expectedMinutes = (double)(((System.currentTimeMillis()- this.space.getTimeA()) * this.space.getTimeModifier()));
+		this.expectedMinutes = (double)(this.expectedMinutes / 60000.0);
 		this.payment =  getExpectedCost();
 		//System.out.println("The payment I calculated is " + this.payment);
 		this.open = true;
@@ -42,7 +42,7 @@ public class Ticket {
 	 */
 	public String getTicketString() {
 		String str = new String();
-		String eC = String.format("%.2f", this.getExpectedCost());
+		String mP = String.format("%.2f", this.getExpectedMinutes());
 		str += "\n****************************************\n" 
 				+ "Ticket : " + this.ticketID + "\n" +
 				"Attendant : " + this.activeUser.getFirstName() + this.activeUser.getLastName().charAt(0) + 
@@ -52,16 +52,16 @@ public class Ticket {
 				+ "Plate Number : " + space.getVehicleParked().getLicensePlate() + "\n"
 				+ "Space : " + spaceNumber + "\n"
 				+ "Rate : " + space.getSpecialRate() + "\n"
-				+ "Hours Parked : " + this.expectedHours + "\n"
-				+ "Expected Cost : " + eC + "\n";
+				+ "Minutes Parked : " + mP + " minutes\n"
+				+ "Expected Cost : $" + this.getExpectedCost() + "\n";
 		if (open == true) {
 			str += "Ticket not paid yet\n";
 		}
 		else {
 			String tP = String.format("%.2f", this.payment);
 			String xC = String.format("%.2f", (this.payment - this.getExpectedCost()));
-			str += "Ticket Paid\nTotal : " + tP + "\n" 
-				  +"Extra change : " + xC
+			str += "Total Paid: $" + tP + "\n" 
+				  +"Extra change : $" + xC
 					+ "\n****************************************\n"; 
 			
 		}
@@ -82,9 +82,10 @@ public class Ticket {
 	 * @return returns the cost to charge the customer in the form of a double
 	 */
 	public double getExpectedCost() {
-		double d = (100 / (this.spaceNumber + 1))*
-				(this.space.getSpecialRate() * this.expectedHours);
-		d = Math.round(d *100.0)/100.0;
+		double d = (100 / (this.spaceNumber + 1.0));
+		d = d * (this.space.getSpecialRate() * this.expectedMinutes);
+		String eC = String.format("%.2f", d);
+		d = Double.parseDouble(eC);
 		return d;
 		
 	}
@@ -120,15 +121,15 @@ public class Ticket {
 	 * 
 	 * @return Gives the expected hours calculated in the form of a double
 	 */
-	public double getExpectedHours() {
-		return expectedHours;
+	public double getExpectedMinutes() {
+		return expectedMinutes;
 	}
 	/**
 	 * 
 	 * @param expectedHours Set the expected hours to this integer 
 	 */
-	public void setExpectedHours(int expectedHours) {
-		this.expectedHours = (double)expectedHours;
+	public void setExpectedMinutes(int expectedMinutes) {
+		this.expectedMinutes = (double)expectedMinutes;
 	}
 	/**
 	 * 

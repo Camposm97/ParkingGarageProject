@@ -116,11 +116,9 @@ public class ParkingLot implements ParkingSpaceInterface, Serializable {
 		int spaceID = -1;
 		for(int i = 0; i < this.parkingLotArray.size(); i++){
 			if(this.parkingLotArray.get(i).getVehicleParked() != null) {
-				System.out.println("Checking index " + i + " it has a license plate: " + this.parkingLotArray.get(i).getVehicleParked().getLicensePlate());
 				if(this.parkingLotArray.get(i).getVehicleParked().getLicensePlate().compareTo(licensePlate) >= 0) {
 					if(this.parkingLotArray.get(i).getVehicleParked().getVehicleState().compareTo(s) >= 0) {
 					spaceID = i;
-					System.out.println("hello");
 					return spaceID;
 					}
 				}

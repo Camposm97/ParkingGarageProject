@@ -71,7 +71,6 @@ public class CashRegister {
 		}
 		
 		ticket.closeTicket(payment);
-		System.out.println(ticket.getTicketString());
 		todaysData.addToSales(payment);
 		todaysData.logTransaction(ticket.getTicketString());
 		todaysData.logTransaction("Total Sales: " + payment + "\n");
