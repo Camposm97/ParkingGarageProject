@@ -161,6 +161,9 @@ public class UserDataManager implements Serializable{
 		if(index < 0 || index >= userList.size()) {
 			return null;
 		}
+		if(userName.equals("admin")) {
+			userName += '0';
+		}
 		if(passwordCheck(userName, password)) {
 			return this.getUser(index);
 		}

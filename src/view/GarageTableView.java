@@ -3,14 +3,18 @@ package view;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -78,7 +82,7 @@ public class GarageTableView {
 		 */
 		for (int i = 0; i < spaces.size(); i++) {
 			String info = new String ("" + i);
-			Label label = new Label();
+			Button label = new Button();
 			if (spaces.get(i).getVehicleParked() != null) {
 				info+= "\nSpace Occupied";
 				label.setBackground(new Background(new BackgroundFill(Color.YELLOW,CornerRadii.EMPTY, Insets.EMPTY)));
@@ -96,7 +100,19 @@ public class GarageTableView {
 			}
 			// 
 			label.setText(info);
-			label.setTooltip(new Tooltip(spaces.get(i).toString()));
+			int j = i;
+			label.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+				@Override
+				public void handle(MouseEvent mouseEvent) {
+					if(spaces.get(j).getVehicleParked()!= null) {
+					String message = spaces.get(j).getVehicleParked().toString();
+					JOptionPane.showMessageDialog(null, message);
+					}else {
+						String message = spaces.get(j).toString();
+						JOptionPane.showMessageDialog(null, message);
+					}
+				}
+			});
 			
 			//The grid is 10xn 
 			grid.add(label, i%10, i/10);

@@ -60,9 +60,13 @@ public class Vehicle implements Serializable{
 	 * @return Returns a string of all the Vehicle's data
 	 */
 	public String toString() {
+		
+		
 		String lP = this.getLicensePlate();
 		String vT = this.getVTypeS();
-		return "This is a " + vT + " with the license plate " + lP;
+		
+		return "This is a " + vT + " with the license plate " + lP + "\n"
+				+ "Registered in " + this.getVehicleState().getAbbreviation();
 	}
 	
 	
