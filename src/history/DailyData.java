@@ -85,7 +85,8 @@ public class DailyData implements Serializable{
 	 */
 	public void saveDailyData() {
 		LocalDate date = LocalDate.now();
-		String adr = "resources/daily" + date.getMonthValue() + date.getDayOfMonth() + ".data";
-		DataSaver.writeObject(this, adr);
+		String src = "resources/daily_" + date.getYear() + "_" + date.getMonthValue() + "_" + date.getDayOfMonth()
+				+ ".log";
+		DataSaver.writeObject(this, src);
 	}
 }

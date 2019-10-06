@@ -4,67 +4,60 @@ import java.io.File;
 import java.time.LocalDate;
 
 import history.DailyData;
+import javafx.geometry.Pos;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import util.DataLoader;
+import util.LightWork;
 
 public class HistoryPane {
-	
-	VBox container; 
-	DatePicker datePicker;
-	TextArea text; 
-	DailyData dailyData;
-	
+	private VBox container;
+	private DatePicker datePicker;
+	private TextArea taLog;
+	private DailyData dailyData;
+
 	public HistoryPane() {
 		this.generateLayout();
 		this.loadText(LocalDate.now());
 	}
+
 	public HistoryPane(DailyData data) {
 		this.generateLayout();
 		this.dailyData = data;
-		this.text.setText(dailyData.toString());
+		this.taLog.setText(dailyData.toString());
 	}
 
 	private void generateLayout() {
-		container = new VBox();
-		text = new TextArea();	
-		text.setEditable(false);
+		taLog = new TextArea();
+		taLog.setEditable(false);
 		datePicker = new DatePicker();
-		datePicker.setOnAction(e->{
+		datePicker.setOnAction(e -> {
 			this.loadText(this.datePicker.getValue());
 		});
-		container.getChildren().addAll(datePicker, text);	
-	}	
+		container = LightWork.loadVBox(datePicker, taLog);
+		container.setPadding(LightWork.DEFAULT_INSETS);
+		container.setAlignment(Pos.CENTER);
+	}
 
 	private void loadText(LocalDate date) {
-		String adr = "resources/daily" + date.getMonthValue() + date.getDayOfMonth() + ".data";
-		File file = new File(adr);
-		boolean exists = file.exists();
-		if (exists) {
-			DailyData data = (DailyData)DataLoader.readObject(adr);
+		String src = "resources/daily_" + date.getYear() + "_" + date.getMonthValue() + "_" + date.getDayOfMonth()
+				+ ".log";
+		File file = new File(src);
+		if (file.exists()) {
+			DailyData data = (DailyData) DataLoader.readObject(src);
 			this.dailyData = data;
-			this.text.setText(dailyData.toString());
+			this.taLog.setText(dailyData.toString());
+		} else {
+			this.taLog.setText("There is no data for this day.");
 		}
-		else {
-			this.text.setText("There is no data for this day.");
-		}	
 	}
 
 	public VBox getContainer() {
 		return container;
 	}
 
-	public void setContainer(VBox container) {
-		this.container = container;
+	public TextArea getTaLog() {
+		return taLog;
 	}
-
-	public TextArea getText() {
-		return text;
-	}
-
-	public void setText(TextArea text) {
-		this.text = text;
-	}
-
 }
