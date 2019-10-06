@@ -19,7 +19,8 @@ import model.*;
 import util.LightWork;
 
 /**
- * 
+ * Purpose of this class is to allow the user to enter the car 
+ * information and add it to a parking space using the controls displayed.  
  * @author Michael Campos
  */
 public class CheckInPane extends GridPane {
