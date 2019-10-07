@@ -103,7 +103,7 @@ public class GarageMenuBar extends MenuBar {
 	private Menu loadMenuDelete() {
 		MenuItem miDelUser = new MenuItem("User (Disable)");
 		miDelUser.setOnAction(e -> {
-			new DeleteUserWindow(garage.getUsers());
+			new DeleteUserDialog(garage.getUsers());
 		});
 		MenuItem miDelCar = new MenuItem("Car (Check-Out)");
 		miDelCar.setOnAction(e -> {
@@ -136,7 +136,8 @@ public class GarageMenuBar extends MenuBar {
 		mi3.setGraphic(loadImgV(USER_ICON));
 		mi3.setOnAction(e -> {
 			BorderPane root = (BorderPane) super.getParent();
-			root.setCenter(new UserDataViewer(garage.getUsers()));
+			UserDataViewer userViewer = new UserDataViewer(garage.getUsers());
+			root.setCenter(userViewer);
 		});
 		Menu m = new Menu("View");
 		m.getItems().addAll(mi1, mi2);

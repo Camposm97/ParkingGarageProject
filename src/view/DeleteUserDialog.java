@@ -3,29 +3,35 @@ package view;
 import static util.ImgUtil.GARAGE_ICON;
 import static util.ImgUtil.loadImg;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 import app.App;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.ChoiceDialog;
 import javafx.stage.Stage;
 import model.UserData;
 import model.UserDataManager;
 
 /**
- * Purpose of this class is to display a field to allow the user
- * who is an admin to enter the username to "delete" from the 
- * user data structure.  
+ * Purpose of this class is to display a ComboBox allowing the user to choosse a
+ * username to "delete" from the user data structure.
+ * 
  * @author Michael Campos
  */
-public class DeleteUserWindow extends TextInputDialog {
+public class DeleteUserDialog extends ChoiceDialog<String> {
 
-	public DeleteUserWindow(UserDataManager users) {
+	public DeleteUserDialog(UserDataManager users) {
 		((Stage) super.getDialogPane().getScene().getWindow()).getIcons().add(loadImg(GARAGE_ICON));
 		super.setTitle(App.TITLE);
-		super.setHeaderText("Please enter the username\nyou would like to delete:");
+		super.setHeaderText("Please enter choice the user\nyou would like to delete:");
 		super.setContentText("Username:");
+		List<String> usernameList = new LinkedList<>();
+		for (UserData user : users.getUserList())
+			usernameList.add(user.getUserName());
+		super.getItems().addAll(usernameList);
 		Optional<String> result = this.showAndWait();
 		if (result.isPresent()) {
 			int index = users.getIndexFromUserName(result.get());
