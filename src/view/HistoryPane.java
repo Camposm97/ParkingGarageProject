@@ -8,6 +8,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import util.DataLoader;
 import util.LightWork;
 /**
@@ -30,7 +32,7 @@ public class HistoryPane {
 	/**
 	 * Constructor takes in no parameters and uses the current time to upload the most recent daily data, then generates the layout
 	 */
-	public HistoryPane() {
+	public HistoryPane () {
 		this.generateLayout();
 		this.loadText(LocalDate.now());
 	}
@@ -55,9 +57,10 @@ public class HistoryPane {
 		datePicker.setOnAction(e -> {
 			this.loadText(this.datePicker.getValue());
 		});
+		taLog.setMinSize(400, 400);
 		container = LightWork.loadVBox(datePicker, taLog);
 		container.setPadding(LightWork.DEFAULT_INSETS);
-		container.setAlignment(Pos.CENTER);
+		container.setAlignment(Pos.TOP_CENTER);
 	}
 
 	/**

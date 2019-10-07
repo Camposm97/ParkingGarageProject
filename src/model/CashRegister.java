@@ -2,6 +2,7 @@ package model;
 
 import java.io.File;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -71,6 +72,7 @@ public class CashRegister {
 		}
 		
 		ticket.closeTicket(payment);
+		
 		todaysData.addToSales(payment);
 		todaysData.logTransaction(ticket.getTicketString());
 		todaysData.logTransaction("Total Sales: " + payment + "\n");
