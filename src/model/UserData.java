@@ -2,6 +2,9 @@ package model;
 
 import java.io.Serializable;
 
+import app.App;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import util.UsernameUtil;
 /**
  * UserData is an object for each Parking Attendant employee and Admin
@@ -89,7 +92,15 @@ public class UserData implements Serializable{
 	 * @param isAdmin desired effect on the current user
 	 */
 	public void setAdmin(boolean isAdmin) {
+		if(this.userName.contentEquals("admin0")) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle(App.TITLE);
+			alert.setHeaderText("Unable to execute");
+			alert.setContentText("You cannot change the permission of the root admin!");
+			alert.showAndWait();
+		}else {
 		this.isAdmin = isAdmin;
+		}
 	}
 	/**
 	 * 
@@ -126,6 +137,11 @@ public class UserData implements Serializable{
 	 */
 	public boolean closeAccount() {
 		if(this.getUserName().equalsIgnoreCase("admin0")) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle(App.TITLE);
+			alert.setHeaderText("Unable to execute");
+			alert.setContentText("You close the account of the root admin!");
+			alert.showAndWait();
 			return false;
 		}else {
 		this.isDisabled = true;

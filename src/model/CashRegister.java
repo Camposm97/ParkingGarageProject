@@ -2,7 +2,6 @@ package model;
 
 import java.io.File;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
