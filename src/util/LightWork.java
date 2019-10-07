@@ -53,7 +53,7 @@ public class LightWork { // Originally named CamposFX
 	}
 	
 	/**
-	 * 
+	 * Takes in the given GridPane and modifies its properties.
 	 * @param gridPane
 	 */
 	public static void initGridPaneSettings(GridPane gridPane) {
